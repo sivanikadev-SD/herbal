@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard – Herbal Apothecary</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .status-dot.green {
+            background: #22c55e;
+        }
+
+        .status-dot.red {
+            background: #ef4444;
+        }
+
+        .status-dot.amber {
+            background: #f59e0b;
+        }
+
+        .sidebar-admin-logo {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        .chart-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+        }
+
+        .chart-title {
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .quick-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 18px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            background: var(--surface);
+            cursor: pointer;
+            transition: all .2s;
+            text-align: center;
+        }
+
+        .quick-action:hover {
+            border-color: var(--primary);
+            background: rgba(74, 124, 89, .05);
+            transform: translateY(-2px);
+        }
+
+        .quick-action i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .quick-action span {
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Sidebar custom width for admin */
+        .dashboard-sidebar {
+            width: 240px;
+        }
+
+        .dashboard-main {
+            margin-left: 240px;
+        }
+
+        @media(max-width:1024px) {
+            .dashboard-main {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-root">
+        <!-- ── ADMIN SIDEBAR ── -->
+        <aside class="dashboard-sidebar" id="dash-sidebar" role="navigation" aria-label="Admin navigation">
+            <div class="sidebar-brand sidebar-admin-logo">
+                <div class="nav-logo-icon"
+                    style="width:30px;height:30px;font-size:.85rem;background:rgba(255,255,255,.25)">⚙️</div>
+                <span>Admin Panel</span>
+            </div>
+
+            <!-- Admin badge -->
+            <div
+                style="padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px">
+                <div
+                    style="width:38px;height:38px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:#fff">
+                    👑</div>
+                <div>
+                    <div style="color:#fff;font-size:.85rem;font-weight:700">Admin User</div>
+                    <div style="display:flex;align-items:center;gap:4px"><span class="status-dot green"></span><span
+                            style="color:rgba(255,255,255,.5);font-size:.72rem">Online</span></div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <p
+                    style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);padding:8px 6px 4px">
+                    Main</p>
+                <button class="sidebar-link active" data-panel="overview"><i
+                        class="fas fa-chart-line"></i>Overview</button>
+                <button class="sidebar-link" data-panel="orders"><i class="fas fa-box"></i>Orders</button>
+                <button class="sidebar-link" data-panel="products"><i class="fas fa-leaf"></i>Products</button>
+                <button class="sidebar-link" data-panel="customers"><i class="fas fa-users"></i>Customers</button>
+
+                <p
+                    style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);padding:14px 6px 4px">
+                    Content</p>
+                <button class="sidebar-link" data-panel="blog"><i class="fas fa-pen-nib"></i>Blog</button>
+                <button class="sidebar-link" data-panel="coupons"><i class="fas fa-tag"></i>Coupons</button>
+
+                <p
+                    style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);padding:14px 6px 4px">
+                    System</p>
+                <button class="sidebar-link" data-panel="settings"><i class="fas fa-cog"></i>Settings</button>
+                <div style="padding-top:16px;border-top:1px solid rgba(255,255,255,.08);margin-top:16px">
+                    <a href="../index.html" class="sidebar-link"><i class="fas fa-external-link-alt"></i>View Site</a>
+                    <a href="login.html" class="sidebar-link" style="color:#ef4444"><i
+                            class="fas fa-sign-out-alt"></i>Sign Out</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- ── MAIN ── -->
+        <div class="dashboard-main">
+            <!-- Topbar -->
+            <header class="dashboard-topbar">
+                <button id="sidebar-toggle" class="nav-icon-btn" aria-label="Toggle sidebar"><i
+                        class="fas fa-bars"></i></button>
+                <div style="flex:1;min-width:0">
+                    <div id="panel-title"
+                        style="font-size:1rem;font-weight:700;color:var(--dark);font-family:var(--font-heading)">
+                        Dashboard Overview</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px">
+                    <button id="theme-toggle" class="nav-icon-btn" aria-label="Dark mode"><i
+                            class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                    <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout"
+                        title="Toggle RTL/LTR"><i class="fas fa-language"></i></button>
+                    <div style="position:relative">
+                        <button class="nav-icon-btn" aria-label="Notifications"><i class="fas fa-bell"></i><span
+                                style="position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:var(--accent);border-radius:50%;font-size:.62rem;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">5</span></button>
+                    </div>
+                    <div
+                        style="width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#fff;cursor:pointer">
+                        👑</div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+
+                <!-- ── PANEL: OVERVIEW ── -->
+                <div class="dash-panel active" id="panel-overview">
+                    <div class="flex-between" style="margin-bottom:24px;flex-wrap:wrap;gap:12px">
+                        <div>
+                            <h2 style="font-size:1.3rem">Dashboard Overview</h2>
+                            <p style="font-size:.85rem">Last updated: Feb 24, 2026 · 11:13 PM</p>
+                        </div>
+                        <div style="display:flex;gap:8px">
+                            <select class="form-control" style="width:auto;font-size:.83rem;padding:8px 12px">
+                                <option>Last 30 days</option>
+                                <option>Last 90 days</option>
+                                <option>This year</option>
+                            </select>
+                            <button class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Export</button>
+                        </div>
+                    </div>
+
+                    <!-- Main KPI Stats -->
+                    <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px">
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-dollar-sign" style="color:var(--primary)"></i>
+                                Revenue</div>
+                            <div class="stat-value">$24.8k</div>
+                            <div class="stat-change stat-up"><i class="fas fa-arrow-up"></i> +18.2% vs last month</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-box" style="color:var(--accent)"></i> New Orders
+                            </div>
+                            <div class="stat-value">148</div>
+                            <div class="stat-change stat-up"><i class="fas fa-arrow-up"></i> +11 today</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-users" style="color:#3b82f6"></i> Customers</div>
+                            <div class="stat-value">2,397</div>
+                            <div class="stat-change stat-up"><i class="fas fa-arrow-up"></i> +64 this month</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label"><i class="fas fa-star" style="color:#f59e0b"></i> Avg Rating</div>
+                            <div class="stat-value">4.8</div>
+                            <div class="stat-change"><i class="fas fa-star" style="color:#f59e0b"></i> From 1,284
+                                reviews</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Row -->
+                    <div class="grid-2" style="gap:20px;margin-bottom:20px">
+                        <div class="chart-card">
+                            <div class="flex-between chart-title" style="flex-wrap:nowrap">
+                                Revenue (Last 6 Months)
+                                <span class="badge badge-green">+18.2%</span>
+                            </div>
+                            <canvas id="revenue-chart" height="220"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-title">Sales by Category</div>
+                            <canvas id="category-chart" height="220"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card" style="margin-bottom:20px">
+                        <div class="chart-title">Traffic Sources</div>
+                        <canvas id="traffic-chart" height="120"></canvas>
+                    </div>
+
+                    <!-- Recent Orders + Quick Actions -->
+                    <div class="grid-2" style="gap:20px">
+                        <div class="card" style="padding:0;overflow:hidden">
+                            <div style="padding:16px 20px;border-bottom:1px solid var(--border)" class="flex-between">
+                                <h3 style="font-size:.95rem">Recent Orders</h3><button class="sidebar-link"
+                                    data-panel="orders"
+                                    style="width:auto;padding:5px 12px;font-size:.78rem;border-radius:50px">View
+                                    All</button>
+                            </div>
+                            <div class="data-table-wrap">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Customer</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#HA-1096</td>
+                                            <td>John S.</td>
+                                            <td>$48.99</td>
+                                            <td><span class="badge badge-amber">Processing</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#HA-1095</td>
+                                            <td>Maria L.</td>
+                                            <td>$79.99</td>
+                                            <td><span class="badge badge-green">Delivered</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#HA-1094</td>
+                                            <td>Ahmed K.</td>
+                                            <td>$32.00</td>
+                                            <td><span class="badge badge-blue">In Transit</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#HA-1093</td>
+                                            <td>Sophie T.</td>
+                                            <td>$64.98</td>
+                                            <td><span class="badge badge-green">Delivered</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Quick actions -->
+                        <div>
+                            <h3 style="font-size:.95rem;font-weight:700;margin-bottom:14px">Quick Actions</h3>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+                                <button class="quick-action" data-panel="products"><i
+                                        class="fas fa-plus-circle"></i><span>Add Product</span></button>
+                                <button class="quick-action" data-panel="blog"><i class="fas fa-pen"></i><span>New
+                                        Post</span></button>
+                                <button class="quick-action" data-panel="coupons"><i class="fas fa-tag"></i><span>New
+                                        Coupon</span></button>
+                                <button class="quick-action" data-panel="orders"><i class="fas fa-list"></i><span>All
+                                        Orders</span></button>
+                                <button class="quick-action" data-panel="customers"><i
+                                        class="fas fa-user-plus"></i><span>Customers</span></button>
+                                <button class="quick-action" data-panel="settings"><i
+                                        class="fas fa-cog"></i><span>Settings</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: ORDERS ── -->
+                <div class="dash-panel" id="panel-orders">
+                    <div class="flex-between" style="margin-bottom:20px">
+                        <h2 style="font-size:1.3rem">Orders Management</h2>
+                        <div style="display:flex;gap:8px">
+                            <button class="btn btn-outline btn-sm"><i class="fas fa-filter"></i> Filter</button>
+                            <button class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Export CSV</button>
+                        </div>
+                    </div>
+                    <div class="card" style="padding:0;overflow:hidden">
+                        <div class="table-toolbar">
+                            <input type="search" id="admin-order-search" class="form-control"
+                                placeholder="🔍  Search orders…" style="max-width:280px">
+                            <select class="form-control" style="width:auto;font-size:.83rem;padding:8px 12px">
+                                <option>All Statuses</option>
+                                <option>Processing</option>
+                                <option>In Transit</option>
+                                <option>Delivered</option>
+                                <option>Cancelled</option>
+                            </select>
+                            <select class="form-control" style="width:auto;font-size:.83rem;padding:8px 12px">
+                                <option>All time</option>
+                                <option>Today</option>
+                                <option>This week</option>
+                                <option>This month</option>
+                            </select>
+                        </div>
+                        <div class="data-table-wrap">
+                            <table class="data-table" id="admin-orders-table-overview">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" style="accent-color:var(--primary)"></th>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Date</th>
+                                        <th>Items</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" style="accent-color:var(--primary)"></td>
+                                        <td><strong>#HA-1096</strong></td>
+                                        <td>John Smith</td>
+                                        <td>Feb 24</td>
+                                        <td>2</td>
+                                        <td>$48.99</td>
+                                        <td><span class="badge badge-amber">Processing</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" style="accent-color:var(--primary)"></td>
+                                        <td><strong>#HA-1095</strong></td>
+                                        <td>Maria Lopez</td>
+                                        <td>Feb 23</td>
+                                        <td>1</td>
+                                        <td>$79.99</td>
+                                        <td><span class="badge badge-green">Delivered</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" style="accent-color:var(--primary)"></td>
+                                        <td><strong>#HA-1094</strong></td>
+                                        <td>Ahmed Rahman</td>
+                                        <td>Feb 22</td>
+                                        <td>3</td>
+                                        <td>$32.00</td>
+                                        <td><span class="badge badge-blue">In Transit</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" style="accent-color:var(--primary)"></td>
+                                        <td><strong>#HA-1093</strong></td>
+                                        <td>Sophie Turner</td>
+                                        <td>Feb 21</td>
+                                        <td>1</td>
+                                        <td>$64.98</td>
+                                        <td><span class="badge badge-green">Delivered</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" style="accent-color:var(--primary)"></td>
+                                        <td><strong>#HA-1092</strong></td>
+                                        <td>Wei Zhang</td>
+                                        <td>Feb 20</td>
+                                        <td>4</td>
+                                        <td>$124.96</td>
+                                        <td><span class="badge badge-red">Cancelled</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" style="accent-color:var(--primary)"></td>
+                                        <td><strong>#HA-1091</strong></td>
+                                        <td>Priya Mehta</td>
+                                        <td>Feb 19</td>
+                                        <td>2</td>
+                                        <td>$56.98</td>
+                                        <td><span class="badge badge-green">Delivered</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">Edit</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: PRODUCTS ── -->
+                <div class="dash-panel" id="panel-products">
+                    <div class="flex-between" style="margin-bottom:20px">
+                        <h2 style="font-size:1.3rem">Products</h2>
+                        <button class="btn btn-primary" id="open-product-modal"><i class="fas fa-plus"></i> Add
+                            Product</button>
+                    </div>
+                    <div class="card" style="padding:0;overflow:hidden">
+                        <div class="table-toolbar">
+                            <input type="search" id="product-search" class="form-control"
+                                placeholder="🔍  Search products…" style="max-width:260px">
+                            <select class="form-control" style="width:auto;font-size:.83rem;padding:8px 12px">
+                                <option>All Categories</option>
+                                <option>Herbal Teas</option>
+                                <option>Tinctures</option>
+                                <option>Capsules</option>
+                                <option>Essential Oils</option>
+                                <option>Salves</option>
+                            </select>
+                            <select class="form-control" style="width:auto;font-size:.83rem;padding:8px 12px">
+                                <option>All Stock</option>
+                                <option>In Stock</option>
+                                <option>Low Stock</option>
+                                <option>Out of Stock</option>
+                            </select>
+                        </div>
+                        <div class="data-table-wrap">
+                            <table class="data-table" id="products-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                        <th>Sales</th>
+                                        <th>Rating</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:12px"><img
+                                                    src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=56&h=56&fit=crop"
+                                                    style="width:44px;height:44px;border-radius:8px;object-fit:cover"
+                                                    alt=""><strong style="font-size:.85rem">Calming Sleep Tea</strong>
+                                            </div>
+                                        </td>
+                                        <td>Herbal Teas</td>
+                                        <td>$24.99</td>
+                                        <td><span class="badge badge-green">248 units</span></td>
+                                        <td>312</td>
+                                        <td>★ 4.9</td>
+                                        <td><span class="badge badge-green">Active</span></td>
+                                        <td>
+                                            <div style="display:flex;gap:4px"><button
+                                                    class="btn btn-sm btn-outline admin-edit-btn"
+                                                    style="padding:5px 10px">Edit</button><button
+                                                    class="btn btn-sm admin-delete-btn"
+                                                    style="padding:5px 10px;color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;background:transparent">Del</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:12px"><img
+                                                    src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=56&h=56&fit=crop"
+                                                    style="width:44px;height:44px;border-radius:8px;object-fit:cover"
+                                                    alt=""><strong style="font-size:.85rem">Echinacea Tincture</strong>
+                                            </div>
+                                        </td>
+                                        <td>Tinctures</td>
+                                        <td>$34.99</td>
+                                        <td><span class="badge badge-amber">12 units</span></td>
+                                        <td>189</td>
+                                        <td>★ 4.8</td>
+                                        <td><span class="badge badge-green">Active</span></td>
+                                        <td>
+                                            <div style="display:flex;gap:4px"><button
+                                                    class="btn btn-sm btn-outline admin-edit-btn"
+                                                    style="padding:5px 10px">Edit</button><button
+                                                    class="btn btn-sm admin-delete-btn"
+                                                    style="padding:5px 10px;color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;background:transparent">Del</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:12px"><img
+                                                    src="https://images.unsplash.com/photo-1517976487492-5750f3195933?w=56&h=56&fit=crop"
+                                                    style="width:44px;height:44px;border-radius:8px;object-fit:cover"
+                                                    alt=""><strong style="font-size:.85rem">Turmeric Capsules</strong>
+                                            </div>
+                                        </td>
+                                        <td>Capsules</td>
+                                        <td>$32.00</td>
+                                        <td><span class="badge badge-green">156 units</span></td>
+                                        <td>267</td>
+                                        <td>★ 4.6</td>
+                                        <td><span class="badge badge-green">Active</span></td>
+                                        <td>
+                                            <div style="display:flex;gap:4px"><button
+                                                    class="btn btn-sm btn-outline admin-edit-btn"
+                                                    style="padding:5px 10px">Edit</button><button
+                                                    class="btn btn-sm admin-delete-btn"
+                                                    style="padding:5px 10px;color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;background:transparent">Del</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:12px"><img
+                                                    src="https://images.unsplash.com/photo-1617333387457-89e9e2e65e0e?w=56&h=56&fit=crop"
+                                                    style="width:44px;height:44px;border-radius:8px;object-fit:cover"
+                                                    alt=""><strong style="font-size:.85rem">Lavender Essential
+                                                    Oil</strong></div>
+                                        </td>
+                                        <td>Essential Oils</td>
+                                        <td>$28.99</td>
+                                        <td><span class="badge badge-red">0 units</span></td>
+                                        <td>441</td>
+                                        <td>★ 4.9</td>
+                                        <td><span class="badge badge-gray">Out of Stock</span></td>
+                                        <td>
+                                            <div style="display:flex;gap:4px"><button
+                                                    class="btn btn-sm btn-outline admin-edit-btn"
+                                                    style="padding:5px 10px">Edit</button><button
+                                                    class="btn btn-sm admin-delete-btn"
+                                                    style="padding:5px 10px;color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;background:transparent">Del</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: CUSTOMERS ── -->
+                <div class="dash-panel" id="panel-customers">
+                    <div class="flex-between" style="margin-bottom:20px">
+                        <h2 style="font-size:1.3rem">Customers</h2>
+                        <button class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Export</button>
+                    </div>
+                    <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:20px">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Customers</div>
+                            <div class="stat-value">2,397</div>
+                            <div class="stat-change stat-up">+64 this month</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Active</div>
+                            <div class="stat-value">1,842</div>
+                            <div class="stat-change">76.8%</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Loyalty Members</div>
+                            <div class="stat-value">934</div>
+                            <div class="stat-change stat-up">+18 this week</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Avg LTV</div>
+                            <div class="stat-value">$201</div>
+                            <div class="stat-change stat-up">+$12 vs last month</div>
+                        </div>
+                    </div>
+                    <div class="card" style="padding:0;overflow:hidden">
+                        <div class="table-toolbar">
+                            <input type="search" class="form-control" placeholder="🔍  Search customers…"
+                                style="max-width:280px">
+                        </div>
+                        <div class="data-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Joined</th>
+                                        <th>Orders</th>
+                                        <th>LTV</th>
+                                        <th>Tier</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:10px">
+                                                <div
+                                                    style="width:34px;height:34px;border-radius:50%;background:var(--secondary);display:flex;align-items:center;justify-content:center;font-size:.85rem">
+                                                    👤</div>Jane Doe
+                                            </div>
+                                        </td>
+                                        <td>jane@example.com</td>
+                                        <td>Mar 2025</td>
+                                        <td>12</td>
+                                        <td>$482</td>
+                                        <td><span class="badge badge-blue">🥈 Silver</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">View</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:10px">
+                                                <div
+                                                    style="width:34px;height:34px;border-radius:50%;background:var(--secondary);display:flex;align-items:center;justify-content:center;font-size:.85rem">
+                                                    👤</div>John Smith
+                                            </div>
+                                        </td>
+                                        <td>john@smith.com</td>
+                                        <td>Jun 2025</td>
+                                        <td>8</td>
+                                        <td>$312</td>
+                                        <td><span class="badge badge-green">🥇 Gold</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">View</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div style="display:flex;align-items:center;gap:10px">
+                                                <div
+                                                    style="width:34px;height:34px;border-radius:50%;background:var(--secondary);display:flex;align-items:center;justify-content:center;font-size:.85rem">
+                                                    👤</div>Priya Mehta
+                                            </div>
+                                        </td>
+                                        <td>priya@mehta.in</td>
+                                        <td>Nov 2025</td>
+                                        <td>4</td>
+                                        <td>$148</td>
+                                        <td><span class="badge badge-gray">🌱 Basic</span></td>
+                                        <td><button class="btn btn-sm btn-outline admin-edit-btn">View</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: BLOG ── -->
+                <div class="dash-panel" id="panel-blog">
+                    <div class="flex-between" style="margin-bottom:20px">
+                        <h2 style="font-size:1.3rem">Blog Management</h2>
+                        <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> New Post</button>
+                    </div>
+                    <div class="card" style="padding:0;overflow:hidden">
+                        <div class="data-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Category</th>
+                                        <th>Author</th>
+                                        <th>Date</th>
+                                        <th>Views</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Complete Guide to Adaptogens</strong></td>
+                                        <td>Adaptogens</td>
+                                        <td>Dr. Maya</td>
+                                        <td>Feb 18</td>
+                                        <td>4,210</td>
+                                        <td><span class="badge badge-green">Published</span></td>
+                                        <td>
+                                            <div style="display:flex;gap:4px"><button
+                                                    class="btn btn-sm btn-outline admin-edit-btn">Edit</button><button
+                                                    class="btn btn-sm admin-delete-btn"
+                                                    style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:5px 10px;background:transparent">Del</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>7 Herbs for Deep Sleep</strong></td>
+                                        <td>Sleep</td>
+                                        <td>Admin</td>
+                                        <td>Feb 12</td>
+                                        <td>2,845</td>
+                                        <td><span class="badge badge-green">Published</span></td>
+                                        <td>
+                                            <div style="display:flex;gap:4px"><button
+                                                    class="btn btn-sm btn-outline admin-edit-btn">Edit</button><button
+                                                    class="btn btn-sm admin-delete-btn"
+                                                    style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:5px 10px;background:transparent">Del</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Spring Detox: 10 Herbs</strong></td>
+                                        <td>Seasonal</td>
+                                        <td>Admin</td>
+                                        <td>Feb 05</td>
+                                        <td>1,120</td>
+                                        <td><span class="badge badge-amber">Draft</span></td>
+                                        <td>
+                                            <div style="display:flex;gap:4px"><button
+                                                    class="btn btn-sm btn-outline admin-edit-btn">Edit</button><button
+                                                    class="btn btn-sm admin-delete-btn"
+                                                    style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:5px 10px;background:transparent">Del</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: COUPONS ── -->
+                <div class="dash-panel" id="panel-coupons">
+                    <div class="flex-between" style="margin-bottom:20px">
+                        <h2 style="font-size:1.3rem">Coupons & Promotions</h2>
+                        <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Create Coupon</button>
+                    </div>
+                    <!-- Create coupon form -->
+                    <div class="card" style="margin-bottom:20px">
+                        <h3 style="font-size:.95rem;margin-bottom:16px">New Coupon</h3>
+                        <div class="grid-2" style="gap:16px">
+                            <div class="form-group"><label class="form-label">Coupon Code</label><input
+                                    class="form-control" placeholder="e.g. HERBAL20" style="text-transform:uppercase">
+                            </div>
+                            <div class="form-group"><label class="form-label">Discount Type</label><select
+                                    class="form-control">
+                                    <option>Percentage (%)</option>
+                                    <option>Fixed Amount ($)</option>
+                                    <option>Free Shipping</option>
+                                </select></div>
+                            <div class="form-group"><label class="form-label">Discount Value</label><input type="number"
+                                    class="form-control" placeholder="20"></div>
+                            <div class="form-group"><label class="form-label">Expiry Date</label><input type="date"
+                                    class="form-control"></div>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="showToast('Coupon created! ✅')">Create
+                            Coupon</button>
+                    </div>
+                    <div class="card" style="padding:0;overflow:hidden">
+                        <div class="data-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Discount</th>
+                                        <th>Uses</th>
+                                        <th>Expiry</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>HERBAL30</strong></td>
+                                        <td>30% off</td>
+                                        <td>312 / 500</td>
+                                        <td>Mar 31, 2026</td>
+                                        <td><span class="badge badge-green">Active</span></td>
+                                        <td><button class="btn btn-sm admin-delete-btn"
+                                                style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:5px 10px;background:transparent;font-size:.78rem">Deactivate</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>WELCOME15</strong></td>
+                                        <td>15% off</td>
+                                        <td>1,248 / ∞</td>
+                                        <td>Dec 31, 2026</td>
+                                        <td><span class="badge badge-green">Active</span></td>
+                                        <td><button class="btn btn-sm admin-delete-btn"
+                                                style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:5px 10px;background:transparent;font-size:.78rem">Deactivate</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>SPRING24</strong></td>
+                                        <td>$10 off $60+</td>
+                                        <td>88 / 200</td>
+                                        <td>Mar 31, 2024</td>
+                                        <td><span class="badge badge-red">Expired</span></td>
+                                        <td><button class="btn btn-sm admin-delete-btn"
+                                                style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:5px 10px;background:transparent;font-size:.78rem">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: SETTINGS ── -->
+                <div class="dash-panel" id="panel-settings">
+                    <h2 style="font-size:1.3rem;margin-bottom:24px">Store Settings</h2>
+                    <div class="grid-2" style="gap:20px">
+                        <div class="card">
+                            <h3 style="font-size:.95rem;margin-bottom:16px">General</h3>
+                            <div class="form-group"><label class="form-label">Store Name</label><input
+                                    class="form-control" value="Herbal Apothecary"></div>
+                            <div class="form-group"><label class="form-label">Store Email</label><input type="email"
+                                    class="form-control" value="hello@herbalapothecary.com"></div>
+                            <div class="form-group"><label class="form-label">Currency</label><select
+                                    class="form-control">
+                                    <option>USD ($)</option>
+                                    <option>EUR (€)</option>
+                                    <option>GBP (£)</option>
+                                </select></div>
+                            <div class="form-group"><label class="form-label">Free Shipping Threshold</label><input
+                                    type="number" class="form-control" value="50"></div>
+                            <button class="btn btn-primary" onclick="showToast('Settings saved ✅')">Save</button>
+                        </div>
+                        <div class="card">
+                            <h3 style="font-size:.95rem;margin-bottom:16px">Features</h3>
+                            <div style="display:flex;flex-direction:column;gap:0">
+                                <div class="settings-row" style="padding:12px 0;border-bottom:1px solid var(--border)">
+                                    <span style="font-size:.88rem">Maintenance Mode</span>
+                                    <label class="toggle-switch"><input class="toggle-input" type="checkbox">
+                                        <div class="toggle-slider"></div>
+                                    </label>
+                                </div>
+                                <div class="settings-row" style="padding:12px 0;border-bottom:1px solid var(--border)">
+                                    <span style="font-size:.88rem">Reviews System</span>
+                                    <label class="toggle-switch"><input class="toggle-input" type="checkbox" checked>
+                                        <div class="toggle-slider"></div>
+                                    </label>
+                                </div>
+                                <div class="settings-row" style="padding:12px 0;border-bottom:1px solid var(--border)">
+                                    <span style="font-size:.88rem">Wishlist Feature</span>
+                                    <label class="toggle-switch"><input class="toggle-input" type="checkbox" checked>
+                                        <div class="toggle-slider"></div>
+                                    </label>
+                                </div>
+                                <div class="settings-row" style="padding:12px 0;border-bottom:1px solid var(--border)">
+                                    <span style="font-size:.88rem">Newsletter Signup</span>
+                                    <label class="toggle-switch"><input class="toggle-input" type="checkbox" checked>
+                                        <div class="toggle-slider"></div>
+                                    </label>
+                                </div>
+                                <div class="settings-row" style="padding:12px 0">
+                                    <span style="font-size:.88rem">Dark Mode Toggle</span>
+                                    <label class="toggle-switch"><input class="toggle-input" type="checkbox" checked>
+                                        <div class="toggle-slider"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" aria-label="Add Product">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add New Product</h3>
+                <button class="modal-close" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group"><label class="form-label">Product Name *</label><input class="form-control"
+                        placeholder="e.g. Ashwagandha Root Powder" required></div>
+                <div class="grid-2" style="gap:14px">
+                    <div class="form-group"><label class="form-label">Category</label><select class="form-control">
+                            <option>Herbal Teas</option>
+                            <option>Tinctures</option>
+                            <option>Capsules</option>
+                            <option>Essential Oils</option>
+                            <option>Salves</option>
+                            <option>Bundles</option>
+                        </select></div>
+                    <div class="form-group"><label class="form-label">Price ($)</label><input type="number"
+                            class="form-control" placeholder="0.00" step="0.01" min="0"></div>
+                </div>
+                <div class="grid-2" style="gap:14px">
+                    <div class="form-group"><label class="form-label">Stock Qty</label><input type="number"
+                            class="form-control" placeholder="100"></div>
+                    <div class="form-group"><label class="form-label">SKU</label><input class="form-control"
+                            placeholder="HA-001"></div>
+                </div>
+                <div class="form-group"><label class="form-label">Short Description</label><textarea
+                        class="form-control" rows="3" placeholder="Brief product description…"></textarea></div>
+                <div class="form-group"><label class="form-label">Status</label><select class="form-control">
+                        <option>Active</option>
+                        <option>Draft</option>
+                        <option>Out of Stock</option>
+                    </select></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline"
+                    onclick="document.getElementById('product-modal').classList.remove('open')">Cancel</button>
+                <button class="btn btn-primary"
+                    onclick="showToast('Product added! ✅');document.getElementById('product-modal').classList.remove('open')">Add
+                    Product</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" role="alert"></div>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>

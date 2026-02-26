@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Contact Us – Herbal Apothecary & Wellness</title>
+    <meta name="description"
+        content="Get in touch with our wellness team. We're here to help with orders, product questions, and herbal guidance.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 48px;
+            align-items: start
+        }
+
+        .contact-info-card {
+            background: var(--surface-alt);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            flex-shrink: 0
+        }
+
+        .map-placeholder {
+            height: 260px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--surface-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border)
+        }
+
+        @media(max-width:768px) {
+            .contact-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <select name="home" id="home">
+                    <option value="../index.html">Home</option>
+                    <option value="../home2.html">Home 2</option>
+                </select>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="cart.html" class="nav-icon-btn" style="position:relative"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+                <a href="user-dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-th-large"></i>
+                    Dashboard</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb" style="justify-content:center;margin-bottom:16px"><a
+                        href="../index.html">Home</a><span class="breadcrumb-sep">/</span><span>Contact</span></div>
+                <h1>We'd Love to Hear From You</h1>
+                <p>Our wellness team typically responds within 24 hours.</p>
+            </div>
+        </section>
+
+        <section class="section bg-surface">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- FORM -->
+                    <div>
+                        <h2 style="margin-bottom:8px">Send Us a Message</h2>
+                        <p style="margin-bottom:28px">Have a question about an order, a product, or herbal wellness?
+                            Fill in the form below.</p>
+                        <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST"
+                            aria-label="Contact form">
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="first-name">First Name *</label>
+                                    <input type="text" id="first-name" name="first_name" class="form-control" required
+                                        placeholder="Elena">
+                                    <div class="form-error" aria-live="polite"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="last-name">Last Name *</label>
+                                    <input type="text" id="last-name" name="last_name" class="form-control" required
+                                        placeholder="Hartwell">
+                                    <div class="form-error" aria-live="polite"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-control" required
+                                    placeholder="elena@example.com">
+                                <div class="form-error" aria-live="polite"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="subject">Subject *</label>
+                                <select id="subject" name="subject" class="form-control" required>
+                                    <option value="">Select a topic…</option>
+                                    <option>Order Inquiry</option>
+                                    <option>Product Question</option>
+                                    <option>Herbal Wellness Advice</option>
+                                    <option>Wholesale / B2B</option>
+                                    <option>Other</option>
+                                </select>
+                                <div class="form-error" aria-live="polite"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="message">Message *</label>
+                                <textarea id="message" name="message" class="form-control" required
+                                    placeholder="Tell us how we can help…"></textarea>
+                                <div class="form-error" aria-live="polite"></div>
+                            </div>
+                            <div class="form-check" style="margin-bottom:20px">
+                                <input type="checkbox" id="newsletter-opt" name="newsletter">
+                                <label for="newsletter-opt" style="font-size:.88rem">Subscribe me to the weekly herbal
+                                    newsletter.</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-full">Send Message <i
+                                    class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- SIDEBAR INFO -->
+                    <div>
+                        <div class="contact-info-card">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div><strong>Visit Our Store</strong>
+                                <p style="font-size:.85rem;margin-top:4px">42 Botanic Lane, Burlington, VT 05401, USA
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div><strong>Email Us</strong>
+                                <p style="font-size:.85rem;margin-top:4px"><a
+                                        href="mailto:hello@herbalapothecary.com">hello@herbalapothecary.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-info-card">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div><strong>Call Us</strong>
+                                <p style="font-size:.85rem;margin-top:4px">+1 (802) 555-0142</p>
+                            </div>
+                        </div>
+                        <div style="margin-bottom:20px">
+                            <h4 style="margin-bottom:14px">Business Hours</h4>
+                            <div style="font-size:.88rem;display:flex;flex-direction:column;gap:6px">
+                                <div style="display:flex;justify-content:space-between"><span>Monday –
+                                        Friday</span><strong>9 AM – 6 PM EST</strong></div>
+                                <div style="display:flex;justify-content:space-between"><span>Saturday</span><strong>10
+                                        AM – 4 PM EST</strong></div>
+                                <div style="display:flex;justify-content:space-between"><span>Sunday</span><strong
+                                        style="color:var(--text-muted)">Closed</strong></div>
+                            </div>
+                        </div>
+                        <div class="map-placeholder">
+                            <div style="text-align:center;color:var(--text-muted)">
+                                <i class="fas fa-map-marker-alt"
+                                    style="font-size:2.5rem;color:var(--primary);margin-bottom:12px"></i>
+                                <p style="font-size:.88rem">Burlington, VT — Google Maps Integration Ready</p>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px">
+                            <p style="font-size:.85rem;font-weight:600;margin-bottom:10px">Follow Us</p>
+                            <div class="footer-socials">
+                                <a href="#" class="social-btn" style="border-color:var(--border);color:var(--text)"
+                                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-btn" style="border-color:var(--border);color:var(--text)"
+                                    aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="social-btn" style="border-color:var(--border);color:var(--text)"
+                                    aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section bg-alt" id="faq" aria-labelledby="faq-title">
+            <div class="container" style="max-width:720px">
+                <div class="section-head">
+                    <p class="section-label">Quick Answers</p>
+                    <h2 id="faq-title">Frequently Asked Questions</h2>
+                </div>
+                <div class="accordion-wrap">
+                    <div class="accordion-item"><button class="accordion-btn">How long does shipping take? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <p>Standard shipping takes 3–5 business days within the US. Express options (1–2 days) are
+                                available at checkout. Free standard shipping on all orders over $50.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item"><button class="accordion-btn">Are your products third-party tested? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <p>Yes. Every product batch is tested by an independent ISO-certified lab for purity,
+                                potency, heavy metals, and microbial safety. Lab results are available on each product
+                                page.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item"><button class="accordion-btn">Can I take herbal supplements with
+                            medication? <i class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <p>Always consult a qualified healthcare provider before combining herbal supplements with
+                                prescription medications. Some herbs like valerian or St. John's Wort may interact with
+                                certain drugs.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item"><button class="accordion-btn">What is your return policy? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <p>We offer a 30-day satisfaction guarantee. If you're not completely satisfied, contact us
+                                within 30 days of delivery for a full refund or exchange, no questions asked.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item"><button class="accordion-btn">Do you offer wholesale or B2B pricing? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="accordion-body">
+                            <p>Yes! We partner with holistic health practitioners, spas, markets, and retailers. Contact
+                                us at wholesale@herbalapothecary.com for our B2B catalog and pricing tier information.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><a href="../index.html">🌿 Herbal Apothecary</a></div>
+                    <p>Nature's finest botanical solutions for modern wellness. Ethically sourced, scientifically
+                        formulated,
+                        beautifully crafted.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-btn" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Shop</p>
+                    <ul>
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="shop.html#deals">Deals & Offers</a></li>
+                        <li><a href="shop.html?goal=sleep">Sleep Support</a></li>
+                        <li><a href="shop.html?goal=immunity">Immunity</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Company</p>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Support</p>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Herbal Apothecary & Wellness. All rights reserved.</span>
+                <span style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a><a
+                        href="#">Accessibility</a></span>
+            </div>
+        </div>
+    </footer>
+    <button id="scroll-top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

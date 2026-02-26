@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In – Herbal Apothecary</title>
+    <meta name="description"
+        content="Sign in to your Herbal Apothecary account to track orders, manage wishlist, and more.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ── AUTH PAGE LAYOUT ── */
+        .auth-root {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .auth-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 40px;
+            min-height: 100vh;
+        }
+
+        .auth-form-panel {
+            background: var(--surface);
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-brand-panel {
+            background: linear-gradient(150deg, #1F2A24 0%, #2D4A35 40%, #4A7C59 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-brand-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .auth-deco {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            opacity: .06;
+            font-size: 14rem;
+        }
+
+        .auth-deco-1 {
+            top: -40px;
+            left: -40px;
+            transform: rotate(-15deg);
+        }
+
+        .auth-deco-2 {
+            bottom: -60px;
+            right: -40px;
+            transform: rotate(20deg);
+            font-size: 18rem;
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 48px;
+        }
+
+        .auth-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-brand-headline {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-brand-headline em {
+            color: #86B895;
+            font-style: italic;
+        }
+
+        .auth-brand-desc {
+            color: rgba(255, 255, 255, .7);
+            font-size: .95rem;
+            max-width: 380px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-feature {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .auth-feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #86B895;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .auth-feature-text {
+            color: rgba(255, 255, 255, .85);
+            font-size: .88rem;
+        }
+
+        .auth-feature-text strong {
+            display: block;
+            color: #fff;
+            font-size: .92rem;
+            margin-bottom: 2px;
+        }
+
+        /* ── Auth form ── */
+        .auth-form-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .auth-form-header h1 {
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            margin-bottom: 8px;
+        }
+
+        .auth-form-header p {
+            font-size: .9rem;
+        }
+
+        .auth-form-box {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .social-btn-auth {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            border: 1.5px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            font-size: .88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            width: 100%;
+        }
+
+        .social-btn-auth:hover {
+            border-color: var(--primary);
+            background: var(--surface-alt);
+        }
+
+        .social-btn-auth img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .divider-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: .78rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .divider-text::before,
+        .divider-text::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: .95rem;
+            padding: 4px;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .link-primary {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: .85rem;
+        }
+
+        .link-primary:hover {
+            text-decoration: underline;
+        }
+
+        .auth-footer-text {
+            text-align: center;
+            font-size: .85rem;
+            color: var(--text-muted);
+            margin-top: 24px;
+        }
+
+        /* ── Password strength ── */
+        .pwd-strength {
+            margin-top: 8px;
+        }
+
+        .pwd-bars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .pwd-bar {
+            height: 3px;
+            flex: 1;
+            border-radius: 2px;
+            background: var(--border);
+            transition: background .3s;
+        }
+
+        .pwd-bar.weak {
+            background: #ef4444;
+        }
+
+        .pwd-bar.fair {
+            background: #f59e0b;
+        }
+
+        .pwd-bar.strong {
+            background: #22c55e;
+        }
+
+        .pwd-label {
+            font-size: .72rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .auth-root {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-brand-panel {
+                display: none;
+            }
+
+            .auth-panel {
+                padding: 40px 24px;
+            }
+
+            .auth-form-box {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-panel {
+                padding: 32px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-root">
+        <!-- BRAND PANEL -->
+        <div class="auth-brand-panel auth-panel" aria-hidden="true">
+            <span class="auth-deco auth-deco-1">🌿</span>
+            <span class="auth-deco auth-deco-2">🍃</span>
+            <div style="position:relative;z-index:1;width:100%;max-width:420px">
+                <div class="auth-logo">
+                    <div class="auth-logo-icon">🌿</div>
+                    Herbal Apothecary
+                </div>
+                <h2 class="auth-brand-headline">Welcome to your <em>Wellness</em> Journey</h2>
+                <p class="auth-brand-desc">Access personalized herbal recommendations, track your orders, and unlock
+                    exclusive member benefits.</p>
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon"><i class="fas fa-box"></i></div>
+                        <div class="auth-feature-text"><strong>Order Tracking</strong>Real-time updates on every
+                            shipment</div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon"><i class="fas fa-heart"></i></div>
+                        <div class="auth-feature-text"><strong>Saved Wishlist</strong>Keep your favourite botanicals in
+                            one place</div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="auth-feature-text"><strong>Loyalty Rewards</strong>Earn points on every purchase
+                        </div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon"><i class="fas fa-tag"></i></div>
+                        <div class="auth-feature-text"><strong>Member Discounts</strong>Exclusive deals for registered
+                            members</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM PANEL -->
+        <div class="auth-form-panel auth-panel">
+            <div style="position:absolute;top:24px;left:24px">
+                <a href="../index.html" class="nav-logo" style="font-size:1.1rem">
+                    <div class="nav-logo-icon">🌿</div>
+                    Herbal Apothecary
+                </a>
+            </div>
+
+            <div class="auth-form-box">
+                <div class="auth-form-header">
+                    <h1>Sign In</h1>
+                    <p>Welcome back! Enter your details below.</p>
+                </div>
+
+                <!-- Social Login -->
+                <div class="social-login">
+                    <button class="social-btn-auth" aria-label="Continue with Google">
+                        <svg width="20" height="20" viewBox="0 0 48 48">
+                            <path fill="#EA4335"
+                                d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+                            <path fill="#4285F4"
+                                d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                            <path fill="#FBBC05"
+                                d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+                            <path fill="#34A853"
+                                d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                            <path fill="none" d="M0 0h48v48H0z" />
+                        </svg>
+                        Continue with Google
+                    </button>
+                </div>
+
+                <div class="divider-text">or sign in with email</div>
+
+                <!-- Login Form -->
+                <form id="login-form" novalidate>
+                    <div class="form-group">
+                        <label class="form-label" for="login-email">Email Address</label>
+                        <input type="email" id="login-email" class="form-control" placeholder="you@example.com" required
+                            autocomplete="email">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="login-password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="login-password" class="form-control" placeholder="••••••••"
+                                required autocomplete="current-password">
+                            <button type="button" class="password-toggle" aria-label="Toggle password visibility"
+                                data-target="login-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-options">
+                        <label class="form-check">
+                            <input type="checkbox" id="remember-me"> <span style="font-size:.85rem">Remember me</span>
+                        </label>
+                        <a href="#" class="link-primary">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full"
+                        style="justify-content:center;font-size:.95rem">
+                        Sign In <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="auth-footer-text">
+                    Don't have an account? <a href="signup.html" class="link-primary">Create one free</a>
+                </div>
+
+                <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);text-align:center">
+                    <p style="font-size:.75rem;color:var(--text-muted)">
+                        Demo credentials: <code>demo@herbal.com</code> / <code>demo123</code>
+                    </p>
+                    <p style="font-size:.75rem;color:var(--text-muted);margin-top:4px">
+                        Admin: <code>admin@herbal.com</code> / <code>admin123</code>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Theme toggle -->
+            <div style="position:absolute;top:24px;right:24px;display:flex;gap:8px">
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR">
+                    <i class="fas fa-language"></i>
+                </button>
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" role="alert"></div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        /* Login form handler */
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim();
+            const pass = document.getElementById('login-password').value;
+            const btn = this.querySelector('[type=submit]');
+
+            if (!validateForm(this)) return;
+
+            btn.innerHTML = '<div class="spinner"></div> Signing in…';
+            btn.classList.add('btn-loading');
+
+            setTimeout(() => {
+                if (email === 'admin@herbal.com') {
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    window.location.href = 'user-dashboard.html';
+                }
+            }, 1600);
+        });
+
+        /* Password toggle */
+        document.querySelectorAll('.password-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const inp = document.getElementById(btn.dataset.target);
+                const isPass = inp.type === 'password';
+                inp.type = isPass ? 'text' : 'password';
+                btn.querySelector('i').className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
+            });
+        });
+    </script>
+</body>
+
+</html>

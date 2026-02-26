@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Herbal Apothecary & Wellness – Nature's Healing, Naturally</title>
+  <meta name="description"
+    content="Premium herbal teas, tinctures, salves & natural remedies. Ethically sourced plant-based wellness for sleep, energy, immunity & detox.">
+  <meta name="keywords"
+    content="herbal tea, tinctures, natural remedies, herbal wellness, sleep support, immunity, detox">
+  <meta property="og:title" content="Herbal Apothecary & Wellness">
+  <meta property="og:description"
+    content="Nature's healing power in every bottle. Plant-based wellness ethically sourced.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="index.html">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script
+    type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Herbal Apothecary & Wellness","description":"Premium herbal wellness products ethically sourced from nature","url":"https://example.com"}</script>
+  <style>
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px var(--shadow-md)
+    }
+
+    .goal-icon-sleep {
+      background: #e0e7ff
+    }
+
+    .goal-icon-energy {
+      background: #fef3c7
+    }
+
+    .goal-icon-immunity {
+      background: #dcfce7
+    }
+
+    .goal-icon-detox {
+      background: #fce7f3
+    }
+
+    .sourcing-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      border: 1px solid var(--border);
+      text-align: center
+    }
+
+    .sourcing-icon {
+      font-size: 2.5rem;
+      margin-bottom: 14px
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      color: var(--text-muted);
+      animation: bounce 2s infinite
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0)
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(6px)
+      }
+    }
+
+    .marquee {
+      overflow: hidden;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 0
+    }
+
+    .marquee-inner {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+      font-size: .88rem;
+      font-weight: 500
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <select name="home" id="home">
+          <option value="index.html">Home</option>
+          <option value="home2.html">Home 2</option>
+        </select>
+        <li><a href="pages/shop.html">Shop</a></li>
+        <li><a href="pages/categories.html">Categories</a></li>
+        <li><a href="pages/blog.html">Blog</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i class="fas fa-moon moon"></i><i
+            class="fas fa-sun sun"></i></button>
+        <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+            class="fas fa-language"></i></button>
+        <a href="pages/wishlist.html" class="nav-icon-btn" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
+        <a href="pages/cart.html" class="nav-icon-btn" aria-label="Cart" style="position:relative"><i
+            class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+        <a href="pages/user-dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-th-large"></i>
+          Dashboard</a>
+        <a href="pages/login.html" class="btn btn-primary btn-sm">Sign In</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu"
+          aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" aria-label="Hero banner">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">🌱 100% Plant-Based Wellness</div>
+          <h1 class="hero-title">Nature's <em>Healing,</em><br>Naturally.</h1>
+          <p class="hero-desc">Discover premium herbal teas, tinctures & natural remedies ethically sourced from the
+            world's finest botanical gardens. Trusted by 50,000+ wellness seekers.</p>
+          <div class="hero-ctas">
+            <a href="pages/shop.html" class="btn btn-primary btn-lg">Shop Now <i class="fas fa-arrow-right"></i></a>
+            <a href="pages/about.html" class="btn btn-outline btn-lg">Our Story</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>50K+</strong><span>Happy Customers</span></div>
+            <div class="hero-stat"><strong>200+</strong><span>Herbal Products</span></div>
+            <div class="hero-stat"><strong>15+</strong><span>Years of Expertise</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-img-wrap">
+            <img src="assets/image/hero.webp" alt="Beautiful herbal products arrangement" loading="eager">
+          </div>
+          <div class="hero-float hero-float-1">
+            <div class="hero-float-icon">🌿</div>
+            <div>
+              <div style="font-size:.9rem;font-weight:600;color:var(--dark)">Certified Organic</div>
+              <div style="font-size:.75rem;color:var(--text-muted)">USDA Certified</div>
+            </div>
+          </div>
+          <div class="hero-float hero-float-2">
+            <div class="hero-float-icon">⭐</div>
+            <div>
+              <div style="font-size:.9rem;font-weight:600;color:var(--dark)">4.9/5 Rating</div>
+              <div style="font-size:.75rem;color:var(--text-muted)">12,000+ Reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll"><i class="fas fa-chevron-down"></i><span>Explore</span></div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        <span>🌿 Free Shipping Over $50</span><span>🌱 100% Organic</span><span>🤝 Ethically Sourced</span><span>♻️
+          Eco-Friendly Packaging</span><span>🏆 Award-Winning Blends</span><span>💚 Vegan & Cruelty-Free</span>
+        <span>🌿 Free Shipping Over $50</span><span>🌱 100% Organic</span><span>🤝 Ethically Sourced</span><span>♻️
+          Eco-Friendly Packaging</span><span>🏆 Award-Winning Blends</span><span>💚 Vegan & Cruelty-Free</span>
+      </div>
+    </div>
+
+    <!-- WELLNESS GOALS -->
+    <section class="section bg-surface" id="wellness-goals" aria-labelledby="goals-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Shop by Goal</p>
+          <h2 id="goals-title" class="section-title">What Are You Looking to Improve?</h2>
+          <p class="section-desc">Our curated herbal collections target specific wellness needs with precise botanical
+            formulations.</p>
+        </div>
+        <div class="grid-4">
+          <a href="pages/shop.html?goal=sleep" class="goal-card" aria-label="Shop sleep support products">
+            <div class="goal-icon goal-icon-sleep">😴</div>
+            <h3>Sleep Support</h3>
+            <p>Valerian, chamomile & lavender blends for deep, restful sleep.</p>
+          </a>
+          <a href="pages/shop.html?goal=energy" class="goal-card" aria-label="Shop energy products">
+            <div class="goal-icon goal-icon-energy">⚡</div>
+            <h3>Energy & Focus</h3>
+            <p>Ginseng, ashwagandha & green tea for sustained natural energy.</p>
+          </a>
+          <a href="pages/shop.html?goal=immunity" class="goal-card" aria-label="Shop immunity products">
+            <div class="goal-icon goal-icon-immunity">🛡️</div>
+            <h3>Immunity Boost</h3>
+            <p>Elderberry, echinacea & turmeric for a fortified immune system.</p>
+          </a>
+          <a href="pages/shop.html?goal=detox" class="goal-card" aria-label="Shop detox products">
+            <div class="goal-icon goal-icon-detox">🌸</div>
+            <h3>Detox & Cleanse</h3>
+            <p>Dandelion, milk thistle & ginger for gentle daily detoxification.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="section bg-light" id="featured" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-head flex-between" style="align-items:flex-end;text-align:left">
+          <div>
+            <p class="section-label">Bestsellers</p>
+            <h2 id="featured-title" class="section-title" style="margin-bottom:0">Featured Products</h2>
+          </div>
+          <a href="pages/shop.html" class="btn btn-outline">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="grid-4" id="featured-grid">
+          <!-- Product 1 -->
+          <article class="product-card" data-cat="teas" data-price="24.99">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Calming Sleep Tea"
+                loading="lazy">
+              <span class="product-badge">Bestseller</span>
+              <button class="wishlist-btn" data-wishlist="p1" data-name="Calming Sleep Tea" aria-label="Add to wishlist"
+                aria-pressed="false"><i class="fas fa-heart"></i></button>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Herbal Teas</div>
+              <div class="product-name">Calming Sleep Tea Blend</div>
+              <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (248)</span></div>
+              <div class="product-price"><span class="price-current">$24.99</span><span class="price-old">$32.00</span>
+              </div>
+              <div class="product-footer">
+                <button class="btn-cart" data-add-cart data-id="p1" data-name="Calming Sleep Tea Blend"
+                  data-price="24.99" data-image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400">Add to
+                  Cart</button>
+                <a href="pages/product.html" class="nav-icon-btn" aria-label="View product"
+                  style="border-radius:8px;width:40px;height:40px"><i class="fas fa-eye"></i></a>
+              </div>
+            </div>
+          </article>
+          <!-- Product 2 -->
+          <article class="product-card" data-cat="tinctures" data-price="34.99">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&q=80"
+                alt="Echinacea Immunity Tincture" loading="lazy">
+              <span class="product-badge" style="background:var(--primary)">New</span>
+              <button class="wishlist-btn" data-wishlist="p2" data-name="Echinacea Immunity Tincture"
+                aria-label="Add to wishlist" aria-pressed="false"><i class="fas fa-heart"></i></button>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Tinctures</div>
+              <div class="product-name">Echinacea Immunity Tincture</div>
+              <div class="product-rating"><span class="stars">★★★★★</span><span>4.8 (189)</span></div>
+              <div class="product-price"><span class="price-current">$34.99</span></div>
+              <div class="product-footer">
+                <button class="btn-cart" data-add-cart data-id="p2" data-name="Echinacea Immunity Tincture"
+                  data-price="34.99" data-image="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400">Add
+                  to Cart</button>
+                <a href="pages/product.html" class="nav-icon-btn" aria-label="View product"
+                  style="border-radius:8px;width:40px;height:40px"><i class="fas fa-eye"></i></a>
+              </div>
+            </div>
+          </article>
+          <!-- Product 3 -->
+          <article class="product-card" data-cat="salves" data-price="19.99">
+            <div class="product-img">
+              <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80"
+                alt="Lavender Healing Salve" loading="lazy">
+              <button class="wishlist-btn" data-wishlist="p3" data-name="Lavender Healing Salve"
+                aria-label="Add to wishlist" aria-pressed="false"><i class="fas fa-heart"></i></button>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Salves & Balms</div>
+              <div class="product-name">Lavender Healing Salve</div>
+              <div class="product-rating"><span class="stars">★★★★☆</span><span>4.7 (122)</span></div>
+              <div class="product-price"><span class="price-current">$19.99</span><span class="price-old">$26.00</span>
+              </div>
+              <div class="product-footer">
+                <button class="btn-cart" data-add-cart data-id="p3" data-name="Lavender Healing Salve"
+                  data-price="19.99" data-image="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400">Add
+                  to Cart</button>
+                <a href="pages/product.html" class="nav-icon-btn" aria-label="View product"
+                  style="border-radius:8px;width:40px;height:40px"><i class="fas fa-eye"></i></a>
+              </div>
+            </div>
+          </article>
+          <!-- Product 4 -->
+          <article class="product-card" data-cat="oils" data-price="28.99">
+            <div class="product-img">
+              <img src="assets/image/herbal-oil.webp" alt="Ashwagandha Energy Oil" loading="lazy">
+              <span class="product-badge" style="background:#22c55e">Organic</span>
+              <button class="wishlist-btn" data-wishlist="p4" data-name="Ashwagandha Energy Oil"
+                aria-label="Add to wishlist" aria-pressed="false"><i class="fas fa-heart"></i></button>
+            </div>
+            <div class="product-info">
+              <div class="product-category">Essential Oils</div>
+              <div class="product-name">Ashwagandha Energy Oil</div>
+              <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (97)</span></div>
+              <div class="product-price"><span class="price-current">$28.99</span></div>
+              <div class="product-footer">
+                <button class="btn-cart" data-add-cart data-id="p4" data-name="Ashwagandha Energy Oil"
+                  data-price="28.99" data-image="assets/image/herbal-oil.webp?w=400">Add
+                  to Cart</button>
+                <a href="pages/product.html" class="nav-icon-btn" aria-label="View product"
+                  style="border-radius:8px;width:40px;height:40px"><i class="fas fa-eye"></i></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section bg-surface">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">What Customers Say</p>
+          <h2 class="section-title">Loved by Wellness Seekers</h2>
+        </div>
+        <div class="grid-3">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"The Sleep Tea blend changed my life. I went from 4 hours of restless sleep to 8
+              hours of deep, uninterrupted rest within a week."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">👩‍🦳</div>
+              <div>
+                <div class="testimonial-name">Sarah M.</div>
+                <div class="testimonial-role">Verified Customer</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Incredible quality. You can actually smell the difference — pure, potent herbs.
+              The Immunity Tincture got me through flu season unscathed."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">👨</div>
+              <div>
+                <div class="testimonial-name">James K.</div>
+                <div class="testimonial-role">Verified Customer</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Fast shipping, gorgeous packaging, and products that actually work. This is my
+              go-to for all herbal needs. Absolutely recommend!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">👩</div>
+              <div>
+                <div class="testimonial-name">Priya R.</div>
+                <div class="testimonial-role">Verified Customer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETHICAL SOURCING -->
+    <section class="section bg-alt" id="sourcing" aria-labelledby="sourcing-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Our Commitment</p>
+          <h2 id="sourcing-title" class="section-title">Ethically Sourced, Sustainably Grown</h2>
+          <p class="section-desc">Every ingredient in our products is hand-selected from certified organic farms and
+            trusted herbal suppliers worldwide.</p>
+        </div>
+        <div class="grid-4" style="margin-bottom:48px">
+          <div class="sourcing-card">
+            <div class="sourcing-icon">🌍</div>
+            <h4>Global Partners</h4>
+            <p style="font-size:.85rem">Partnered with 40+ certified organic farms across 18 countries.</p>
+          </div>
+          <div class="sourcing-card">
+            <div class="sourcing-icon">♻️</div>
+            <h4>Zero Waste</h4>
+            <p style="font-size:.85rem">100% recyclable & compostable packaging throughout our supply chain.</p>
+          </div>
+          <div class="sourcing-card">
+            <div class="sourcing-icon">🤝</div>
+            <h4>Fair Trade</h4>
+            <p style="font-size:.85rem">We pay fair wages and support community development in farming regions.</p>
+          </div>
+          <div class="sourcing-card">
+            <div class="sourcing-icon">🔬</div>
+            <h4>Lab Tested</h4>
+            <p style="font-size:.85rem">Third-party tested for purity, potency & heavy metal safety — always.</p>
+          </div>
+        </div>
+        <div class="cert-grid">
+          <div class="cert-badge"><i class="fas fa-certificate"></i>USDA Organic Certified</div>
+          <div class="cert-badge"><i class="fas fa-leaf"></i>Non-GMO Verified</div>
+          <div class="cert-badge"><i class="fas fa-heart"></i>Cruelty-Free</div>
+          <div class="cert-badge"><i class="fas fa-seedling"></i>Vegan Certified</div>
+          <div class="cert-badge"><i class="fas fa-globe"></i>Fair Trade Certified</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section bg-primary" aria-label="Newsletter signup">
+      <div class="container text-center" style="max-width:600px">
+        <p class="section-label" style="color:rgba(255,255,255,.75)">Stay Connected</p>
+        <h2 style="color:#fff;margin-bottom:12px">Join the Herbal Community</h2>
+        <p style="color:rgba(255,255,255,.8);margin-bottom:32px">Get seasonal herb guides, wellness tips, and exclusive
+          discounts delivered to your inbox.</p>
+        <form class="newsletter-form" style="justify-content:center" aria-label="Newsletter signup form">
+          <input type="email" class="form-control" placeholder="your@email.com" required aria-label="Email address"
+            style="border-color:rgba(255,255,255,.3);color: #fff;">
+          <button type="submit" class="btn btn-accent" data-newsletter>Subscribe <i
+              class="fas fa-paper-plane"></i></button>
+        </form>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.6);margin-top:12px">🔒 No spam, ever. Unsubscribe anytime.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo"><a href="index.html">🌿 Herbal Apothecary</a></div>
+          <p>Nature's finest botanical solutions for modern wellness. Ethically sourced, scientifically formulated,
+            beautifully crafted.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-btn" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-heading">Shop</p>
+          <ul>
+            <li><a href="pages/shop.html">All Products</a></li>
+            <li><a href="pages/categories.html">Categories</a></li>
+            <li><a href="pages/shop.html#deals">Deals & Offers</a></li>
+            <li><a href="pages/shop.html?goal=sleep">Sleep Support</a></li>
+            <li><a href="pages/shop.html?goal=immunity">Immunity</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Company</p>
+          <ul>
+            <li><a href="pages/about.html">About Us</a></li>
+            <li><a href="pages/blog.html">Blog</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Affiliates</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Support</p>
+          <ul>
+            <li><a href="pages/contact.html#faq">FAQ</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Herbal Apothecary & Wellness. All rights reserved.</span>
+        <span style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a><a
+            href="#">Accessibility</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+  <div id="toast-container" role="alert" aria-live="polite"></div>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

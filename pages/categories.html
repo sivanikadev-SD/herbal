@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Categories – Herbal Apothecary</title>
+    <meta name="description"
+        content="Browse our herbal product categories: teas, tinctures, salves, capsules, essential oils, and wellness bundles.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .cat-card {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+            display: block
+        }
+
+        .cat-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s
+        }
+
+        .cat-card:hover img {
+            transform: scale(1.07)
+        }
+
+        .cat-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(31, 42, 36, .85) 0%, rgba(31, 42, 36, .2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            transition: all .3s
+        }
+
+        .cat-card:hover .cat-card-overlay {
+            background: linear-gradient(to top, rgba(74, 124, 89, .85) 0%, rgba(74, 124, 89, .3) 60%, transparent 100%)
+        }
+
+        .cat-card-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 4px
+        }
+
+        .cat-card-count {
+            font-size: .82rem;
+            color: rgba(255, 255, 255, .75)
+        }
+
+        .cat-card-arrow {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, .2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-top: 12px;
+            transition: all .3s
+        }
+
+        .cat-card:hover .cat-card-arrow {
+            background: #fff;
+            color: var(--primary)
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <select name="home" id="home">
+                    <option value="../index.html">Home</option>
+                    <option value="../home2.html">Home 2</option>
+                </select>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="categories.html" class="active">Categories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="wishlist.html" class="nav-icon-btn" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
+                <a href="cart.html" class="nav-icon-btn" style="position:relative"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+                <a href="user-dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-th-large"></i>
+                    Dashboard</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb" style="justify-content:center;margin-bottom:16px"><a
+                        href="../index.html">Home</a><span class="breadcrumb-sep">/</span><span>Categories</span></div>
+                <h1>Shop by Category</h1>
+                <p>From loose-leaf teas to therapeutic tinctures — browse our full range of plant-based wellness.</p>
+            </div>
+        </section>
+
+        <section class="section bg-surface">
+            <div class="container">
+                <div class="grid-3" style="gap:24px" role="list" aria-label="Product categories">
+                    <a class="cat-card" href="shop.html?cat=teas" role="listitem"
+                        aria-label="Herbal Teas — 48 products">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+                            alt="Herbal Teas" loading="lazy">
+                        <div class="cat-card-overlay">
+                            <div class="cat-card-name">🍵 Herbal Teas</div>
+                            <div class="cat-card-count">48 products</div>
+                            <div class="cat-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+                    <a class="cat-card" href="shop.html?cat=tinctures" role="listitem"
+                        aria-label="Tinctures — 32 products">
+                        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&q=80"
+                            alt="Tinctures" loading="lazy">
+                        <div class="cat-card-overlay">
+                            <div class="cat-card-name">💧 Tinctures</div>
+                            <div class="cat-card-count">32 products</div>
+                            <div class="cat-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+                    <a class="cat-card" href="shop.html?cat=salves" role="listitem"
+                        aria-label="Salves & Balms — 24 products">
+                        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80"
+                            alt="Salves & Balms" loading="lazy">
+                        <div class="cat-card-overlay">
+                            <div class="cat-card-name">🧴 Salves & Balms</div>
+                            <div class="cat-card-count">24 products</div>
+                            <div class="cat-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+                    <a class="cat-card" href="shop.html?cat=capsules" role="listitem"
+                        aria-label="Capsules — 38 products">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80"
+                            alt="Capsules" loading="lazy">
+                        <div class="cat-card-overlay">
+                            <div class="cat-card-name">💊 Capsules</div>
+                            <div class="cat-card-count">38 products</div>
+                            <div class="cat-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+                    <a class="cat-card" href="shop.html?cat=oils" role="listitem"
+                        aria-label="Essential Oils — 29 products">
+                        <img src="../assets/image/herb-ingridient.webp" alt="Essential Oils" loading="lazy">
+                        <div class="cat-card-overlay">
+                            <div class="cat-card-name">✨ Essential Oils</div>
+                            <div class="cat-card-count">29 products</div>
+                            <div class="cat-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+                    <a class="cat-card" href="shop.html?cat=bundles" role="listitem" aria-label="Bundles — 16 products">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80"
+                            alt="Wellness Bundles" loading="lazy">
+                        <div class="cat-card-overlay">
+                            <div class="cat-card-name">🎁 Wellness Bundles</div>
+                            <div class="cat-card-count">16 products</div>
+                            <div class="cat-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Seasonal Collection -->
+                <div style="margin-top:56px">
+                    <div class="section-head">
+                        <p class="section-label">Limited Edition</p>
+                        <h2>🌸 Seasonal Herbal Collections</h2>
+                        <p class="section-desc">Rare, time-limited herbal blends crafted around nature's seasonal
+                            rhythms.</p>
+                    </div>
+                    <div class="grid-4" style="margin-top:32px">
+                        <div class="card" style="text-align:center;padding:28px 20px">
+                            <div style="font-size:2.5rem;margin-bottom:14px">🌷</div>
+                            <h4 style="margin-bottom:8px">Spring Renewal</h4>
+                            <p style="font-size:.82rem;margin-bottom:16px">Dandelion, nettle & clover — gentle spring
+                                detox blends.</p>
+                            <a href="shop.html" class="btn btn-outline btn-sm">Shop Now</a>
+                        </div>
+                        <div class="card" style="text-align:center;padding:28px 20px">
+                            <div style="font-size:2.5rem;margin-bottom:14px">☀️</div>
+                            <h4 style="margin-bottom:8px">Summer Vitality</h4>
+                            <p style="font-size:.82rem;margin-bottom:16px">Holy basil, peppermint & lemongrass — cool &
+                                energize.</p>
+                            <a href="shop.html" class="btn btn-outline btn-sm">Shop Now</a>
+                        </div>
+                        <div class="card" style="text-align:center;padding:28px 20px">
+                            <div style="font-size:2.5rem;margin-bottom:14px">🍂</div>
+                            <h4 style="margin-bottom:8px">Autumn Harvest</h4>
+                            <p style="font-size:.82rem;margin-bottom:16px">Elderberry, cinnamon & rose hip — immune
+                                fortification.</p>
+                            <a href="shop.html" class="btn btn-outline btn-sm">Shop Now</a>
+                        </div>
+                        <div class="card" style="text-align:center;padding:28px 20px">
+                            <div style="font-size:2.5rem;margin-bottom:14px">❄️</div>
+                            <h4 style="margin-bottom:8px">Winter Warmth</h4>
+                            <p style="font-size:.82rem;margin-bottom:16px">Valerian, ginger & cardamom — warmth and deep
+                                rest.</p>
+                            <a href="shop.html" class="btn btn-outline btn-sm">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><a href="../index.html">🌿 Herbal Apothecary</a></div>
+                    <p>Nature's finest botanical solutions for modern wellness. Ethically sourced, scientifically
+                        formulated,
+                        beautifully crafted.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-btn" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Shop</p>
+                    <ul>
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="shop.html#deals">Deals & Offers</a></li>
+                        <li><a href="shop.html?goal=sleep">Sleep Support</a></li>
+                        <li><a href="shop.html?goal=immunity">Immunity</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Company</p>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Support</p>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Herbal Apothecary & Wellness. All rights reserved.</span>
+                <span style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a><a
+                        href="#">Accessibility</a></span>
+            </div>
+        </div>
+    </footer>
+    <button id="scroll-top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+    <div id="toast-container"></div>
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

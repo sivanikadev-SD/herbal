@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herbal Apothecary – Root &amp; Ritual</title>
+    <meta name="description"
+        content="Discover ancient botanical wisdom reimagined for modern wellness. Premium herbal teas, tinctures, and remedies.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════════════════
+           HOME 2 – ROOT & RITUAL (Premium Editorial)
+           ═══════════════════════════════════════════════════ */
+
+        /* ── Hero ── */
+        .h2-hero {
+            height: 140vh;
+            min-height: 620px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .h2-hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1466442929976-97f336a657be?w=1800&q=85') center/cover no-repeat;
+            transform: scale(1.05);
+            transition: transform 10s ease-out;
+            will-change: transform;
+        }
+
+        .h2-hero:hover .h2-hero-bg {
+            transform: scale(1);
+        }
+
+        .h2-hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 16, 12, .94) 0%, rgba(10, 16, 12, .6) 35%, rgba(10, 16, 12, .2) 70%, rgba(10, 16, 12, .35) 100%);
+        }
+
+        .h2-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: calc(var(--nav-h) + 20px) 0 72px;
+            width: 100%;
+        }
+
+        .h2-hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--surface);
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            animation: fadeInUp .8s ease both;
+        }
+
+        .h2-hero-eyebrow span {
+            width: 44px;
+            height: 1px;
+            background: var(--primary-light);
+            display: inline-block;
+        }
+
+        .h2-hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 7.5vw, 6.5rem);
+            color: #fff;
+            line-height: 1.04;
+            margin-bottom: 24px;
+            max-width: 800px;
+            animation: fadeInUp .9s ease .1s both;
+        }
+
+        .h2-hero-title em {
+            color: var(--primary-light);
+            font-style: italic;
+            font-family: var(--font-accent);
+        }
+
+        .h2-hero-sub {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, .72);
+            max-width: 480px;
+            line-height: 1.75;
+            margin-bottom: 36px;
+            animation: fadeInUp .9s ease .2s both;
+        }
+
+        .h2-hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            animation: fadeInUp .9s ease .3s both;
+        }
+
+        .h2-btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, .35);
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 600;
+            transition: all .3s;
+            white-space: nowrap;
+        }
+
+        .h2-btn-ghost:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, .1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero stats */
+        .h2-hero-stats {
+            display: flex;
+            gap: 0;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: 40px;
+            padding-top: 28px;
+            flex-wrap: wrap;
+            animation: fadeInUp .9s ease .4s both;
+        }
+
+        .h2-hero-stat {
+            flex: 1;
+            min-width: 120px;
+            padding-right: 28px;
+            border-right: 1px solid rgba(255, 255, 255, .1);
+            margin-right: 28px;
+        }
+
+        .h2-hero-stat:last-child {
+            border-right: none;
+            margin-right: 0;
+            padding-right: 0;
+        }
+
+        .h2-hero-stat strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .h2-hero-stat span {
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .5);
+            letter-spacing: .04em;
+        }
+
+        /* Scroll cue */
+        .h2-scroll-cue {
+            position: absolute;
+            bottom: 28px;
+            right: 36px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, .45);
+            font-size: .68rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        .h2-scroll-line {
+            width: 1px;
+            height: 48px;
+            background: rgba(255, 255, 255, .2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .h2-scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-light);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0% {
+                top: -100%
+            }
+
+            100% {
+                top: 100%
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Marquee ── */
+        .h2-marquee-wrap {
+            background: var(--primary);
+            padding: 13px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .h2-marquee {
+            display: flex;
+            gap: 44px;
+            white-space: nowrap;
+            animation: marqueeMove 24s linear infinite;
+        }
+
+        .h2-marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, .92);
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .h2-marquee-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .45);
+        }
+
+        @keyframes marqueeMove {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        /* ── Magazine Grid ── */
+        .h2-mag-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 4px;
+            margin: 4px 0;
+        }
+
+        .h2-mag-cell {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .h2-mag-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .7s cubic-bezier(.25, .46, .45, .94);
+            display: block;
+        }
+
+        .h2-mag-cell:hover img {
+            transform: scale(1.08);
+        }
+
+        .h2-mag-main {
+            grid-row: 1 / 3;
+            min-height: 540px;
+        }
+
+        .h2-mag-sub {
+            min-height: 266px;
+        }
+
+        .h2-mag-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 16, 12, .82) 0%, transparent 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px;
+            transition: background .4s;
+        }
+
+        .h2-mag-cell:hover .h2-mag-overlay {
+            background: linear-gradient(to top, rgba(74, 124, 89, .85) 0%, transparent 60%);
+        }
+
+        .h2-mag-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        .h2-mag-title {
+            font-family: var(--font-heading);
+            color: #fff;
+            font-size: 1.25rem;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .h2-mag-main .h2-mag-title {
+            font-size: 1.9rem;
+        }
+
+        .h2-mag-meta {
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        /* ── Philosophy Section ── */
+        .h2-philosophy {
+            background: var(--primary-dark);
+            padding: 88px 0;
+            text-align: center;
+        }
+
+        .h2-philosophy .section-label {
+            color: var(--primary-light);
+        }
+
+        .h2-philosophy h2 {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            color: #fff;
+            max-width: 680px;
+            margin: 14px auto 0;
+            line-height: 1.2;
+        }
+
+        .h2-philosophy h2 em {
+            color: var(--primary-light);
+            font-style: italic;
+        }
+
+        .h2-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 56px;
+        }
+
+        .h2-pillar {
+            background: rgba(255, 255, 255, .035);
+            padding: 44px 28px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, .06);
+            transition: all .4s;
+            position: relative;
+        }
+
+        .h2-pillar::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform .4s;
+        }
+
+        .h2-pillar:hover {
+            background: rgba(74, 124, 89, .12);
+        }
+
+        .h2-pillar:hover::before {
+            transform: scaleX(1);
+        }
+
+        .h2-pillar-num {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, .06);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .h2-pillar-icon {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+        }
+
+        .h2-pillar h4 {
+            color: #fff;
+            font-size: 1.08rem;
+            margin-bottom: 10px;
+        }
+
+        .h2-pillar p {
+            color: rgba(255, 255, 255, .52);
+            font-size: .86rem;
+            line-height: 1.65;
+        }
+
+        /* ── Product Spotlight ── */
+        .h2-spotlight {
+            padding: 80px 0 56px;
+            background: var(--surface-alt);
+            overflow: hidden;
+        }
+
+        .h2-product-scroll {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            padding: 8px 20px 28px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--border);
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+        }
+
+        .h2-product-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .h2-product-scroll::-webkit-scrollbar-track {
+            background: var(--border);
+            border-radius: 2px;
+        }
+
+        .h2-product-scroll::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .h2-product-card-h {
+            flex-shrink: 0;
+            width: 272px;
+            background: var(--surface);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            scroll-snap-align: start;
+            transition: transform .35s, box-shadow .35s;
+        }
+
+        .h2-product-card-h:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 56px var(--shadow-md);
+        }
+
+        .h2-product-card-h .product-img {
+            aspect-ratio: 4/3;
+        }
+
+        .h2-product-card-h .product-info {
+            padding: 16px 18px;
+        }
+
+        /* ── Ritual Steps ── */
+        .h2-ritual {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .h2-ritual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .h2-ritual-img {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            position: relative;
+        }
+
+        .h2-ritual-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .h2-ritual-badge {
+            position: absolute;
+            bottom: 20px;
+            right: -16px;
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            box-shadow: 0 12px 36px var(--shadow-md);
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .h2-ritual-badge strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .h2-ritual-badge span {
+            font-size: .72rem;
+            color: var(--text-muted);
+        }
+
+        .h2-ritual-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .h2-step {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 18px;
+            border-radius: var(--radius-lg);
+            transition: background .3s;
+        }
+
+        .h2-step:hover {
+            background: var(--surface-alt);
+        }
+
+        .h2-step-num {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .h2-step h4 {
+            color: var(--dark);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .h2-step p {
+            font-size: .85rem;
+            line-height: 1.6;
+        }
+
+        /* ── Testimonials ── */
+        .h2-testimonials {
+            padding: 80px 0;
+            background: var(--primary-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .h2-testimonials::before {
+            content: '\201C';
+            font-family: var(--font-heading);
+            font-size: 18rem;
+            color: rgba(255, 255, 255, .025);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .h2-testimonial-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .h2-t-card {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: all .4s;
+        }
+
+        .h2-t-card:hover {
+            background: rgba(74, 124, 89, .12);
+            transform: translateY(-4px);
+        }
+
+        .h2-t-stars {
+            color: #f59e0b;
+            margin-bottom: 12px;
+        }
+
+        .h2-t-quote {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .72);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .h2-t-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .h2-t-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .h2-t-name {
+            font-weight: 700;
+            color: #fff;
+            font-size: .88rem;
+        }
+
+        .h2-t-loc {
+            font-size: .73rem;
+            color: rgba(255, 255, 255, .42);
+        }
+
+        /* ── Blog Mosaic ── */
+        .h2-blog-mosaic {
+            display: flex;
+            gap: 18px;
+            padding: 0 0 80px;
+            align-items: stretch;
+        }
+
+        .h2-blog-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .h2-blog-lg {
+            flex: 0 0 58%;
+            min-height: 460px;
+        }
+
+        .h2-blog-sm-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .h2-blog-sm {
+            flex: 1;
+            min-height: 180px;
+        }
+
+        .h2-blog-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s cubic-bezier(.25, .46, .45, .94);
+        }
+
+        .h2-blog-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .h2-blog-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 16, 12, .88) 0%, transparent 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+        }
+
+        .h2-blog-overlay .blog-tag {
+            margin-bottom: 8px;
+        }
+
+        .h2-blog-overlay h3,
+        .h2-blog-overlay h4 {
+            color: #fff;
+        }
+
+        .h2-blog-overlay h3 {
+            font-size: 1.45rem;
+            margin-bottom: 6px;
+        }
+
+        .h2-blog-overlay h4 {
+            font-size: .98rem;
+            margin-bottom: 4px;
+        }
+
+        .h2-blog-overlay .blog-meta {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        /* ── CTA Full-bleed ── */
+        .h2-cta-fullbleed {
+            min-height: 380px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .h2-cta-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80') center/cover;
+        }
+
+        .h2-cta-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(31, 42, 36, .8);
+        }
+
+        .h2-cta-inner {
+            position: relative;
+            z-index: 1;
+            padding: 48px 20px;
+        }
+
+        .h2-cta-inner h2 {
+            color: #fff;
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            margin-bottom: 12px;
+        }
+
+        .h2-cta-inner p {
+            color: rgba(255, 255, 255, .72);
+            max-width: 460px;
+            margin: 0 auto 28px;
+        }
+
+        /* ── Trust Strip ── */
+        .h2-trust {
+            padding: 44px 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .h2-trust-items {
+            display: flex;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .h2-trust-item {
+            flex: 1;
+            min-width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            padding: 22px;
+            border-right: 1px solid var(--border);
+            text-align: center;
+            transition: background .3s;
+        }
+
+        .h2-trust-item:hover {
+            background: var(--surface-alt);
+        }
+
+        .h2-trust-item:last-child {
+            border-right: none;
+        }
+
+        .h2-trust-item i {
+            font-size: 1.7rem;
+            color: var(--primary);
+        }
+
+        .h2-trust-item strong {
+            font-size: .86rem;
+            color: var(--dark);
+            display: block;
+        }
+
+        .h2-trust-item span {
+            font-size: .76rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 1100px) {
+            .h2-testimonial-slider {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .h2-mag-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .h2-mag-main {
+                grid-column: 1 / 3;
+                grid-row: auto;
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .h2-pillars {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .h2-ritual-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .h2-ritual-img {
+                aspect-ratio: 16/9;
+            }
+
+            .h2-ritual-badge {
+                right: 12px;
+            }
+
+            .h2-testimonial-slider {
+                grid-template-columns: 1fr;
+            }
+
+            .h2-mag-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .h2-mag-main {
+                grid-column: auto;
+            }
+
+            .h2-trust-item {
+                min-width: 50%;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .h2-trust-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            .h2-scroll-cue {
+                display: none;
+            }
+
+            .h2-hero-title {
+                font-size: clamp(2.2rem, 7vw, 4rem);
+            }
+
+            .h2-hero-stats {
+                gap: 14px;
+            }
+
+            .h2-hero-stat {
+                min-width: 100px;
+                padding-right: 14px;
+                margin-right: 14px;
+            }
+
+            .h2-blog-mosaic {
+                flex-direction: column;
+                gap: 14px;
+                padding: 0 0 56px;
+            }
+
+            .h2-blog-lg {
+                min-height: 320px;
+            }
+
+            .h2-blog-sm {
+                min-height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .h2-hero {
+                height: 100vh;
+            }
+
+            .h2-hero-content {
+                padding: 10px;
+                padding-bottom: 44px;
+            }
+
+            .h2-hero-stats {
+                display: none;
+            }
+
+            .h2-trust-item {
+                min-width: 100%;
+                border-right: none;
+            }
+
+            .h2-philosophy {
+                padding: 56px 0;
+            }
+
+            .h2-pillar {
+                padding: 28px 18px;
+            }
+
+            .h2-pillar-num {
+                font-size: 2.8rem;
+            }
+
+            .h2-ritual {
+                padding: 56px 0;
+            }
+
+            .h2-spotlight {
+                padding: 56px 0 36px;
+            }
+
+            .h2-testimonials {
+                padding: 56px 0;
+            }
+
+            .h2-blog-mosaic {
+                padding: 0 0 44px;
+            }
+
+            .h2-blog-lg {
+                min-height: 250px;
+            }
+
+            .h2-blog-sm {
+                min-height: 170px;
+            }
+
+            .h2-step {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <select name="home" id="home">
+                    <option value="index.html">Home</option>
+                    <option value="home2.html" selected>Home 2</option>
+                </select>
+                <li><a href="pages/shop.html">Shop</a></li>
+                <li><a href="pages/categories.html">Categories</a></li>
+                <li><a href="pages/blog.html">Blog</a></li>
+                <li><a href="pages/about.html">About</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="pages/wishlist.html" class="nav-icon-btn" aria-label="Wishlist"><i
+                        class="fas fa-heart"></i></a>
+                <a href="pages/cart.html" class="nav-icon-btn" aria-label="Cart" style="position:relative"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+                <a href="pages/user-dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-th-large"></i>
+                    Dashboard</a>
+                <a href="pages/login.html" class="btn btn-primary btn-sm">Sign In</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ─── CINEMATIC HERO ─── -->
+    <section class="h2-hero" aria-label="Hero">
+        <div class="h2-hero-bg" aria-hidden="true"></div>
+        <div class="h2-scroll-cue" aria-hidden="true">
+            <span>Scroll</span>
+            <div class="h2-scroll-line"></div>
+        </div>
+        <div class="h2-hero-content">
+            <div class="container">
+                <div class="h2-hero-eyebrow"><span></span>Root &amp; Ritual Collection 2026<span></span></div>
+                <h1 class="h2-hero-title">Botanical<br>Wisdom for<br><em>Modern Living</em></h1>
+                <p class="h2-hero-sub">Rare herbs. Ancient remedies. Sustainably sourced from the world's most
+                    biodiverse regions — delivered to your door.</p>
+                <div class="h2-hero-ctas">
+                    <a href="pages/shop.html" class="btn btn-primary btn-lg">Explore Collection <i
+                            class="fas fa-arrow-right"></i></a>
+                    <a href="pages/coming-soon.html" class="h2-btn-ghost btn-lg"><i class="fas fa-play-circle"></i>
+                        Watch Our Story</a>
+                </div>
+                <div class="h2-hero-stats">
+                    <div class="h2-hero-stat"><strong>400+</strong><span>Botanical Ingredients</span></div>
+                    <div class="h2-hero-stat"><strong>15k+</strong><span>Happy Members</span></div>
+                    <div class="h2-hero-stat"><strong>98%</strong><span>Customer Satisfaction</span></div>
+                    <div class="h2-hero-stat"><strong>32</strong><span>Countries Worldwide</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── MARQUEE ─── -->
+    <div class="h2-marquee-wrap" aria-hidden="true">
+        <div class="h2-marquee">
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>USDA Certified Organic</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Free Shipping Over $50</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Lab Tested Purity</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Fair Trade Sourcing</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Non-GMO Verified</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Carbon Neutral Packaging</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>30-Day Returns</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>USDA Certified Organic</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Free Shipping Over $50</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Lab Tested Purity</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Fair Trade Sourcing</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Non-GMO Verified</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>Carbon Neutral Packaging</span>
+            <span class="h2-marquee-item"><span class="h2-marquee-dot"></span>30-Day Returns</span>
+        </div>
+    </div>
+
+    <!-- ─── MAGAZINE GRID ─── -->
+    <section aria-label="Featured categories" style="background:var(--dark)">
+        <div class="h2-mag-grid">
+            <a href="pages/shop.html?cat=teas" class="h2-mag-cell h2-mag-main">
+                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=900&q=80" alt="Herbal Teas"
+                    loading="lazy">
+                <div class="h2-mag-overlay">
+                    <div class="h2-mag-tag">Herbal Teas</div>
+                    <div class="h2-mag-title">The Art of the<br>Perfect Brew</div>
+                    <div class="h2-mag-meta">48 blends crafted for every mood</div>
+                </div>
+            </a>
+            <a href="pages/shop.html?cat=tinctures" class="h2-mag-cell h2-mag-sub">
+                <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&q=80" alt="Tinctures"
+                    loading="lazy">
+                <div class="h2-mag-overlay">
+                    <div class="h2-mag-tag">Tinctures</div>
+                    <div class="h2-mag-title">Concentrated<br>Plant Intelligence</div>
+                    <div class="h2-mag-meta">32 liquid extracts</div>
+                </div>
+            </a>
+            <a href="pages/shop.html?cat=oils" class="h2-mag-cell h2-mag-sub">
+                <img src="assets/image/herb-ingridient.webp" alt="Essential Oils" loading="lazy">
+                <div class="h2-mag-overlay">
+                    <div class="h2-mag-tag">Essential Oils</div>
+                    <div class="h2-mag-title">Aromatherapy<br>Essentials</div>
+                    <div class="h2-mag-meta">29 pure distillations</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ─── PHILOSOPHY ─── -->
+    <section class="h2-philosophy" aria-label="Our philosophy">
+        <div class="container">
+            <p class="section-label">Our Founding Principles</p>
+            <h2>We believe healing begins<br>with <em>what you put in</em> your body</h2>
+            <div class="h2-pillars">
+                <div class="h2-pillar">
+                    <div class="h2-pillar-num" style="color: var(--primary-light);">01</div>
+                    <div class="h2-pillar-icon">🌱</div>
+                    <h4>Seed to Shelf</h4>
+                    <p>We trace every ingredient back to the farm, so you know exactly where your herbs come from — and
+                        how they were grown.</p>
+                </div>
+                <div class="h2-pillar">
+                    <div class="h2-pillar-num" style="color: var(--primary-light);">02</div>
+                    <div class="h2-pillar-icon">🔬</div>
+                    <h4>Science-Backed</h4>
+                    <p>Traditional herbalism meets modern pharmacognosy. Every formulation is validated by third-party
+                        labs for potency and purity.</p>
+                </div>
+                <div class="h2-pillar">
+                    <div class="h2-pillar-num" style="color: var(--primary-light);">03</div>
+                    <div class="h2-pillar-icon">🌍</div>
+                    <h4>Earth-First</h4>
+                    <p>100% compostable packaging, carbon-neutral shipping, and 1% of revenue donated to reforestation
+                        projects worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PRODUCT SCROLL ─── -->
+    <section class="h2-spotlight" aria-label="Bestselling products">
+        <div class="container" style="margin-bottom:28px">
+            <div class="flex-between" style="flex-wrap:wrap;gap:16px">
+                <div>
+                    <p class="section-label">Root &amp; Ritual</p>
+                    <h2 style="margin:4px 0 0">Bestselling<br>Botanicals</h2>
+                </div>
+                <a href="pages/shop.html" class="btn btn-outline">View All Products <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="h2-product-scroll" role="list" aria-label="Bestselling products">
+            <div class="h2-product-card-h" role="listitem">
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80"
+                        alt="Sleep Tea" loading="lazy"><span class="product-badge">Bestseller</span><button
+                        class="wishlist-btn" data-wishlist="p1" data-name="Sleep Tea" aria-label="Add to wishlist"><i
+                            class="fas fa-heart"></i></button></div>
+                <div class="product-info">
+                    <div class="product-category">Herbal Teas</div>
+                    <div class="product-name">Calming Sleep Tea Blend</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (312)</span></div>
+                    <div class="product-price"><span class="price-current">$24.99</span><span
+                            class="price-old">$32.00</span></div>
+                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p1"
+                            data-name="Calming Sleep Tea" data-price="24.99"
+                            data-image="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=200">Add to
+                            Cart</button></div>
+                </div>
+            </div>
+            <div class="h2-product-card-h" role="listitem">
+                <div class="product-img"><img
+                        src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&q=80" alt="Tincture"
+                        loading="lazy"><button class="wishlist-btn" data-wishlist="p2" data-name="Echinacea Tincture"
+                        aria-label="Add to wishlist"><i class="fas fa-heart"></i></button></div>
+                <div class="product-info">
+                    <div class="product-category">Tinctures</div>
+                    <div class="product-name">Echinacea Immunity Tincture</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.8 (189)</span></div>
+                    <div class="product-price"><span class="price-current">$34.99</span></div>
+                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p2"
+                            data-name="Echinacea Tincture" data-price="34.99">Add to Cart</button></div>
+                </div>
+            </div>
+            <div class="h2-product-card-h" role="listitem">
+                <div class="product-img"><img
+                        src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80" alt="Salve"
+                        loading="lazy"><span class="product-badge">New</span><button class="wishlist-btn"
+                        data-wishlist="p3" data-name="Lavender Salve" aria-label="Add to wishlist"><i
+                            class="fas fa-heart"></i></button></div>
+                <div class="product-info">
+                    <div class="product-category">Salves &amp; Balms</div>
+                    <div class="product-name">Lavender Healing Salve</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.7 (94)</span></div>
+                    <div class="product-price"><span class="price-current">$19.99</span></div>
+                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p3"
+                            data-name="Lavender Salve" data-price="19.99">Add to Cart</button></div>
+                </div>
+            </div>
+            <div class="h2-product-card-h" role="listitem">
+                <div class="product-img"><img src="assets/image/turmaric.webp" alt="Capsules" loading="lazy"><button
+                        class="wishlist-btn" data-wishlist="p4" data-name="Turmeric Capsules"
+                        aria-label="Add to wishlist"><i class="fas fa-heart"></i></button></div>
+                <div class="product-info">
+                    <div class="product-category">Capsules</div>
+                    <div class="product-name">Turmeric &amp; Ginger Capsules</div>
+                    <div class="product-rating"><span class="stars">★★★★☆</span><span>4.6 (267)</span></div>
+                    <div class="product-price"><span class="price-current">$32.00</span><span
+                            class="price-old">$40.00</span></div>
+                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p4"
+                            data-name="Turmeric Capsules" data-price="32.00">Add to Cart</button></div>
+                </div>
+            </div>
+            <div class="h2-product-card-h" role="listitem">
+                <div class="product-img"><img src="assets/image/herbal-oil.webp" alt="Lavender Oil"
+                        loading="lazy"><button class="wishlist-btn" data-wishlist="p5"
+                        data-name="Lavender Essential Oil" aria-label="Add to wishlist"><i
+                            class="fas fa-heart"></i></button></div>
+                <div class="product-info">
+                    <div class="product-category">Essential Oils</div>
+                    <div class="product-name">Pure Lavender Essential Oil</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (441)</span></div>
+                    <div class="product-price"><span class="price-current">$28.99</span></div>
+                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p5"
+                            data-name="Lavender Essential Oil" data-price="28.99">Add to Cart</button></div>
+                </div>
+            </div>
+            <div class="h2-product-card-h" role="listitem">
+                <div class="product-img"><img
+                        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80" alt="Bundle"
+                        loading="lazy"><span class="product-badge">Save 20%</span><button class="wishlist-btn"
+                        data-wishlist="p6" data-name="Wellness Bundle" aria-label="Add to wishlist"><i
+                            class="fas fa-heart"></i></button></div>
+                <div class="product-info">
+                    <div class="product-category">Bundles</div>
+                    <div class="product-name">Wellness Starter Bundle</div>
+                    <div class="product-rating"><span class="stars">★★★★★</span><span>5.0 (88)</span></div>
+                    <div class="product-price"><span class="price-current">$79.99</span><span
+                            class="price-old">$99.99</span></div>
+                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p6"
+                            data-name="Wellness Bundle" data-price="79.99">Add to Cart</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── RITUAL STEPS ─── -->
+    <section class="h2-ritual" aria-label="How it works">
+        <div class="container">
+            <div class="h2-ritual-grid">
+                <div class="h2-ritual-img">
+                    <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=800&q=80"
+                        alt="Morning herbal ritual" loading="lazy">
+                    <div class="h2-ritual-badge"><strong>5 min</strong><span>Daily ritual</span></div>
+                </div>
+                <div>
+                    <p class="section-label">Your Daily Practice</p>
+                    <h2 style="margin:10px 0 16px">Build a Ritual That <em
+                            style="color:var(--primary);font-style:italic">Heals</em></h2>
+                    <p style="margin-bottom:0">We make it effortless to weave plant medicine into your everyday life.
+                        Three simple steps toward a naturally healthier you.</p>
+                    <div class="h2-ritual-steps">
+                        <div class="h2-step">
+                            <div class="h2-step-num">1</div>
+                            <div>
+                                <h4>Choose Your Goal</h4>
+                                <p>Sleep, stress, energy, immunity — quiz yourself and we'll personalise a herbal
+                                    protocol just for you.</p>
+                            </div>
+                        </div>
+                        <div class="h2-step">
+                            <div class="h2-step-num">2</div>
+                            <div>
+                                <h4>Receive Your Botanicals</h4>
+                                <p>Carefully packaged in compostable materials and delivered within 3–5 business days.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="h2-step">
+                            <div class="h2-step-num">3</div>
+                            <div>
+                                <h4>Feel the Difference</h4>
+                                <p>Most customers notice measurable benefits within 2–4 weeks of consistent daily use.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+                        <a href="pages/shop.html" class="btn btn-primary">Start My Ritual</a>
+                        <a href="pages/about.html" class="btn btn-outline">Learn Our Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TESTIMONIALS ─── -->
+    <section class="h2-testimonials" aria-label="Customer testimonials">
+        <div class="container">
+            <div style="text-align:center;margin-bottom:48px">
+                <p class="section-label" style="color:var(--primary-light)">Real Transformations</p>
+                <h2 style="color:#fff;margin-top:10px;font-size:clamp(1.8rem,4vw,3rem)">15,000+ Wellness Journeys<br>
+                    Already Begun</h2>
+            </div>
+            <div class="h2-testimonial-slider">
+                <div class="h2-t-card">
+                    <div class="h2-t-stars">★★★★★</div>
+                    <p class="h2-t-quote">"After years of relying on sleeping pills, the Calming Sleep Tea transformed
+                        my nights. I sleep deeply and wake up energised — naturally."</p>
+                    <div class="h2-t-author"><img class="h2-t-avatar" src="https://i.pravatar.cc/80?img=47"
+                            alt="Elena H">
+                        <div>
+                            <div class="h2-t-name">Elena Hartwell</div>
+                            <div class="h2-t-loc">Vermont, USA · Sleep Support</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h2-t-card">
+                    <div class="h2-t-stars">★★★★★</div>
+                    <p class="h2-t-quote">"The Echinacea Tincture is now a non-negotiable. I've gone an entire winter
+                        without getting sick — that's a first for me in a decade."</p>
+                    <div class="h2-t-author"><img class="h2-t-avatar" src="https://i.pravatar.cc/80?img=12"
+                            alt="James K">
+                        <div>
+                            <div class="h2-t-name">James Kumar</div>
+                            <div class="h2-t-loc">London, UK · Immune Health</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h2-t-card">
+                    <div class="h2-t-stars">★★★★★</div>
+                    <p class="h2-t-quote">"Switched to Herbal Apothecary six months ago and my inflammation is
+                        noticeably reduced. The Turmeric Capsules are honestly magic."</p>
+                    <div class="h2-t-author"><img class="h2-t-avatar" src="https://i.pravatar.cc/80?img=32"
+                            alt="Priya M">
+                        <div>
+                            <div class="h2-t-name">Priya Mehta</div>
+                            <div class="h2-t-loc">Mumbai, India · Joint Health</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:44px">
+                <a href="pages/shop.html" class="btn btn-primary btn-lg">Join the Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── BLOG MOSAIC ─── -->
+    <section aria-label="From the journal" style="background:var(--light);padding-top:80px">
+        <div class="container">
+            <div class="flex-between" style="margin-bottom:32px;flex-wrap:wrap;gap:16px">
+                <div>
+                    <p class="section-label">The Herbal Journal</p>
+                    <h2 style="margin-top:8px">Stories, Science<br>&amp; Seasonal Wisdom</h2>
+                </div>
+                <a href="pages/blog.html" class="btn btn-outline">Read All Articles</a>
+            </div>
+            <div class="h2-blog-mosaic">
+                <a href="pages/blog.html" class="h2-blog-card h2-blog-lg">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="Adaptogens"
+                        loading="lazy">
+                    <div class="h2-blog-overlay"><span class="blog-tag">Adaptogens</span>
+                        <h3>The Complete Guide to Adaptogens &amp; Why Your Body Needs Them</h3>
+                        <div class="blog-meta"><span><i class="fas fa-clock"></i> 8 min read</span><span>Feb 18,
+                                2026</span></div>
+                    </div>
+                </a>
+                <div class="h2-blog-sm-group">
+                    <a href="pages/blog.html" class="h2-blog-card h2-blog-sm">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="Sleep"
+                            loading="lazy">
+                        <div class="h2-blog-overlay"><span class="blog-tag">Sleep</span>
+                            <h4>7 Herbs for Deep, Restorative Sleep</h4>
+                            <div class="blog-meta"><span>5 min</span></div>
+                        </div>
+                    </a>
+                    <a href="pages/blog.html" class="h2-blog-card h2-blog-sm">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80"
+                            alt="Spring Detox" loading="lazy">
+                        <div class="h2-blog-overlay"><span class="blog-tag">Seasonal</span>
+                            <h4>Spring Detox: 10 Herbs Your Body Craves</h4>
+                            <div class="blog-meta"><span>6 min</span></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CTA FULL BLEED ─── -->
+    <section class="h2-cta-fullbleed" aria-label="Call to action">
+        <div class="h2-cta-bg" aria-hidden="true"></div>
+        <div class="h2-cta-inner">
+            <p class="section-label" style="color:var(--primary-light);margin-bottom:10px">Start Today</p>
+            <h2>Your 15% Founders Discount<br>Is Waiting</h2>
+            <p>Join free, use code <strong style="color:var(--primary-light)">WELCOME15</strong> at checkout, and begin
+                your wellness journey with 15% off your first order.</p>
+            <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+                <a href="pages/signup.html" class="btn btn-primary btn-lg">Claim My Discount 🌿</a>
+                <a href="pages/shop.html" class="h2-btn-ghost btn-lg">Browse First</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TRUST STRIP ─── -->
+    <div class="h2-trust">
+        <div class="container">
+            <div class="h2-trust-items">
+                <div class="h2-trust-item"><i class="fas fa-shipping-fast"></i><strong>Free Shipping</strong><span>On
+                        orders over $50</span></div>
+                <div class="h2-trust-item"><i class="fas fa-undo"></i><strong>30-Day Returns</strong><span>Hassle-free
+                        guarantee</span></div>
+                <div class="h2-trust-item"><i class="fas fa-flask"></i><strong>Lab Verified</strong><span>Third-party
+                        tested</span></div>
+                <div class="h2-trust-item"><i class="fas fa-lock"></i><strong>Secure Checkout</strong><span>SSL +
+                        256-bit encryption</span></div>
+                <div class="h2-trust-item"><i class="fas fa-headset"></i><strong>Expert Support</strong><span>Herbalist
+                        on hand</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── NEWSLETTER ─── -->
+    <section class="section bg-alt" style="text-align:center">
+        <div class="container" style="max-width:560px">
+            <p class="section-label">Stay Rooted</p>
+            <h2 style="margin:10px 0 12px">Weekly Herbal Wisdom,<br>Delivered to Your Inbox</h2>
+            <p style="margin-bottom:28px">Seasonal remedies, exclusive offers, and plant science demystified — no spam,
+                unsubscribe anytime.</p>
+            <form class="newsletter-form" style="max-width:100%;justify-content:center" aria-label="Newsletter signup">
+                <input type="email" class="form-control" placeholder="your@email.com" required aria-label="Your email">
+                <button type="submit" class="btn btn-primary" data-newsletter>Subscribe</button>
+            </form>
+            <p style="font-size:.75rem;margin-top:12px">🌿 Join 12,000+ herbal enthusiasts. No spam, ever.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><a href="index.html">🌿 Herbal Apothecary</a></div>
+                    <p>Nature's finest botanical solutions for modern wellness. Ethically sourced, scientifically
+                        formulated,
+                        beautifully crafted.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-btn" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Shop</p>
+                    <ul>
+                        <li><a href="pages/shop.html">All Products</a></li>
+                        <li><a href="pages/categories.html">Categories</a></li>
+                        <li><a href="pages/shop.html#deals">Deals & Offers</a></li>
+                        <li><a href="pages/shop.html?goal=sleep">Sleep Support</a></li>
+                        <li><a href="pages/shop.html?goal=immunity">Immunity</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Company</p>
+                    <ul>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/blog.html">Blog</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Support</p>
+                    <ul>
+                        <li><a href="pages/contact.html#faq">FAQ</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Herbal Apothecary & Wellness. All rights reserved.</span>
+                <span style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a><a
+                        href="#">Accessibility</a></span>
+            </div>
+        </div>
+    </footer>
+
+
+    <button id="scroll-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+    <div id="toast-container" role="alert"></div>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

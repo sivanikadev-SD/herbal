@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Wishlist – Herbal Apothecary</title>
+    <meta name="description" content="Your saved herbal wellness products.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <select name="home" id="home">
+                    <option value="../index.html">Home</option>
+                    <option value="../home2.html">Home 2</option>
+                </select>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="cart.html" class="nav-icon-btn" style="position:relative"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+                <a href="user-dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-th-large"></i>
+                    Dashboard</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top:var(--nav-h)">
+        <section class="section">
+            <div class="container">
+                <div class="breadcrumb" style="margin-bottom:24px"><a href="../index.html">Home</a><span
+                        class="breadcrumb-sep">/</span><span>Wishlist</span></div>
+                <div class="flex-between" style="margin-bottom:32px;flex-wrap:wrap;gap:16px">
+                    <h1>Your Wishlist <span id="wishlist-count"
+                            style="font-size:1rem;font-weight:400;color:var(--text-muted)"></span></h1>
+                    <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+                </div>
+                <div id="wishlist-grid" class="grid-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border:none;padding:24px 0"><span>© 2026 Herbal Apothecary.</span></div>
+        </div>
+    </footer>
+    <button id="scroll-top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        const PRODUCTS = {
+            p1: { name: 'Calming Sleep Tea', price: 24.99, cat: 'Herbal Teas', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
+            p2: { name: 'Echinacea Immunity Tincture', price: 34.99, cat: 'Tinctures', img: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&q=80' },
+            p3: { name: 'Lavender Healing Salve', price: 19.99, cat: 'Salves', img: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80' },
+            p4: { name: 'Ashwagandha Energy Oil', price: 28.99, cat: 'Oils', img: 'https://images.unsplash.com/photo-1617333387457-89e9e2e65e0e?w=400&q=80' },
+            p5: { name: 'Ceremonial Matcha', price: 22.00, cat: 'Herbal Teas', img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80' },
+            p6: { name: 'Elderberry Capsules', price: 39.99, cat: 'Capsules', img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80' },
+            p7: { name: 'Valerian Root Tincture', price: 42.00, cat: 'Tinctures', img: 'https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=400&q=80' },
+            p8: { name: 'Wellness Starter Bundle', price: 79.99, cat: 'Bundles', img: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80' },
+        };
+        function renderWishlist() {
+            const ids = Wishlist.get();
+            const grid = document.getElementById('wishlist-grid');
+            const cnt = document.getElementById('wishlist-count');
+            if (cnt) cnt.textContent = `(${ids.length} items)`;
+            if (!ids.length) {
+                grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 0"><div style="font-size:3rem;margin-bottom:16px">❤️</div><h3>Your wishlist is empty</h3><p style="margin:12px 0 24px">Save products you love for later!</p><a href="shop.html" class="btn btn-primary">Browse Shop</a></div>`;
+                return;
+            }
+            grid.innerHTML = ids.map(id => {
+                const p = PRODUCTS[id] || { name: id, price: 0, cat: '', img: '' };
+                return `<article class="product-card">
+      <div class="product-img"><img src="${p.img}" alt="${p.name}" loading="lazy"><button class="wishlist-btn active" data-wishlist="${id}" data-name="${p.name}" aria-pressed="true"><i class="fas fa-heart"></i></button></div>
+      <div class="product-info">
+        <div class="product-category">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-price"><span class="price-current">$${p.price.toFixed(2)}</span></div>
+        <div class="product-footer">
+          <button class="btn-cart" data-add-cart data-id="${id}" data-name="${p.name}" data-price="${p.price}" data-image="${p.img}">Add to Cart</button>
+          <button class="nav-icon-btn" onclick="Wishlist.toggle('${id}','${p.name}');renderWishlist()" style="border-radius:8px;width:40px;height:40px;border:none;background:var(--surface-alt);color:#ef4444" aria-label="Remove"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+    </article>`;
+            }).join('');
+        }
+        document.addEventListener('DOMContentLoaded', renderWishlist);
+        // Re-render on wishlist toggle
+        const orig = Wishlist.syncButtons.bind(Wishlist);
+        Wishlist.syncButtons = function () { orig(); renderWishlist(); };
+    </script>
+</body>
+
+</html>

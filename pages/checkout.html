@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Checkout – Herbal Apothecary</title>
+    <meta name="description" content="Secure checkout for your herbal wellness products.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 40px;
+            align-items: start
+        }
+
+        .step-bar {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 36px
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .82rem;
+            font-weight: 600
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .78rem;
+            font-weight: 700
+        }
+
+        .step.done .step-num {
+            background: #22c55e
+        }
+
+        .step.pending .step-num {
+            background: var(--border);
+            color: var(--text-muted)
+        }
+
+        .step.pending {
+            color: var(--text-muted)
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+            margin: 0 8px
+        }
+
+        .step-line.done {
+            background: var(--primary)
+        }
+
+        .payment-option {
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 18px;
+            cursor: pointer;
+            transition: all .2s;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px
+        }
+
+        .payment-option:hover,
+        .payment-option.selected {
+            border-color: var(--primary);
+            background: rgba(74, 124, 89, .06)
+        }
+
+        .payment-radio {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary)
+        }
+
+        @media(max-width:900px) {
+            .checkout-layout {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="cart.html" class="nav-icon-btn" style="position:relative"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top:var(--nav-h)">
+        <section class="section">
+            <div class="container">
+                <div class="step-bar">
+                    <div class="step done"><span class="step-num"><i class="fas fa-check"></i></span>Cart</div>
+                    <div class="step-line done"></div>
+                    <div class="step"><span class="step-num">2</span>Shipping</div>
+                    <div class="step-line"></div>
+                    <div class="step pending"><span class="step-num">3</span>Payment</div>
+                    <div class="step-line"></div>
+                    <div class="step pending"><span class="step-num">4</span>Confirmation</div>
+                </div>
+
+                <div class="checkout-layout">
+                    <!-- FORM -->
+                    <div>
+                        <form id="checkout-form" aria-label="Checkout form">
+                            <!-- Contact -->
+                            <section style="margin-bottom:32px">
+                                <h3 style="margin-bottom:18px;font-size:1.15rem">Contact Info</h3>
+                                <div class="form-group">
+                                    <label class="form-label" for="co-email">Email *</label>
+                                    <input type="email" id="co-email" name="email" class="form-control" required
+                                        placeholder="you@example.com">
+                                    <div class="form-error"></div>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="co-news" checked>
+                                    <label for="co-news" style="font-size:.85rem">Email me about new products &
+                                        exclusive offers</label>
+                                </div>
+                            </section>
+
+                            <!-- Shipping -->
+                            <section style="margin-bottom:32px">
+                                <h3 style="margin-bottom:18px;font-size:1.15rem">Shipping Address</h3>
+                                <div class="grid-2">
+                                    <div class="form-group"><label class="form-label" for="co-fn">First Name
+                                            *</label><input type="text" id="co-fn" name="first_name"
+                                            class="form-control" required>
+                                        <div class="form-error"></div>
+                                    </div>
+                                    <div class="form-group"><label class="form-label" for="co-ln">Last Name
+                                            *</label><input type="text" id="co-ln" name="last_name" class="form-control"
+                                            required>
+                                        <div class="form-error"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="form-label" for="co-addr">Address *</label><input
+                                        type="text" id="co-addr" name="address" class="form-control" required
+                                        placeholder="123 Herbal Lane">
+                                    <div class="form-error"></div>
+                                </div>
+                                <div class="form-group"><label class="form-label" for="co-addr2">Apartment, suite, etc.
+                                        (optional)</label><input type="text" id="co-addr2" name="address2"
+                                        class="form-control" placeholder="Apt 4B"></div>
+                                <div class="grid-2">
+                                    <div class="form-group"><label class="form-label" for="co-city">City *</label><input
+                                            type="text" id="co-city" name="city" class="form-control" required>
+                                        <div class="form-error"></div>
+                                    </div>
+                                    <div class="form-group"><label class="form-label" for="co-state">State
+                                            *</label><input type="text" id="co-state" name="state" class="form-control"
+                                            required>
+                                        <div class="form-error"></div>
+                                    </div>
+                                </div>
+                                <div class="grid-2">
+                                    <div class="form-group"><label class="form-label" for="co-zip">ZIP Code
+                                            *</label><input type="text" id="co-zip" name="zip" class="form-control"
+                                            required>
+                                        <div class="form-error"></div>
+                                    </div>
+                                    <div class="form-group"><label class="form-label"
+                                            for="co-country">Country</label><select id="co-country"
+                                            class="form-control">
+                                            <option>United States</option>
+                                            <option>Canada</option>
+                                            <option>United Kingdom</option>
+                                            <option>Australia</option>
+                                        </select></div>
+                                </div>
+                                <div class="form-group"><label class="form-label" for="co-phone">Phone
+                                        (optional)</label><input type="tel" id="co-phone" name="phone"
+                                        class="form-control" placeholder="+1 (555) 000-0000"></div>
+                            </section>
+
+                            <!-- Shipping Method -->
+                            <section style="margin-bottom:32px">
+                                <h3 style="margin-bottom:18px;font-size:1.15rem">Shipping Method</h3>
+                                <label class="payment-option selected" style="cursor:pointer">
+                                    <input class="payment-radio" type="radio" name="shipping" value="standard" checked>
+                                    <div style="flex:1">
+                                        <div style="font-weight:600">Standard Shipping</div>
+                                        <div style="font-size:.82rem;color:var(--text-muted)">3–5 business days</div>
+                                    </div>
+                                    <strong>$5.99</strong>
+                                </label>
+                                <label class="payment-option" style="cursor:pointer">
+                                    <input class="payment-radio" type="radio" name="shipping" value="express">
+                                    <div style="flex:1">
+                                        <div style="font-weight:600">Express Shipping</div>
+                                        <div style="font-size:.82rem;color:var(--text-muted)">1–2 business days</div>
+                                    </div>
+                                    <strong>$14.99</strong>
+                                </label>
+                            </section>
+
+                            <!-- Payment -->
+                            <section style="margin-bottom:32px">
+                                <h3 style="margin-bottom:18px;font-size:1.15rem">Payment Method</h3>
+                                <div class="payment-option selected">
+                                    <input class="payment-radio" type="radio" name="payment" value="card" checked>
+                                    <i class="fas fa-credit-card" style="font-size:1.3rem;color:var(--primary)"></i>
+                                    <div>
+                                        <div style="font-weight:600">Credit / Debit Card</div>
+                                        <div style="font-size:.78rem;color:var(--text-muted)">Secure card processing via
+                                            Stripe</div>
+                                    </div>
+                                </div>
+                                <!-- Stripe card fields placeholder -->
+                                <div
+                                    style="background:var(--surface-alt);border-radius:var(--radius);padding:18px;margin-bottom:12px;border:1.5px solid var(--border)">
+                                    <div class="form-group"><label class="form-label">Card Number</label><input
+                                            type="text" class="form-control" placeholder="1234 5678 9012 3456"
+                                            maxlength="19"></div>
+                                    <div class="grid-2">
+                                        <div class="form-group"><label class="form-label">Expiry</label><input
+                                                type="text" class="form-control" placeholder="MM / YY" maxlength="7">
+                                        </div>
+                                        <div class="form-group"><label class="form-label">CVC</label><input type="text"
+                                                class="form-control" placeholder="123" maxlength="4"></div>
+                                    </div>
+                                </div>
+                                <div class="payment-option">
+                                    <input class="payment-radio" type="radio" name="payment" value="paypal">
+                                    <i class="fab fa-paypal" style="font-size:1.5rem;color:#003087"></i>
+                                    <div style="font-weight:600">PayPal</div>
+                                </div>
+                            </section>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-full" style="font-size:1rem">
+                                <i class="fas fa-lock"></i> Place Order & Pay
+                            </button>
+                            <p style="font-size:.78rem;color:var(--text-muted);text-align:center;margin-top:12px">🔒
+                                Your payment info is encrypted and secure. We never store card details.</p>
+                        </form>
+                    </div>
+
+                    <!-- ORDER SUMMARY -->
+                    <div class="order-summary" aria-label="Order summary">
+                        <h3 style="margin-bottom:16px;font-size:1rem">Order Summary</h3>
+                        <div id="checkout-items-preview" style="margin-bottom:16px">
+                            <div style="display:flex;gap:12px;margin-bottom:12px;font-size:.88rem">
+                                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=80&q=80"
+                                    style="width:56px;height:56px;border-radius:8px;object-fit:cover" alt="Sleep Tea">
+                                <div style="flex:1">
+                                    <div style="font-weight:600">Calming Sleep Tea</div>
+                                    <div style="font-size:.78rem;color:var(--text-muted)">20 Bags × 1</div>
+                                </div>
+                                <div style="font-weight:700;color:var(--primary)">$24.99</div>
+                            </div>
+                        </div>
+                        <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">$24.99</span></div>
+                        <div class="summary-row"><span>Shipping</span><span id="summary-shipping">$5.99</span></div>
+                        <div class="summary-row"><span>Tax (8%)</span><span>$2.00</span></div>
+                        <hr class="summary-divider">
+                        <div class="summary-row summary-total"><span>Total</span><span id="summary-total">$32.98</span>
+                        </div>
+                        <div class="cert-strip" style="flex-direction:column;gap:8px;margin-top:16px">
+                            <div style="font-size:.78rem;display:flex;gap:8px;color:var(--text-muted)"><i
+                                    class="fas fa-shield-alt" style="color:var(--primary)"></i>256-bit SSL Encryption
+                            </div>
+                            <div style="font-size:.78rem;display:flex;gap:8px;color:var(--text-muted)"><i
+                                    class="fas fa-undo" style="color:var(--primary)"></i>30-Day Money-Back Guarantee
+                            </div>
+                            <div style="font-size:.78rem;display:flex;gap:8px;color:var(--text-muted)"><i
+                                    class="fas fa-truck" style="color:var(--primary)"></i>Free Returns on All Orders
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.querySelectorAll('.payment-option').forEach(opt => {
+            const radio = opt.querySelector('input[type=radio]');
+            if (radio) radio.addEventListener('change', () => {
+                document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+            });
+            opt.addEventListener('click', () => { if (radio) { radio.checked = true; radio.dispatchEvent(new Event('change')) } });
+        });
+    </script>
+</body>
+
+</html>

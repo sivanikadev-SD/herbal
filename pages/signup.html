@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account – Herbal Apothecary</title>
+    <meta name="description"
+        content="Join the Herbal Apothecary community. Create a free account to track orders, save favourites, and earn rewards.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Reuse auth layout from login.html */
+        .auth-root {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .auth-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 40px;
+            min-height: 100vh;
+        }
+
+        .auth-form-panel {
+            background: var(--surface);
+            position: relative;
+            z-index: 1;
+            overflow-y: auto;
+        }
+
+        .auth-brand-panel {
+            background: linear-gradient(150deg, #1F2A24 0%, #2D4A35 40%, #4A7C59 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-brand-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='30'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .auth-deco {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+            opacity: .06;
+            font-size: 14rem;
+        }
+
+        .auth-deco-1 {
+            top: -40px;
+            right: -40px;
+            transform: rotate(15deg);
+        }
+
+        .auth-deco-2 {
+            bottom: -60px;
+            left: -40px;
+            transform: rotate(-20deg);
+            font-size: 18rem;
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 48px;
+        }
+
+        .auth-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-brand-headline {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-brand-headline em {
+            color: #86B895;
+            font-style: italic;
+        }
+
+        .auth-brand-desc {
+            color: rgba(255, 255, 255, .7);
+            font-size: .95rem;
+            max-width: 380px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-perks {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .perk {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, .85);
+            font-size: .88rem;
+        }
+
+        .perk-check {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #22c55e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: .65rem;
+            flex-shrink: 0;
+        }
+
+        .auth-form-box {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .auth-form-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .auth-form-header h1 {
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
+            margin-bottom: 8px;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn-auth {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            border: 1.5px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            font-size: .85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            flex: 1;
+        }
+
+        .social-btn-auth:hover {
+            border-color: var(--primary);
+            background: var(--surface-alt);
+        }
+
+        .divider-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: .78rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .divider-text::before,
+        .divider-text::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: .95rem;
+            padding: 4px;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+
+        /* Strength meter */
+        .pwd-strength {
+            margin-top: 8px;
+        }
+
+        .pwd-bars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .pwd-bar {
+            height: 4px;
+            flex: 1;
+            border-radius: 2px;
+            background: var(--border);
+            transition: background .3s;
+        }
+
+        .pwd-bar.s1 {
+            background: #ef4444;
+        }
+
+        .pwd-bar.s2 {
+            background: #f59e0b;
+        }
+
+        .pwd-bar.s3 {
+            background: #22c55e;
+        }
+
+        .pwd-label {
+            font-size: .72rem;
+            color: var(--text-muted);
+        }
+
+        .link-primary {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .link-primary:hover {
+            text-decoration: underline;
+        }
+
+        .auth-footer-text {
+            text-align: center;
+            font-size: .85rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+
+        @media (max-width:768px) {
+            .auth-root {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-brand-panel {
+                display: none;
+            }
+
+            .auth-panel {
+                padding: 40px 24px;
+            }
+
+            .auth-form-box {
+                max-width: 100%;
+            }
+
+            .social-login {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width:480px) {
+            .auth-panel {
+                padding: 28px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-root">
+        <!-- BRAND PANEL (right side) -->
+        <div class="auth-brand-panel auth-panel" style="order:2" aria-hidden="true">
+            <span class="auth-deco auth-deco-1">🌸</span>
+            <span class="auth-deco auth-deco-2">🌿</span>
+            <div style="position:relative;z-index:1;width:100%;max-width:420px">
+                <div class="auth-logo">
+                    <div class="auth-logo-icon">🌿</div>
+                    Herbal Apothecary
+                </div>
+                <h2 class="auth-brand-headline">Join 15,000+ <em>Wellness</em> Enthusiasts</h2>
+                <p class="auth-brand-desc">Get access to premium botanicals, exclusive member pricing, and a community
+                    passionate about natural living.</p>
+                <div class="auth-perks">
+                    <div class="perk">
+                        <div class="perk-check"><i class="fas fa-check"></i></div>Free shipping on orders over $50
+                    </div>
+                    <div class="perk">
+                        <div class="perk-check"><i class="fas fa-check"></i></div>15% welcome discount on your first
+                        order
+                    </div>
+                    <div class="perk">
+                        <div class="perk-check"><i class="fas fa-check"></i></div>Early access to new seasonal
+                        collections
+                    </div>
+                    <div class="perk">
+                        <div class="perk-check"><i class="fas fa-check"></i></div>Earn Loyalty Points on every purchase
+                    </div>
+                    <div class="perk">
+                        <div class="perk-check"><i class="fas fa-check"></i></div>Personalised herb & wellness
+                        recommendations
+                    </div>
+                    <div class="perk">
+                        <div class="perk-check"><i class="fas fa-check"></i></div>Priority customer support
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM PANEL -->
+        <div class="auth-form-panel auth-panel" style="order:1">
+            <div style="position:absolute;top:24px;left:24px">
+                <a href="../index.html" class="nav-logo" style="font-size:1.1rem">
+                    <div class="nav-logo-icon">🌿</div>
+                    Herbal Apothecary
+                </a>
+            </div>
+            <div style="position:absolute;top:24px;right:24px;display:flex;gap:8px">
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR">
+                    <i class="fas fa-language"></i>
+                </button>
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i>
+                </button>
+            </div>
+
+            <div class="auth-form-box">
+                <div class="auth-form-header">
+                    <h1>Create Account</h1>
+                    <p>Join for free and start your wellness journey.</p>
+                </div>
+
+                <!-- Social signup -->
+                <div class="social-login">
+                    <button class="social-btn-auth" aria-label="Continue with Google">
+                        <svg width="18" height="18" viewBox="0 0 48 48">
+                            <path fill="#EA4335"
+                                d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+                            <path fill="#4285F4"
+                                d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+                            <path fill="#FBBC05"
+                                d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+                            <path fill="#34A853"
+                                d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+                        </svg>
+                        Google
+                    </button>
+                    <button class="social-btn-auth" aria-label="Continue with Facebook">
+                        <i class="fab fa-facebook" style="color:#1877f2;font-size:1.1rem"></i>
+                        Facebook
+                    </button>
+                </div>
+
+                <div class="divider-text">or register with email</div>
+
+                <form id="signup-form" novalidate>
+                    <div class="grid-2" style="gap:14px">
+                        <div class="form-group" style="margin-bottom:0">
+                            <label class="form-label" for="su-fname">First Name</label>
+                            <input type="text" id="su-fname" class="form-control" placeholder="Jane" required
+                                autocomplete="given-name">
+                            <div class="form-error"></div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:0">
+                            <label class="form-label" for="su-lname">Last Name</label>
+                            <input type="text" id="su-lname" class="form-control" placeholder="Doe" required
+                                autocomplete="family-name">
+                            <div class="form-error"></div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:16px">
+                        <label class="form-label" for="su-email">Email Address</label>
+                        <input type="email" id="su-email" class="form-control" placeholder="you@example.com" required
+                            autocomplete="email">
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="su-password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="su-password" class="form-control" placeholder="Min. 8 characters"
+                                required autocomplete="new-password" minlength="8" id="su-password-field">
+                            <button type="button" class="password-toggle" aria-label="Toggle password visibility"
+                                data-target="su-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="pwd-strength" id="pwd-strength">
+                            <div class="pwd-bars">
+                                <div class="pwd-bar" id="pbar-1"></div>
+                                <div class="pwd-bar" id="pbar-2"></div>
+                                <div class="pwd-bar" id="pbar-3"></div>
+                                <div class="pwd-bar" id="pbar-4"></div>
+                            </div>
+                            <span class="pwd-label" id="pwd-label">Enter a password</span>
+                        </div>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="su-confirm">Confirm Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="su-confirm" class="form-control" placeholder="Repeat password"
+                                required autocomplete="new-password">
+                            <button type="button" class="password-toggle"
+                                aria-label="Toggle confirm password visibility" data-target="su-confirm">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-check">
+                            <input type="checkbox" id="su-terms" required>
+                            <span style="font-size:.83rem">I agree to the <a href="#" class="link-primary">Terms of
+                                    Service</a> and <a href="#" class="link-primary">Privacy Policy</a></span>
+                        </label>
+                        <div class="form-error" id="terms-error"></div>
+                    </div>
+                    <label class="form-check" style="margin-bottom:20px">
+                        <input type="checkbox" id="su-newsletter" checked>
+                        <span style="font-size:.83rem">Subscribe to newsletter for herbal tips & exclusive
+                            discounts</span>
+                    </label>
+                    <button type="submit" class="btn btn-primary w-full"
+                        style="justify-content:center;font-size:.95rem">
+                        Create My Account <i class="fas fa-seedling"></i>
+                    </button>
+                </form>
+
+                <div class="auth-footer-text">
+                    Already have an account? <a href="login.html" class="link-primary">Sign in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" role="alert"></div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        /* Password strength meter */
+        const pwdInput = document.getElementById('su-password');
+        const bars = [document.getElementById('pbar-1'), document.getElementById('pbar-2'), document.getElementById('pbar-3'), document.getElementById('pbar-4')];
+        const pwdLabel = document.getElementById('pwd-label');
+
+        pwdInput.addEventListener('input', () => {
+            const val = pwdInput.value;
+            let score = 0;
+            if (val.length >= 8) score++;
+            if (/[A-Z]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
+            if (/[^A-Za-z0-9]/.test(val)) score++;
+
+            bars.forEach((b, i) => { b.className = 'pwd-bar'; if (i < score) b.classList.add(score <= 1 ? 's1' : score <= 2 ? 's2' : 's3'); });
+            pwdLabel.textContent = ['Enter a password', 'Weak', 'Fair', 'Good', 'Strong'][score];
+            pwdLabel.style.color = score <= 1 ? '#ef4444' : score <= 2 ? '#f59e0b' : '#22c55e';
+        });
+
+        /* Password toggles */
+        document.querySelectorAll('.password-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const inp = document.getElementById(btn.dataset.target);
+                const isPass = inp.type === 'password';
+                inp.type = isPass ? 'text' : 'password';
+                btn.querySelector('i').className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
+            });
+        });
+
+        /* Signup submit */
+        document.getElementById('signup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let valid = validateForm(this);
+
+            const pass = document.getElementById('su-password').value;
+            const confirm = document.getElementById('su-confirm').value;
+            if (pass !== confirm) {
+                const err = document.getElementById('su-confirm').parentElement.nextElementSibling;
+                if (err) { err.textContent = 'Passwords do not match.'; err.classList.add('show'); }
+                document.getElementById('su-confirm').classList.add('error');
+                valid = false;
+            }
+
+            const terms = document.getElementById('su-terms');
+            if (!terms.checked) {
+                document.getElementById('terms-error').textContent = 'You must agree to the terms.';
+                document.getElementById('terms-error').classList.add('show');
+                valid = false;
+            }
+
+            if (!valid) return;
+
+            const btn = this.querySelector('[type=submit]');
+            btn.innerHTML = '<div class="spinner"></div> Creating account…';
+            btn.classList.add('btn-loading');
+            setTimeout(() => {
+                showToast('Account created! Welcome to Herbal Apothecary 🌿');
+                setTimeout(() => window.location.href = 'user-dashboard.html', 1200);
+            }, 1800);
+        });
+    </script>
+</body>
+
+</html>

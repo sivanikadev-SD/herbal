@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Shop – Herbal Apothecary & Wellness</title>
+    <meta name="description"
+        content="Browse 200+ premium herbal products. Filter by wellness goal, price, and category. Free shipping on orders over $50.">
+    <link rel="canonical" href="shop.html">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .shop-layout {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start
+        }
+
+        .shop-main {
+            flex: 1;
+            min-width: 0
+        }
+
+        .shop-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap
+        }
+
+        .shop-count {
+            font-size: .88rem;
+            color: var(--text-muted)
+        }
+
+        .sort-select {
+            padding: 9px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            font-size: .88rem;
+            background: var(--surface);
+            color: var(--text)
+        }
+
+        .filter-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px
+        }
+
+        .price-display {
+            font-size: .82rem;
+            color: var(--primary);
+            font-weight: 600
+        }
+
+        .deals-banner {
+            background: linear-gradient(135deg, var(--accent), #a8571e);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            color: #fff;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <select name="home" id="home">
+                    <option value="../index.html">Home</option>
+                    <option value="../home2.html">Home 2</option>
+                </select>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="wishlist.html" class="nav-icon-btn" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
+                <a href="cart.html" class="nav-icon-btn" aria-label="Cart" style="position:relative"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+                <a href="user-dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-th-large"></i>
+                    Dashboard</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top:var(--nav-h)">
+        <!-- PAGE HERO -->
+        <section class="page-hero" aria-label="Shop hero">
+            <div class="container">
+                <div class="breadcrumb" style="justify-content:center;margin-bottom:16px">
+                    <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><span>Shop</span>
+                </div>
+                <h1>Our Herbal Collection</h1>
+                <p style="color:var(--text-muted)">200+ premium plant-based wellness products, ethically sourced & lab
+                    tested.</p>
+            </div>
+        </section>
+
+        <!-- DEALS BANNER -->
+        <section class="section-sm" id="deals">
+            <div class="container">
+                <div class="deals-banner">
+                    <div>
+                        <div
+                            style="font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-bottom:6px">
+                            🔥 Limited Time</div>
+                        <h3 style="color:#fff;margin-bottom:6px">Seasonal Sale — Up to 30% Off</h3>
+                        <p style="color:rgba(255,255,255,.85);font-size:.9rem">Use code <strong>HERBAL30</strong> at
+                            checkout. Ends Feb 28, 2026.</p>
+                    </div>
+                    <a href="#product-grid" class="btn"
+                        style="background:#fff;color:var(--accent);border-color:#fff;flex-shrink:0">Shop Sale Items <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHOP LAYOUT -->
+        <section class="section-sm">
+            <div class="container">
+                <!-- Search bar -->
+                <div style="margin-bottom:24px">
+                    <input type="search" id="shop-search" class="form-control" placeholder="🔍 Search products…"
+                        aria-label="Search products" style="max-width:480px">
+                </div>
+                <div class="tag-filter" style="margin-bottom:28px" role="group" aria-label="Category filters">
+                    <button class="tag active" data-filter-cat="all">All Products</button>
+                    <button class="tag" data-filter-cat="teas">Herbal Teas</button>
+                    <button class="tag" data-filter-cat="tinctures">Tinctures</button>
+                    <button class="tag" data-filter-cat="salves">Salves & Balms</button>
+                    <button class="tag" data-filter-cat="capsules">Capsules</button>
+                    <button class="tag" data-filter-cat="oils">Essential Oils</button>
+                    <button class="tag" data-filter-cat="bundles">Bundles</button>
+                </div>
+                <div class="shop-layout">
+                    <!-- SIDEBAR -->
+                    <aside class="sidebar" aria-label="Shop filters">
+                        <div class="sidebar-section">
+                            <p class="sidebar-title">Wellness Goal</p>
+                            <div class="sidebar-option"><input type="checkbox" id="f-sleep"><label for="f-sleep">Sleep
+                                    Support</label></div>
+                            <div class="sidebar-option"><input type="checkbox" id="f-energy"><label
+                                    for="f-energy">Energy & Focus</label></div>
+                            <div class="sidebar-option"><input type="checkbox" id="f-immunity"><label
+                                    for="f-immunity">Immunity</label></div>
+                            <div class="sidebar-option"><input type="checkbox" id="f-detox"><label for="f-detox">Detox &
+                                    Cleanse</label></div>
+                            <div class="sidebar-option"><input type="checkbox" id="f-digestion"><label
+                                    for="f-digestion">Digestion</label></div>
+                            <div class="sidebar-option"><input type="checkbox" id="f-stress"><label
+                                    for="f-stress">Stress Relief</label></div>
+                        </div>
+                        <div class="sidebar-section">
+                            <p class="sidebar-title"><span class="filter-label">Price Range <span id="price-val"
+                                        class="price-display">$100</span></span></p>
+                            <input type="range" class="price-range" id="price-range" min="5" max="100" value="100"
+                                aria-label="Price range">
+                            <div
+                                style="display:flex;justify-content:space-between;font-size:.78rem;color:var(--text-muted);margin-top:4px">
+                                <span>$5</span><span>$100</span>
+                            </div>
+                        </div>
+                        <div class="sidebar-section">
+                            <p class="sidebar-title">Certifications</p>
+                            <div class="sidebar-option"><input type="checkbox" id="f-organic"><label
+                                    for="f-organic">USDA Organic</label></div>
+                            <div class="sidebar-option"><input type="checkbox" id="f-vegan"><label
+                                    for="f-vegan">Vegan</label></div>
+                            <div class="sidebar-option"><input type="checkbox" id="f-gf"><label
+                                    for="f-gf">Gluten-Free</label></div>
+                            <div class="sidebar-option"><input type="checkbox" id="f-nongmo"><label
+                                    for="f-nongmo">Non-GMO</label></div>
+                        </div>
+                        <div class="sidebar-section">
+                            <p class="sidebar-title">Rating</p>
+                            <div class="sidebar-option"><input type="radio" name="rating" id="r5"><label for="r5">⭐⭐⭐⭐⭐
+                                    5 Stars</label></div>
+                            <div class="sidebar-option"><input type="radio" name="rating" id="r4"><label for="r4">⭐⭐⭐⭐
+                                    4+ Stars</label></div>
+                            <div class="sidebar-option"><input type="radio" name="rating" id="r3"><label for="r3">⭐⭐⭐ 3+
+                                    Stars</label></div>
+                        </div>
+                    </aside>
+
+                    <!-- MAIN GRID -->
+                    <div class="shop-main">
+                        <div class="shop-toolbar">
+                            <span class="shop-count" id="product-count">Showing 12 products</span>
+                            <div style="display:flex;gap:12px;align-items:center">
+                                <select id="sort-select" class="sort-select" aria-label="Sort products">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-asc">Price: Low to High</option>
+                                    <option value="price-desc">Price: High to Low</option>
+                                    <option value="name">Name A–Z</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid-3" id="product-grid">
+                            <article class="product-card" data-cat="teas" data-price="24.99">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+                                        alt="Sleep Tea" loading="lazy"><span
+                                        class="product-badge">Bestseller</span><button class="wishlist-btn"
+                                        data-wishlist="p1" data-name="Calming Sleep Tea" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Herbal Teas</div>
+                                    <div class="product-name">Calming Sleep Tea Blend</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (248)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$24.99</span><span
+                                            class="price-old">$32.00</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p1"
+                                            data-name="Calming Sleep Tea" data-price="24.99">Add to Cart</button><a
+                                            href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="tinctures" data-price="34.99">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&q=80"
+                                        alt="Immunity Tincture" loading="lazy"><span class="product-badge"
+                                        style="background:var(--primary)">New</span><button class="wishlist-btn"
+                                        data-wishlist="p2" data-name="Echinacea Tincture" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Tinctures</div>
+                                    <div class="product-name">Echinacea Immunity Tincture</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.8 (189)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$34.99</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p2"
+                                            data-name="Echinacea Immunity Tincture" data-price="34.99">Add to
+                                            Cart</button><a href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="salves" data-price="19.99">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80"
+                                        alt="Lavender Salve" loading="lazy"><button class="wishlist-btn"
+                                        data-wishlist="p3" data-name="Lavender Salve" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Salves & Balms</div>
+                                    <div class="product-name">Lavender Healing Salve</div>
+                                    <div class="product-rating"><span class="stars">★★★★☆</span><span>4.7 (122)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$19.99</span><span
+                                            class="price-old">$26.00</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p3"
+                                            data-name="Lavender Salve" data-price="19.99">Add to Cart</button><a
+                                            href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="oils" data-price="28.99">
+                                <div class="product-img"><img src="../assets/image/herbal-oil.webp"
+                                        alt="Ashwagandha Oil" loading="lazy"><span class="product-badge"
+                                        style="background:#22c55e">Organic</span><button class="wishlist-btn"
+                                        data-wishlist="p4" data-name="Ashwagandha Oil" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Essential Oils</div>
+                                    <div class="product-name">Ashwagandha Energy Oil</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (97)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$28.99</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p4"
+                                            data-name="Ashwagandha Oil" data-price="28.99">Add to Cart</button><a
+                                            href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="teas" data-price="22.00">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80"
+                                        alt="Matcha Energy Tea" loading="lazy"><button class="wishlist-btn"
+                                        data-wishlist="p5" data-name="Matcha Energy Tea" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Herbal Teas</div>
+                                    <div class="product-name">Ceremonial Grade Matcha</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.8 (204)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$22.00</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p5"
+                                            data-name="Ceremonial Grade Matcha" data-price="22.00">Add to
+                                            Cart</button><a href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="capsules" data-price="39.99">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80"
+                                        alt="Elderberry Capsules" loading="lazy"><span
+                                        class="product-badge">Sale</span><button class="wishlist-btn" data-wishlist="p6"
+                                        data-name="Elderberry Capsules" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Capsules</div>
+                                    <div class="product-name">Elderberry Immunity Capsules</div>
+                                    <div class="product-rating"><span class="stars">★★★★☆</span><span>4.6 (156)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$39.99</span><span
+                                            class="price-old">$54.99</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p6"
+                                            data-name="Elderberry Immunity Capsules" data-price="39.99">Add to
+                                            Cart</button><a href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="tinctures" data-price="42.00">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=400&q=80"
+                                        alt="Valerian Root Tincture" loading="lazy"><button class="wishlist-btn"
+                                        data-wishlist="p7" data-name="Valerian Root Tincture" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Tinctures</div>
+                                    <div class="product-name">Valerian Root Sleep Tincture</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (78)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$42.00</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p7"
+                                            data-name="Valerian Root Tincture" data-price="42.00">Add to Cart</button><a
+                                            href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="bundles" data-price="79.99">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80"
+                                        alt="Wellness Bundle" loading="lazy"><span class="product-badge"
+                                        style="background:#9333ea">Bundle</span><button class="wishlist-btn"
+                                        data-wishlist="p8" data-name="Wellness Starter Bundle" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Bundles</div>
+                                    <div class="product-name">Wellness Starter Bundle (4-piece)</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>5.0 (43)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$79.99</span><span
+                                            class="price-old">$109.00</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p8"
+                                            data-name="Wellness Starter Bundle" data-price="79.99">Add to
+                                            Cart</button><a href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="teas" data-price="18.50">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=400&q=80"
+                                        alt="Peppermint Digestive Tea" loading="lazy"><button class="wishlist-btn"
+                                        data-wishlist="p9" data-name="Peppermint Digestive Tea" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Herbal Teas</div>
+                                    <div class="product-name">Peppermint Digestive Tea</div>
+                                    <div class="product-rating"><span class="stars">★★★★☆</span><span>4.5 (89)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$18.50</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p9"
+                                            data-name="Peppermint Digestive Tea" data-price="18.50">Add to
+                                            Cart</button><a href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="salves" data-price="23.50">
+                                <div class="product-img"><img src="../assets/image/herbal-wax.webp"
+                                        alt="Arnica Muscle Salve" loading="lazy"><button class="wishlist-btn"
+                                        data-wishlist="p10" data-name="Arnica Muscle Salve" aria-pressed="false"><i
+                                            class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Salves & Balms</div>
+                                    <div class="product-name">Arnica Muscle Relief Salve</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.8 (67)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$23.50</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p10"
+                                            data-name="Arnica Muscle Salve" data-price="23.50">Add to Cart</button><a
+                                            href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="capsules" data-price="32.00">
+                                <div class="product-img"><img src="../assets/image/turmaric.webp"
+                                        alt="Turmeric Capsules" loading="lazy"><span class="product-badge"
+                                        style="background:var(--primary)">Popular</span><button class="wishlist-btn"
+                                        data-wishlist="p11" data-name="Turmeric & Ginger Capsules"
+                                        aria-pressed="false"><i class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Capsules</div>
+                                    <div class="product-name">Turmeric & Ginger Capsules</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (203)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$32.00</span><span
+                                            class="price-old">$42.00</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p11"
+                                            data-name="Turmeric & Ginger Capsules" data-price="32.00">Add to
+                                            Cart</button><a href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+
+                            <article class="product-card" data-cat="oils" data-price="36.00">
+                                <div class="product-img"><img
+                                        src="https://images.unsplash.com/photo-1550259979-ed79b48d2a30?w=400&q=80"
+                                        alt="Frankincense Oil" loading="lazy"><button class="wishlist-btn"
+                                        data-wishlist="p12" data-name="Frankincense Essential Oil"
+                                        aria-pressed="false"><i class="fas fa-heart"></i></button></div>
+                                <div class="product-info">
+                                    <div class="product-category">Essential Oils</div>
+                                    <div class="product-name">Frankincense Essential Oil</div>
+                                    <div class="product-rating"><span class="stars">★★★★★</span><span>4.9 (58)</span>
+                                    </div>
+                                    <div class="product-price"><span class="price-current">$36.00</span></div>
+                                    <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p12"
+                                            data-name="Frankincense Essential Oil" data-price="36.00">Add to
+                                            Cart</button><a href="product.html" class="nav-icon-btn"
+                                            style="border-radius:8px;width:40px;height:40px" aria-label="View"><i
+                                                class="fas fa-eye"></i></a></div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="pagination" role="navigation" aria-label="Product pages">
+                            <button class="page-btn active" aria-current="page">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn">…</button>
+                            <button class="page-btn">12</button>
+                            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><a href="../index.html">🌿 Herbal Apothecary</a></div>
+                    <p>Nature's finest botanical solutions for modern wellness. Ethically sourced, scientifically
+                        formulated,
+                        beautifully crafted.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-btn" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Shop</p>
+                    <ul>
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="shop.html#deals">Deals & Offers</a></li>
+                        <li><a href="shop.html?goal=sleep">Sleep Support</a></li>
+                        <li><a href="shop.html?goal=immunity">Immunity</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Company</p>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Support</p>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Herbal Apothecary & Wellness. All rights reserved.</span>
+                <span style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a><a
+                        href="#">Accessibility</a></span>
+            </div>
+        </div>
+    </footer>
+    <button id="scroll-top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Coming Soon – Herbal Apothecary New Collection</title>
+    <meta name="description" content="Our new seasonal herbal collection is almost here. Sign up to be first to know.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .cs-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1F2A24 0%, #2D4A35 50%, #1F2A24 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .cs-page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234A7C59' fill-opacity='0.06'%3E%3Cpath d='M40 0C18 0 0 18 0 40s18 40 40 40 40-18 40-40S62 0 40 0zm0 70C23 70 10 57 10 40S23 10 40 10s30 13 30 30-13 30-30 30z'/%3E%3C/g%3E%3C/svg%3E")
+        }
+
+        .cs-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(74, 124, 89, .3);
+            color: #86B895;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            border: 1px solid rgba(74, 124, 89, .4)
+        }
+
+        .cs-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.15
+        }
+
+        .cs-title em {
+            color: #6BA07A;
+            font-style: italic
+        }
+
+        .cs-desc {
+            color: rgba(255, 255, 255, .75);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 0 auto 40px
+        }
+
+        .countdown {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 48px;
+            flex-wrap: wrap
+        }
+
+        .cd-unit {
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            min-width: 90px
+        }
+
+        .cd-num {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #6BA07A;
+            line-height: 1
+        }
+
+        .cd-label {
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: rgba(255, 255, 255, .5);
+            margin-top: 6px
+        }
+
+        .cs-form {
+            display: flex;
+            gap: 12px;
+            max-width: 440px;
+            margin: 0 auto 20px;
+            flex-wrap: wrap;
+            justify-content: center
+        }
+
+        .cs-form input {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 255, 255, .1);
+            border: 1.5px solid rgba(255, 255, 255, .2);
+            color: #fff;
+            border-radius: 50px;
+            padding: 14px 22px
+        }
+
+        .cs-form input::placeholder {
+            color: rgba(255, 255, 255, .5)
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 8rem;
+            opacity: .06;
+            pointer-events: none;
+            user-select: none
+        }
+
+        .leaf-1 {
+            top: -20px;
+            left: -30px;
+            transform: rotate(-20deg)
+        }
+
+        .leaf-2 {
+            bottom: -30px;
+            right: -20px;
+            transform: rotate(15deg);
+            font-size: 12rem
+        }
+
+        .cs-socials {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 24px
+        }
+
+        .cs-social {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, .7);
+            transition: all .2s
+        }
+
+        .cs-social:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cs-page">
+        <span class="leaf leaf-1" aria-hidden="true">🌿</span>
+        <span class="leaf leaf-2" aria-hidden="true">🍃</span>
+
+        <div style="position:relative;z-index:1;width:100%">
+            <a href="../index.html" class="nav-logo"
+                style="justify-content:center;margin-bottom:40px;color:#86B895;display:flex">
+                <div class="nav-logo-icon" style="background:var(--primary)">🌿</div>Herbal Apothecary
+            </a>
+
+            <div class="cs-badge">🌸 New Collection</div>
+            <h1 class="cs-title">Something Special<br>Is <em>Blooming</em></h1>
+            <p class="cs-desc">Our Spring Seasonal Herbal Collection is almost ready. Rare botanicals, limited editions,
+                and formula upgrades — all in one launch.</p>
+
+            <!-- Countdown -->
+            <div class="countdown" aria-label="Launch countdown">
+                <div class="cd-unit">
+                    <div class="cd-num" id="cd-days">00</div>
+                    <div class="cd-label">Days</div>
+                </div>
+                <div class="cd-unit">
+                    <div class="cd-num" id="cd-hours">00</div>
+                    <div class="cd-label">Hours</div>
+                </div>
+                <div class="cd-unit">
+                    <div class="cd-num" id="cd-minutes">00</div>
+                    <div class="cd-label">Minutes</div>
+                </div>
+                <div class="cd-unit">
+                    <div class="cd-num" id="cd-seconds">00</div>
+                    <div class="cd-label">Seconds</div>
+                </div>
+            </div>
+
+            <!-- Email capture -->
+            <p style="color:rgba(255,255,255,.6);font-size:.88rem;margin-bottom:16px">Be the first to access early-bird
+                pricing & exclusive founders-only gifts</p>
+            <form class="cs-form" aria-label="Launch notification signup">
+                <input type="email" placeholder="your@email.com" required aria-label="Email for launch notification">
+                <button type="submit" class="btn btn-primary" data-newsletter
+                    style="border-radius:50px;white-space:nowrap">Notify Me 🌿</button>
+            </form>
+            <p style="font-size:.75rem;color:rgba(255,255,255,.4)">No spam. Early access benefits + 15% founders
+                discount.</p>
+
+            <div class="cs-socials" style="margin-top:32px">
+                <a href="#" class="cs-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="cs-social" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="cs-social" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                <a href="#" class="cs-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <div style="margin-top:32px"><a href="../index.html" style="color:rgba(255,255,255,.5);font-size:.82rem">←
+                    Visit existing store</a></div>
+        </div>
+    </div>
+    <div id="toast-container"></div>
+    <script src="../assets/js/main.js"></script>
+    <script>startCountdown('2026-03-15T09:00:00');</script>
+</body>
+
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Calming Sleep Tea Blend – Herbal Apothecary</title>
+    <meta name="description"
+        content="Premium valerian, chamomile & lavender sleep tea blend. Certified organic, lab tested, 248 five-star reviews.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script
+        type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Calming Sleep Tea Blend","description":"Hand-blended valerian, chamomile & lavender sleep tea","brand":{"@type":"Brand","name":"Herbal Apothecary"},"offers":{"@type":"Offer","price":"24.99","priceCurrency":"USD","availability":"https://schema.org/InStock"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"248"}}</script>
+    <style>
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: start
+        }
+
+        .qty-wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px
+        }
+
+        .variant-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1.5px solid var(--border);
+            background: var(--surface);
+            font-size: .85rem;
+            cursor: pointer;
+            transition: all .2s
+        }
+
+        .variant-btn:hover,
+        .variant-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #fff
+        }
+
+        .benefit-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--secondary);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: .78rem;
+            font-weight: 600;
+            margin: 4px
+        }
+
+        .ingredient-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 24px
+        }
+
+        .review-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            margin-bottom: 16px
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px
+        }
+
+        .review-name {
+            font-weight: 600;
+            color: var(--dark)
+        }
+
+        .review-date {
+            font-size: .78rem;
+            color: var(--text-muted)
+        }
+
+        .sticky-cta {
+            position: sticky;
+            top: calc(var(--nav-h)+16px)
+        }
+
+        @media(max-width:768px) {
+            .product-layout {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <select name="home" id="home">
+                    <option value="../index.html">Home</option>
+                    <option value="../home2.html">Home 2</option>
+                </select>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="wishlist.html" class="nav-icon-btn" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
+                <a href="cart.html" class="nav-icon-btn" style="position:relative"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+                <a href="user-dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-th-large"></i>
+                    Dashboard</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top:var(--nav-h)">
+        <div class="container" style="padding-top:24px">
+            <div class="breadcrumb" style="margin-bottom:24px">
+                <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span>
+                <a href="shop.html">Shop</a><span class="breadcrumb-sep">/</span>
+                <a href="shop.html?cat=teas">Herbal Teas</a><span class="breadcrumb-sep">/</span>
+                <span>Calming Sleep Tea</span>
+            </div>
+
+            <div class="product-layout">
+                <!-- GALLERY -->
+                <div class="product-gallery">
+                    <div class="gallery-main"><img
+                            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80"
+                            alt="Calming Sleep Tea Blend — main view" id="main-gallery-img"></div>
+                    <div class="gallery-thumbs">
+                        <div class="gallery-thumb active"><img
+                                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="Front">
+                        </div>
+                        <div class="gallery-thumb"><img
+                                src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=200&q=80"
+                                alt="Contents"></div>
+                        <div class="gallery-thumb"><img
+                                src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=200&q=80"
+                                alt="Lifestyle"></div>
+                        <div class="gallery-thumb"><img
+                                src="https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=200&q=80"
+                                alt="Pouring"></div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT INFO -->
+                <div class="sticky-cta">
+                    <div style="margin-bottom:6px"><span class="badge badge-green">In Stock</span> <span
+                            class="badge badge-blue">USDA Organic</span></div>
+                    <div class="product-category" style="font-size:.82rem">Herbal Teas</div>
+                    <h1 style="margin:8px 0 10px;font-size:clamp(1.6rem,3vw,2.2rem)">Calming Sleep Tea Blend</h1>
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+                        <div class="stars" style="font-size:1.1rem">★★★★★</div>
+                        <span style="font-size:.88rem;color:var(--text-muted)">4.9 (248 reviews)</span>
+                        <a href="#reviews" style="font-size:.82rem;color:var(--primary)">Read reviews</a>
+                    </div>
+                    <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:20px">
+                        <span
+                            style="font-size:2rem;font-weight:800;color:var(--primary);font-family:var(--font-heading)">$24.99</span>
+                        <span class="price-old" style="font-size:1.1rem">$32.00</span>
+                        <span class="badge badge-amber">Save 22%</span>
+                    </div>
+                    <p style="margin-bottom:20px">A masterfully crafted evening blend of <strong>valerian root,
+                            chamomile flowers, passionflower & lavender buds</strong> — handpicked at peak potency to
+                        gently ease your mind into deep, restorative sleep.</p>
+
+                    <!-- Benefits -->
+                    <div style="margin-bottom:20px">
+                        <p
+                            style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:8px">
+                            Benefits</p>
+                        <span class="benefit-pill">😴 Deep Sleep</span>
+                        <span class="benefit-pill">🧘 Stress Relief</span>
+                        <span class="benefit-pill">💆 Relaxation</span>
+                        <span class="benefit-pill">🌙 Melatonin Support</span>
+                    </div>
+
+                    <!-- Size Variant -->
+                    <div style="margin-bottom:20px">
+                        <p style="font-size:.85rem;font-weight:600;margin-bottom:8px">Size</p>
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            <button class="variant-btn active">20 Bags</button>
+                            <button class="variant-btn">40 Bags</button>
+                            <button class="variant-btn">80g Loose Leaf</button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="qty-wrap">
+                        <span style="font-size:.85rem;font-weight:600">Qty:</span>
+                        <div class="qty-control">
+                            <button class="qty-btn" onclick="adjustQty(-1)">−</button>
+                            <input class="qty-val" id="product-qty" value="1" readonly>
+                            <button class="qty-btn" onclick="adjustQty(1)">+</button>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:12px;margin-bottom:20px">
+                        <button class="btn btn-primary btn-lg" style="flex:1" data-add-cart data-id="p1"
+                            data-name="Calming Sleep Tea Blend" data-price="24.99"
+                            data-image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400">
+                            <i class="fas fa-shopping-bag"></i> Add to Cart
+                        </button>
+                        <button class="wishlist-btn" data-wishlist="p1" data-name="Calming Sleep Tea"
+                            aria-pressed="false" style="width:52px;height:52px;border-radius:12px;font-size:1.1rem"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                    <a href="checkout.html" class="btn btn-outline btn-lg w-full"
+                        style="margin-bottom:20px;justify-content:center">⚡ Buy Now</a>
+
+                    <!-- Trust badges -->
+                    <div style="display:flex;flex-wrap:wrap;gap:10px">
+                        <span class="cert-badge" style="font-size:.75rem;padding:8px 12px"><i
+                                class="fas fa-lock"></i>Secure Checkout</span>
+                        <span class="cert-badge" style="font-size:.75rem;padding:8px 12px"><i
+                                class="fas fa-truck"></i>Free Shipping $50+</span>
+                        <span class="cert-badge" style="font-size:.75px;padding:8px 12px"><i
+                                class="fas fa-undo"></i>30-Day Returns</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABS: DETAILS / INGREDIENTS / HOW TO USE -->
+            <div class="tab-wrapper section-sm" aria-label="Product details tabs">
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-tab="details">Details & Benefits</button>
+                    <button class="tab-btn" data-tab="ingredients">Ingredients & Sourcing</button>
+                    <button class="tab-btn" data-tab="howto">How to Use</button>
+                </div>
+                <div class="tab-panel active" data-panel="details">
+                    <div class="grid-2" style="align-items:start;gap:40px">
+                        <div>
+                            <h3 style="margin-bottom:14px">About This Blend</h3>
+                            <p>Our Sleep Tea was formulated by our head herbalist Dr. Amara Osei in collaboration with
+                                sleep researchers at UVM. Each ingredient was selected not only for its traditional use
+                                but its clinical evidence base.</p>
+                            <ul style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+                                <li style="display:flex;gap:10px;font-size:.9rem"><span>🌿</span><span><strong>Valerian
+                                            Root</strong> — Reduces sleep onset time and improves sleep quality
+                                        (clinical meta-analysis, 2020)</span></li>
+                                <li style="display:flex;gap:10px;font-size:.9rem">
+                                    <span>🌼</span><span><strong>Chamomile</strong> — Binds GABA receptors for natural
+                                        sedative effect without dependency</span>
+                                </li>
+                                <li style="display:flex;gap:10px;font-size:.9rem">
+                                    <span>💜</span><span><strong>Lavender</strong> — Aromatherapeutic benefits proven to
+                                        reduce anxiety and heart rate before sleep</span>
+                                </li>
+                                <li style="display:flex;gap:10px;font-size:.9rem">
+                                    <span>🌸</span><span><strong>Passionflower</strong> — Increases GABA in the brain,
+                                        proven equal to low-dose Oxazepam in one RCT</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="background:var(--surface-alt);border-radius:var(--radius-lg);padding:28px">
+                            <h4 style="margin-bottom:16px">Product Specs</h4>
+                            <div style="display:flex;flex-direction:column;gap:10px;font-size:.88rem">
+                                <div
+                                    style="display:flex;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid var(--border)">
+                                    <span>Format</span><strong>Individual Pyramid Bags</strong>
+                                </div>
+                                <div
+                                    style="display:flex;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid var(--border)">
+                                    <span>Count</span><strong>20 Bags per Box</strong>
+                                </div>
+                                <div
+                                    style="display:flex;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid var(--border)">
+                                    <span>Caffeine</span><strong>Caffeine-Free</strong>
+                                </div>
+                                <div
+                                    style="display:flex;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid var(--border)">
+                                    <span>Certifications</span><strong>USDA Organic, Vegan</strong>
+                                </div>
+                                <div style="display:flex;justify-content:space-between"><span>Shelf
+                                        Life</span><strong>24 Months</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-panel" data-panel="ingredients">
+                    <p style="max-width:680px;margin-bottom:28px"><strong>Full Ingredients:</strong> Organic Valerian
+                        Root (Valeriana officinalis), Organic Chamomile Flowers (Matricaria chamomilla), Organic
+                        Lavender Buds (Lavandula angustifolia), Organic Passionflower (Passiflora incarnata), Organic
+                        Lemon Balm (Melissa officinalis).</p>
+                    <div class="ingredient-list">
+                        <div class="ingredient-card">
+                            <div class="ingredient-icon">🌿</div>
+                            <div class="ingredient-name">Valerian Root</div>
+                            <div class="ingredient-desc">Vermont Organic Farm — USA</div>
+                        </div>
+                        <div class="ingredient-card">
+                            <div class="ingredient-icon">🌼</div>
+                            <div class="ingredient-name">Chamomile</div>
+                            <div class="ingredient-desc">Certified Organic — Egypt</div>
+                        </div>
+                        <div class="ingredient-card">
+                            <div class="ingredient-icon">💜</div>
+                            <div class="ingredient-name">Lavender</div>
+                            <div class="ingredient-desc">Biodynamic Farm — Provence, France</div>
+                        </div>
+                        <div class="ingredient-card">
+                            <div class="ingredient-icon">🌸</div>
+                            <div class="ingredient-name">Passionflower</div>
+                            <div class="ingredient-desc">Organic Co-op — Ecuador</div>
+                        </div>
+                        <div class="ingredient-card">
+                            <div class="ingredient-icon">🍋</div>
+                            <div class="ingredient-name">Lemon Balm</div>
+                            <div class="ingredient-desc">Certified Organic — Germany</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-panel" data-panel="howto">
+                    <div style="max-width:600px">
+                        <ol style="display:flex;flex-direction:column;gap:16px;counter-reset:steps">
+                            <li style="display:flex;gap:16px;align-items:flex-start">
+                                <div
+                                    style="width:36px;height:36px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:.9rem">
+                                    1</div>
+                                <div><strong>Heat Water</strong>
+                                    <p style="font-size:.88rem">Bring fresh water to 90°C (not boiling) to preserve
+                                        delicate aromatic compounds.</p>
+                                </div>
+                            </li>
+                            <li style="display:flex;gap:16px;align-items:flex-start">
+                                <div
+                                    style="width:36px;height:36px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:.9rem">
+                                    2</div>
+                                <div><strong>Steep for 7–10 Minutes</strong>
+                                    <p style="font-size:.88rem">Cover while steeping to retain volatile aromatic oils —
+                                        these are key to the calming effect.</p>
+                                </div>
+                            </li>
+                            <li style="display:flex;gap:16px;align-items:flex-start">
+                                <div
+                                    style="width:36px;height:36px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:.9rem">
+                                    3</div>
+                                <div><strong>Drink 30–45 Minutes Before Bed</strong>
+                                    <p style="font-size:.88rem">Valerian root takes approximately 30 minutes to reach
+                                        peak effect. Pair with dimmed lights and screen-free time for best results.</p>
+                                </div>
+                            </li>
+                            <li style="display:flex;gap:16px;align-items:flex-start">
+                                <div
+                                    style="width:36px;height:36px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:.9rem">
+                                    4</div>
+                                <div><strong>Consistency is Key</strong>
+                                    <p style="font-size:.88rem">Herbal adaptogens work best with regular use over 2–4
+                                        weeks. Most customers report significant improvement within 10 days.</p>
+                                </div>
+                            </li>
+                        </ol>
+                        <p
+                            style="font-size:.82rem;color:var(--text-muted);margin-top:20px;background:var(--surface-alt);padding:12px 16px;border-radius:var(--radius)">
+                            ⚠️ <strong>Caution:</strong> Not recommended during pregnancy or if taking sedative
+                            medications. Consult your healthcare provider if you have concerns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REVIEWS -->
+            <section class="section-sm" id="reviews" aria-labelledby="reviews-title">
+                <h2 id="reviews-title" style="margin-bottom:8px">Customer Reviews</h2>
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap">
+                    <div style="text-align:center">
+                        <div style="font-family:var(--font-heading);font-size:3rem;font-weight:800;color:var(--dark)">
+                            4.9</div>
+                        <div class="stars" style="font-size:1.2rem">★★★★★</div>
+                        <p style="font-size:.8rem;color:var(--text-muted)">248 reviews</p>
+                    </div>
+                    <div style="flex:1;min-width:200px">
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span
+                                style="font-size:.78rem;min-width:30px">5 ★</span>
+                            <div class="progress-bar" style="flex:1">
+                                <div class="progress-fill" style="width:82%"></div>
+                            </div><span style="font-size:.78rem">82%</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span
+                                style="font-size:.78rem;min-width:30px">4 ★</span>
+                            <div class="progress-bar" style="flex:1">
+                                <div class="progress-fill" style="width:12%"></div>
+                            </div><span style="font-size:.78rem">12%</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px"><span
+                                style="font-size:.78rem;min-width:30px">3 ★</span>
+                            <div class="progress-bar" style="flex:1">
+                                <div class="progress-fill" style="width:6%"></div>
+                            </div><span style="font-size:.78rem">6%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <div class="review-name">Sarah M.</div>
+                            <div class="stars" style="font-size:.9rem">★★★★★</div>
+                        </div>
+                        <div class="review-date">Feb 10, 2026</div>
+                    </div>
+                    <p style="font-size:.9rem">"Game changer. I've tried every sleep supplement out there and this is
+                        the only one that actually works without leaving me groggy the next morning. The aroma alone is
+                        relaxing. Will be buying the 40-bag box next time!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <div class="review-name">James K.</div>
+                            <div class="stars" style="font-size:.9rem">★★★★★</div>
+                        </div>
+                        <div class="review-date">Jan 28, 2026</div>
+                    </div>
+                    <p style="font-size:.9rem">"As an insomniac for 15 years, I was skeptical. Within a week of nightly
+                        use, I was falling asleep 20 minutes faster. Verified by my Oura Ring data."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <div class="review-name">Priya R.</div>
+                            <div class="stars" style="font-size:.9rem">★★★★☆</div>
+                        </div>
+                        <div class="review-date">Jan 15, 2026</div>
+                    </div>
+                    <p style="font-size:.9rem">"Excellent quality tea. The taste is mild and pleasant. I gave 4 stars
+                        because it took about 2 weeks to notice significant effects, but once it kicked in — really
+                        wonderful."</p>
+                </div>
+                <button class="btn btn-outline" style="margin-top:16px">Load More Reviews</button>
+            </section>
+
+            <!-- RELATED PRODUCTS -->
+            <section class="section-sm" aria-labelledby="related-title">
+                <h2 id="related-title" style="margin-bottom:28px">You Might Also Love</h2>
+                <div class="grid-4">
+                    <article class="product-card" data-cat="teas" data-price="22.00">
+                        <div class="product-img"><img
+                                src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80" alt="Matcha"
+                                loading="lazy"><button class="wishlist-btn" data-wishlist="p5"
+                                data-name="Ceremonial Matcha" aria-pressed="false"><i class="fas fa-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Herbal Teas</div>
+                            <div class="product-name">Ceremonial Matcha</div>
+                            <div class="product-price"><span class="price-current">$22.00</span></div>
+                            <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p5"
+                                    data-name="Ceremonial Matcha" data-price="22.00">Add to Cart</button></div>
+                        </div>
+                    </article>
+                    <article class="product-card" data-cat="tinctures" data-price="42.00">
+                        <div class="product-img"><img
+                                src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=400&q=80"
+                                alt="Valerian Tincture" loading="lazy"><button class="wishlist-btn" data-wishlist="p7"
+                                data-name="Valerian Tincture" aria-pressed="false"><i class="fas fa-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Tinctures</div>
+                            <div class="product-name">Valerian Root Tincture</div>
+                            <div class="product-price"><span class="price-current">$42.00</span></div>
+                            <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p7"
+                                    data-name="Valerian Tincture" data-price="42.00">Add to Cart</button></div>
+                        </div>
+                    </article>
+                    <article class="product-card" data-cat="bundles" data-price="79.99">
+                        <div class="product-img"><img
+                                src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80"
+                                alt="Wellness Bundle" loading="lazy"><button class="wishlist-btn" data-wishlist="p8"
+                                data-name="Wellness Bundle" aria-pressed="false"><i class="fas fa-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Bundles</div>
+                            <div class="product-name">Wellness Starter Bundle</div>
+                            <div class="product-price"><span class="price-current">$79.99</span><span
+                                    class="price-old">$109</span></div>
+                            <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p8"
+                                    data-name="Wellness Bundle" data-price="79.99">Add to Cart</button></div>
+                        </div>
+                    </article>
+                    <article class="product-card" data-cat="oils" data-price="28.99">
+                        <div class="product-img"><img src="../assets/image/herbal-oil.webp" alt="Ashwagandha Oil"
+                                loading="lazy"><button class="wishlist-btn" data-wishlist="p4"
+                                data-name="Ashwagandha Oil" aria-pressed="false"><i class="fas fa-heart"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Oils</div>
+                            <div class="product-name">Ashwagandha Energy Oil</div>
+                            <div class="product-price"><span class="price-current">$28.99</span></div>
+                            <div class="product-footer"><button class="btn-cart" data-add-cart data-id="p4"
+                                    data-name="Ashwagandha Oil" data-price="28.99">Add to Cart</button></div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><a href="../index.html">🌿 Herbal Apothecary</a></div>
+                    <p>Nature's finest botanical solutions for modern wellness. Ethically sourced, scientifically
+                        formulated,
+                        beautifully crafted.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-btn" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <p class="footer-heading">Shop</p>
+                    <ul>
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="shop.html#deals">Deals & Offers</a></li>
+                        <li><a href="shop.html?goal=sleep">Sleep Support</a></li>
+                        <li><a href="shop.html?goal=immunity">Immunity</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Company</p>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-heading">Support</p>
+                    <ul>
+                        <li><a href="contact.html#faq">FAQ</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Herbal Apothecary & Wellness. All rights reserved.</span>
+                <span style="display:flex;gap:16px"><a href="#">Privacy</a><a href="#">Terms</a><a
+                        href="#">Accessibility</a></span>
+            </div>
+        </div>
+    </footer>
+    <button id="scroll-top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function adjustQty(d) { const i = document.getElementById('product-qty'); i.value = Math.max(1, parseInt(i.value) + d); }
+        // Set qty on add to cart
+        document.querySelector('[data-add-cart]')?.addEventListener('click', function () {
+            const qty = parseInt(document.getElementById('product-qty').value) || 1;
+            for (let q = 0; q < qty - 1; q++) Cart.add({ id: this.dataset.id, name: this.dataset.name, price: parseFloat(this.dataset.price), image: this.dataset.image || '', variant: '' });
+        });
+        document.querySelectorAll('.variant-btn').forEach(b => b.addEventListener('click', () => { document.querySelectorAll('.variant-btn').forEach(x => x.classList.remove('active')); b.classList.add('active') }));
+    </script>
+</body>
+
+</html>

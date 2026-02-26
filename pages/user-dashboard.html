@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account – Herbal Apothecary</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Page-level tweaks */
+        .avatar-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .avatar-sm {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .order-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 32px;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-step:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--surface-alt);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .timeline-dot.done {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        .address-card {
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            cursor: pointer;
+            transition: all .2s;
+            position: relative;
+        }
+
+        .address-card.active {
+            border-color: var(--primary);
+            background: rgba(74, 124, 89, .05);
+        }
+
+        .address-card .default-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+        }
+
+        .points-bar {
+            height: 10px;
+            background: var(--border);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .points-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            border-radius: 5px;
+            transition: width .8s ease;
+        }
+
+        .wishlist-mini-img {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius);
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Dark mode"><i class="fas fa-moon moon"></i><i
+                        class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="cart.html" class="nav-icon-btn" aria-label="Cart" style="position:relative"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+                <a href="../index.html" class="btn btn-outline btn-sm"><i class="fas fa-home"></i> Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-root" style="padding-top:72px">
+        <!-- SIDEBAR -->
+        <aside class="dashboard-sidebar" id="dash-sidebar" role="navigation" aria-label="Dashboard navigation">
+            <div class="sidebar-brand">
+                <div class="nav-logo-icon" style="width:32px;height:32px;font-size:.9rem">🌿</div>
+                <span>My Account</span>
+            </div>
+
+            <!-- User info -->
+            <div style="padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.08)">
+                <div style="display:flex;align-items:center;gap:12px">
+                    <div
+                        style="width:40px;height:40px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff">
+                        👤</div>
+                    <div>
+                        <div style="color:var(--dark);font-weight:600;font-size:.9rem">Jane Doe</div>
+                        <div style="color:var(--text-muted);font-size:.75rem">jane@example.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <p
+                    style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);padding:8px 6px 4px">
+                    Overview</p>
+                <button class="sidebar-link active" data-panel="overview"><i class="fas fa-home"></i>Dashboard</button>
+                <button class="sidebar-link" data-panel="orders"><i class="fas fa-box"></i>My Orders</button>
+                <button class="sidebar-link" data-panel="wishlist"><i class="fas fa-heart"></i>Wishlist</button>
+                <button class="sidebar-link" data-panel="loyalty"><i class="fas fa-star"></i>Loyalty & Rewards</button>
+
+                <p
+                    style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);padding:16px 6px 4px">
+                    Account</p>
+                <button class="sidebar-link" data-panel="profile"><i class="fas fa-user"></i>Profile</button>
+                <button class="sidebar-link" data-panel="addresses"><i
+                        class="fas fa-map-marker-alt"></i>Addresses</button>
+                <button class="sidebar-link" data-panel="notifications"><i
+                        class="fas fa-bell"></i>Notifications</button>
+                <button class="sidebar-link" data-panel="security"><i class="fas fa-lock"></i>Security</button>
+
+                <div style="padding-top:20px;border-top:1px solid rgba(255,255,255,.08);margin-top:16px">
+                    <a href="login.html" class="sidebar-link" style="color:#ef4444"><i
+                            class="fas fa-sign-out-alt"></i>Sign Out</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="dashboard-main">
+            <!-- Topbar -->
+            <header class="dashboard-topbar">
+                <button id="sidebar-toggle" class="nav-icon-btn" aria-label="Toggle sidebar" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div style="flex:1">
+                    <h1 style="font-size:1.1rem;color:var(--dark);font-family:var(--font-heading)">Welcome, Jane 👋</h1>
+                </div>
+                <a href="shop.html" class="btn btn-primary btn-sm"><i class="fas fa-leaf"></i> Shop Now</a>
+            </header>
+
+            <main class="dashboard-content">
+
+                <!-- ── PANEL: OVERVIEW ── -->
+                <div class="dash-panel active" id="panel-overview">
+                    <div class="dash-welcome">
+                        <div>
+                            <h2>Good evening, Jane! 🌿</h2>
+                            <p>Here's a summary of your wellness journey.</p>
+                        </div>
+                        <a href="shop.html" class="btn"
+                            style="background:rgba(255,255,255,.2);color:#fff;border-color:rgba(255,255,255,.3)">Shop
+                            Collection <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Orders</div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-change stat-up"><i class="fas fa-arrow-up"></i> 3 this month</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Loyalty Points</div>
+                            <div class="stat-value">1,240</div>
+                            <div class="stat-change"><i class="fas fa-star" style="color:#f59e0b"></i> Silver Member
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Wishlist Items</div>
+                            <div class="stat-value">7</div>
+                            <div class="stat-change"><span style="font-size:.8rem">View & buy</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Spent</div>
+                            <div class="stat-value">$482</div>
+                            <div class="stat-change stat-up"><i class="fas fa-arrow-up"></i> Since joining</div>
+                        </div>
+                    </div>
+
+                    <div class="grid-2" style="gap:20px">
+                        <!-- Recent Orders -->
+                        <div class="card">
+                            <div class="flex-between" style="margin-bottom:16px">
+                                <h3 style="font-size:1rem">Recent Orders</h3>
+                                <button class="sidebar-link"
+                                    style="padding:6px 12px;font-size:.8rem;border-radius:50px;width:auto"
+                                    data-panel="orders">View all</button>
+                            </div>
+                            <div class="data-table-wrap">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>#HA-1082</strong></td>
+                                            <td>Feb 20</td>
+                                            <td>$64.98</td>
+                                            <td><span class="badge badge-green">Delivered</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>#HA-1075</strong></td>
+                                            <td>Feb 14</td>
+                                            <td>$32.00</td>
+                                            <td><span class="badge badge-blue">In Transit</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>#HA-1068</strong></td>
+                                            <td>Jan 28</td>
+                                            <td>$24.99</td>
+                                            <td><span class="badge badge-green">Delivered</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Loyalty Level -->
+                        <div class="card">
+                            <h3 style="font-size:1rem;margin-bottom:16px">Loyalty Status</h3>
+                            <div style="text-align:center;padding:20px 0">
+                                <div style="font-size:3rem;margin-bottom:10px">🥈</div>
+                                <div style="font-weight:700;font-size:1.2rem;color:var(--dark)">Silver Member</div>
+                                <div style="color:var(--text-muted);font-size:.85rem;margin-top:6px">1,240 / 2,000
+                                    points to Gold</div>
+                                <div class="points-bar" style="margin:16px 0">
+                                    <div class="points-fill" style="width:62%"></div>
+                                </div>
+                                <div
+                                    style="display:flex;justify-content:space-between;font-size:.78rem;color:var(--text-muted)">
+                                    <span>0</span><span>760 more points needed</span><span>2,000</span>
+                                </div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px">
+                                <div
+                                    style="background:var(--surface-alt);border-radius:var(--radius);padding:14px;text-align:center">
+                                    <div style="font-weight:700;color:var(--primary);font-size:1.1rem">5%</div>
+                                    <div style="font-size:.75rem;color:var(--text-muted)">Current Discount</div>
+                                </div>
+                                <div
+                                    style="background:var(--surface-alt);border-radius:var(--radius);padding:14px;text-align:center">
+                                    <div style="font-weight:700;color:var(--accent);font-size:1.1rem">10%</div>
+                                    <div style="font-size:.75rem;color:var(--text-muted)">Gold Discount</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: ORDERS ── -->
+                <div class="dash-panel" id="panel-orders">
+                    <div class="flex-between" style="margin-bottom:24px">
+                        <div>
+                            <h2 style="font-size:1.4rem">My Orders</h2>
+                            <p style="margin-top:4px">12 total orders</p>
+                        </div>
+                    </div>
+                    <!-- Search -->
+                    <div style="margin-bottom:16px">
+                        <input type="search" id="order-search" class="form-control"
+                            placeholder="🔍  Search orders by ID, product…" style="max-width:320px">
+                    </div>
+
+                    <div class="card" style="padding:0;overflow:hidden">
+                        <div class="data-table-wrap">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Items</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>#HA-1082</strong></td>
+                                        <td>Feb 20, 2026</td>
+                                        <td>2 items</td>
+                                        <td>$64.98</td>
+                                        <td><span class="badge badge-green">Delivered</span></td>
+                                        <td><a href="order-confirmation.html" class="btn btn-sm btn-outline">Details</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#HA-1075</strong></td>
+                                        <td>Feb 14, 2026</td>
+                                        <td>1 item</td>
+                                        <td>$32.00</td>
+                                        <td><span class="badge badge-blue">In Transit</span></td>
+                                        <td><button class="btn btn-sm btn-outline">Track</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#HA-1068</strong></td>
+                                        <td>Jan 28, 2026</td>
+                                        <td>3 items</td>
+                                        <td>$89.97</td>
+                                        <td><span class="badge badge-green">Delivered</span></td>
+                                        <td><a href="order-confirmation.html" class="btn btn-sm btn-outline">Details</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#HA-1061</strong></td>
+                                        <td>Jan 15, 2026</td>
+                                        <td>1 item</td>
+                                        <td>$24.99</td>
+                                        <td><span class="badge badge-green">Delivered</span></td>
+                                        <td><a href="order-confirmation.html" class="btn btn-sm btn-outline">Details</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#HA-1048</strong></td>
+                                        <td>Dec 30, 2025</td>
+                                        <td>4 items</td>
+                                        <td>$124.96</td>
+                                        <td><span class="badge badge-green">Delivered</span></td>
+                                        <td><a href="order-confirmation.html" class="btn btn-sm btn-outline">Details</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Order tracking detail -->
+                    <div class="card" style="margin-top:20px">
+                        <h3 style="font-size:1rem;margin-bottom:20px">Order #HA-1075 – Tracking</h3>
+                        <div class="order-timeline">
+                            <div class="timeline-step">
+                                <div class="timeline-dot done"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div style="font-weight:600;font-size:.9rem;color:var(--dark)">Order Placed</div>
+                                    <div style="font-size:.8rem;color:var(--text-muted)">Feb 14, 2026 · 11:32 AM</div>
+                                </div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot done"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div style="font-weight:600;font-size:.9rem;color:var(--dark)">Payment Confirmed
+                                    </div>
+                                    <div style="font-size:.8rem;color:var(--text-muted)">Feb 14, 2026 · 11:35 AM</div>
+                                </div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot done"><i class="fas fa-check"></i></div>
+                                <div>
+                                    <div style="font-weight:600;font-size:.9rem;color:var(--dark)">Dispatched</div>
+                                    <div style="font-size:.8rem;color:var(--text-muted)">Feb 15, 2026 · 3:20 PM</div>
+                                </div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot"
+                                    style="background:var(--primary-light);border-color:var(--primary);color:#fff"><i
+                                        class="fas fa-truck"></i></div>
+                                <div>
+                                    <div style="font-weight:600;font-size:.9rem;color:var(--primary)">In Transit</div>
+                                    <div style="font-size:.8rem;color:var(--text-muted)">Expected: Feb 20, 2026</div>
+                                </div>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="timeline-dot"><i class="fas fa-home"></i></div>
+                                <div>
+                                    <div style="font-weight:600;font-size:.9rem;color:var(--text-muted)">Delivered</div>
+                                    <div style="font-size:.8rem;color:var(--text-muted)">Pending</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: WISHLIST ── -->
+                <div class="dash-panel" id="panel-wishlist">
+                    <div class="flex-between" style="margin-bottom:24px">
+                        <div>
+                            <h2 style="font-size:1.4rem">My Wishlist</h2>
+                            <p style="margin-top:4px">7 saved items</p>
+                        </div>
+                        <a href="wishlist.html" class="btn btn-outline btn-sm">View Full Wishlist</a>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:12px" id="dash-wishlist-list">
+                        <!-- items injected by JS; static fallback below -->
+                        <div class="card" style="display:flex;align-items:center;gap:16px;padding:16px;flex-wrap:wrap">
+                            <img class="wishlist-mini-img"
+                                src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=120&q=80"
+                                alt="Sleep Tea" loading="lazy">
+                            <div style="flex:1;min-width:120px">
+                                <div style="font-weight:600;color:var(--dark)">Calming Sleep Tea</div>
+                                <div style="font-size:.8rem;color:var(--primary)">$24.99</div>
+                            </div>
+                            <button class="btn btn-primary btn-sm" data-add-cart data-id="p1"
+                                data-name="Calming Sleep Tea" data-price="24.99">Add to Cart</button>
+                            <button class="btn btn-outline btn-sm"
+                                style="color:#ef4444;border-color:#ef4444">Remove</button>
+                        </div>
+                        <div class="card" style="display:flex;align-items:center;gap:16px;padding:16px;flex-wrap:wrap">
+                            <img class="wishlist-mini-img"
+                                src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=120&q=80"
+                                alt="Tincture" loading="lazy">
+                            <div style="flex:1;min-width:120px">
+                                <div style="font-weight:600;color:var(--dark)">Echinacea Tincture</div>
+                                <div style="font-size:.8rem;color:var(--primary)">$34.99</div>
+                            </div>
+                            <button class="btn btn-primary btn-sm" data-add-cart data-id="p2"
+                                data-name="Echinacea Tincture" data-price="34.99">Add to Cart</button>
+                            <button class="btn btn-outline btn-sm"
+                                style="color:#ef4444;border-color:#ef4444">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: LOYALTY ── -->
+                <div class="dash-panel" id="panel-loyalty">
+                    <h2 style="font-size:1.4rem;margin-bottom:24px">Loyalty & Rewards</h2>
+                    <div class="grid-2" style="gap:20px;margin-bottom:24px">
+                        <div class="card" style="text-align:center">
+                            <div style="font-size:3.5rem;margin-bottom:10px">🥈</div>
+                            <h3>Silver Member</h3>
+                            <p style="margin-top:8px;font-size:.9rem">1,240 lifetime points · 760 to Gold</p>
+                            <div class="points-bar" style="margin:20px 0">
+                                <div class="points-fill" style="width:62%"></div>
+                            </div>
+                            <div
+                                style="display:flex;justify-content:space-between;font-size:.78rem;color:var(--text-muted)">
+                                <span>Silver (1k)</span><span>Gold (2k)</span>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 style="font-size:1rem;margin-bottom:16px">Current Benefits</h3>
+                            <div style="display:flex;flex-direction:column;gap:12px">
+                                <div class="flex-between" style="flex-wrap:nowrap"><span
+                                        style="font-size:.88rem">Discount on all orders</span><strong
+                                        style="color:var(--primary)">5%</strong></div>
+                                <div class="flex-between" style="flex-wrap:nowrap"><span style="font-size:.88rem">Points
+                                        per $1 spent</span><strong style="color:var(--primary)">2×</strong></div>
+                                <div class="flex-between" style="flex-wrap:nowrap"><span style="font-size:.88rem">Free
+                                        shipping threshold</span><strong style="color:var(--primary)">$40</strong></div>
+                                <div class="flex-between" style="flex-wrap:nowrap"><span
+                                        style="font-size:.88rem">Birthday bonus</span><strong
+                                        style="color:var(--primary)">100 pts</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Available coupons -->
+                    <h3 style="font-size:1rem;margin-bottom:14px">Available Coupons</h3>
+                    <div class="grid-2" style="gap:12px">
+                        <div
+                            style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:var(--radius-lg);padding:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+                            <div>
+                                <div style="color:rgba(255,255,255,.7);font-size:.75rem">Member Reward</div>
+                                <div style="color:#fff;font-size:1.4rem;font-weight:800;letter-spacing:.06em">SILVER10
+                                </div>
+                                <div style="color:rgba(255,255,255,.7);font-size:.78rem">10% off any order · Exp. Mar 31
+                                </div>
+                            </div>
+                            <button class="btn" style="background:rgba(255,255,255,.2);color:#fff;border:none"
+                                onclick="navigator.clipboard.writeText('SILVER10');showToast('Code copied!')">Copy</button>
+                        </div>
+                        <div
+                            style="background:linear-gradient(135deg,var(--accent),#a8571e);border-radius:var(--radius-lg);padding:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+                            <div>
+                                <div style="color:rgba(255,255,255,.7);font-size:.75rem">Free Shipping</div>
+                                <div style="color:#fff;font-size:1.4rem;font-weight:800;letter-spacing:.06em">SHIPFREE
+                                </div>
+                                <div style="color:rgba(255,255,255,.7);font-size:.78rem">Applies to next order · Exp.
+                                    Mar 15</div>
+                            </div>
+                            <button class="btn" style="background:rgba(255,255,255,.2);color:#fff;border:none"
+                                onclick="navigator.clipboard.writeText('SHIPFREE');showToast('Code copied!')">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: PROFILE ── -->
+                <div class="dash-panel" id="panel-profile">
+                    <h2 style="font-size:1.4rem;margin-bottom:24px">Edit Profile</h2>
+                    <div class="card">
+                        <!-- Avatar -->
+                        <div
+                            style="display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border)">
+                            <div
+                                style="width:72px;height:72px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff">
+                                👤</div>
+                            <div><button class="btn btn-outline btn-sm">Change Photo</button>
+                                <p style="font-size:.78rem;margin-top:6px;color:var(--text-muted)">JPG, PNG. Max 2MB.
+                                </p>
+                            </div>
+                        </div>
+                        <form id="profile-form" novalidate>
+                            <div class="grid-2" style="gap:16px">
+                                <div class="form-group"><label class="form-label">First Name</label><input type="text"
+                                        class="form-control" value="Jane" required></div>
+                                <div class="form-group"><label class="form-label">Last Name</label><input type="text"
+                                        class="form-control" value="Doe" required></div>
+                            </div>
+                            <div class="form-group"><label class="form-label">Email Address</label><input type="email"
+                                    class="form-control" value="jane@example.com" required></div>
+                            <div class="form-group"><label class="form-label">Phone Number</label><input type="tel"
+                                    class="form-control" value="+1 (555) 012-3456"></div>
+                            <div class="form-group"><label class="form-label">Date of Birth</label><input type="date"
+                                    class="form-control" value="1992-07-14"></div>
+                            <div class="form-group"><label class="form-label">Wellness Goals</label>
+                                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+                                    <label class="tag active" style="cursor:pointer"><input type="checkbox" checked
+                                            style="display:none"> Better Sleep</label>
+                                    <label class="tag active" style="cursor:pointer"><input type="checkbox" checked
+                                            style="display:none"> Stress Relief</label>
+                                    <label class="tag" style="cursor:pointer"><input type="checkbox"
+                                            style="display:none"> More Energy</label>
+                                    <label class="tag" style="cursor:pointer"><input type="checkbox"
+                                            style="display:none"> Immunity</label>
+                                    <label class="tag" style="cursor:pointer"><input type="checkbox"
+                                            style="display:none"> Digestion</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: ADDRESSES ── -->
+                <div class="dash-panel" id="panel-addresses">
+                    <div class="flex-between" style="margin-bottom:24px">
+                        <h2 style="font-size:1.4rem">Saved Addresses</h2>
+                        <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add Address</button>
+                    </div>
+                    <div class="grid-2" style="gap:16px">
+                        <div class="address-card active">
+                            <div class="default-badge badge badge-green">Default</div>
+                            <div style="font-weight:700;color:var(--dark);margin-bottom:8px"><i class="fas fa-home"
+                                    style="color:var(--primary);margin-right:8px"></i>Home</div>
+                            <p style="font-size:.88rem;color:var(--text);line-height:1.7">Jane Doe<br>123 Botanica
+                                Lane<br>Portland, OR 97201<br>United States</p>
+                            <div style="display:flex;gap:8px;margin-top:14px">
+                                <button class="btn btn-outline btn-sm">Edit</button>
+                                <button class="btn btn-sm"
+                                    style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:6px 14px;font-size:.8rem;background:transparent">Remove</button>
+                            </div>
+                        </div>
+                        <div class="address-card">
+                            <div style="font-weight:700;color:var(--dark);margin-bottom:8px"><i class="fas fa-briefcase"
+                                    style="color:var(--accent);margin-right:8px"></i>Work</div>
+                            <p style="font-size:.88rem;color:var(--text);line-height:1.7">Jane Doe<br>456 Herbal Ave,
+                                Suite 201<br>Portland, OR 97202<br>United States</p>
+                            <div style="display:flex;gap:8px;margin-top:14px">
+                                <button class="btn btn-outline btn-sm">Edit</button>
+                                <button class="btn btn-sm"
+                                    style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:6px 14px;font-size:.8rem;background:transparent">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: NOTIFICATIONS ── -->
+                <div class="dash-panel" id="panel-notifications">
+                    <h2 style="font-size:1.4rem;margin-bottom:24px">Notification Preferences</h2>
+                    <div class="card">
+                        <div style="display:flex;flex-direction:column;gap:0">
+                            <div class="settings-row" style="padding:16px 0;border-bottom:1px solid var(--border)">
+                                <div><strong style="font-size:.9rem">Order Updates</strong>
+                                    <p style="font-size:.8rem">Shipping, delivery confirmations</p>
+                                </div>
+                                <label class="toggle-switch"><input class="toggle-input" type="checkbox" checked>
+                                    <div class="toggle-slider"></div>
+                                </label>
+                            </div>
+                            <div class="settings-row" style="padding:16px 0;border-bottom:1px solid var(--border)">
+                                <div><strong style="font-size:.9rem">Newsletter</strong>
+                                    <p style="font-size:.8rem">Weekly herbal tips & exclusive offers</p>
+                                </div>
+                                <label class="toggle-switch"><input class="toggle-input" type="checkbox" checked>
+                                    <div class="toggle-slider"></div>
+                                </label>
+                            </div>
+                            <div class="settings-row" style="padding:16px 0;border-bottom:1px solid var(--border)">
+                                <div><strong style="font-size:.9rem">Promotions & Discounts</strong>
+                                    <p style="font-size:.8rem">Sales, coupons, and member rewards</p>
+                                </div>
+                                <label class="toggle-switch"><input class="toggle-input" type="checkbox" checked>
+                                    <div class="toggle-slider"></div>
+                                </label>
+                            </div>
+                            <div class="settings-row" style="padding:16px 0;border-bottom:1px solid var(--border)">
+                                <div><strong style="font-size:.9rem">Back in Stock</strong>
+                                    <p style="font-size:.8rem">Wishlisted items that were sold out</p>
+                                </div>
+                                <label class="toggle-switch"><input class="toggle-input" type="checkbox">
+                                    <div class="toggle-slider"></div>
+                                </label>
+                            </div>
+                            <div class="settings-row" style="padding:16px 0">
+                                <div><strong style="font-size:.9rem">SMS Notifications</strong>
+                                    <p style="font-size:.8rem">Text alerts for orders &amp; shipping</p>
+                                </div>
+                                <label class="toggle-switch"><input class="toggle-input" type="checkbox">
+                                    <div class="toggle-slider"></div>
+                                </label>
+                            </div>
+                        </div>
+                        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+                            <button class="btn btn-primary" onclick="showToast('Notification preferences saved ✅')">Save
+                                Preferences</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── PANEL: SECURITY ── -->
+                <div class="dash-panel" id="panel-security">
+                    <h2 style="font-size:1.4rem;margin-bottom:24px">Security Settings</h2>
+                    <div class="card" style="margin-bottom:20px">
+                        <h3 style="font-size:1rem;margin-bottom:20px">Change Password</h3>
+                        <form id="password-form" novalidate style="max-width:480px">
+                            <div class="form-group"><label class="form-label">Current Password</label><input
+                                    type="password" class="form-control" placeholder="••••••••" required></div>
+                            <div class="form-group"><label class="form-label">New Password</label><input type="password"
+                                    class="form-control" placeholder="Min. 8 characters" required minlength="8"></div>
+                            <div class="form-group"><label class="form-label">Confirm New Password</label><input
+                                    type="password" class="form-control" placeholder="Repeat new password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Password</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h3 style="font-size:1rem;margin-bottom:16px">Account Security</h3>
+                        <div style="display:flex;flex-direction:column;gap:16px">
+                            <div class="settings-row">
+                                <div><strong style="font-size:.9rem">Two-Factor Authentication</strong>
+                                    <p style="font-size:.8rem">Extra security for your account</p>
+                                </div>
+                                <button class="btn btn-outline btn-sm">Enable 2FA</button>
+                            </div>
+                            <div class="settings-row" style="padding-top:16px;border-top:1px solid var(--border)">
+                                <div><strong style="font-size:.9rem;color:#ef4444">Delete Account</strong>
+                                    <p style="font-size:.8rem">Permanently remove your data</p>
+                                </div>
+                                <button class="btn btn-sm"
+                                    style="color:#ef4444;border:1.5px solid #ef4444;border-radius:50px;padding:6px 14px;font-size:.8rem;background:transparent">Delete
+                                    Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <div id="toast-container" role="alert"></div>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+</body>
+
+</html>

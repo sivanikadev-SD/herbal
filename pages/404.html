@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Page Not Found – Herbal Apothecary</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .page-404 {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #e8f0ea, #f9f7f2 60%, #f2ebe0)
+        }
+
+        .illustration {
+            font-size: 8rem;
+            margin-bottom: 8px;
+            animation: float 3s ease-in-out infinite
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-16px)
+            }
+        }
+
+        .err-num {
+            font-family: var(--font-heading);
+            font-size: clamp(6rem, 15vw, 10rem);
+            font-weight: 800;
+            color: var(--primary);
+            opacity: .12;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            user-select: none;
+            line-height: 1
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <div class="nav-actions"><button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button><button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i class="fas fa-language"></i></button><a href="cart.html"
+                    class="nav-icon-btn" style="position:relative"><i class="fas fa-shopping-bag"></i><span
+                        class="cart-badge cart-count">0</span></a></div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-404" role="main" aria-label="404 page not found">
+            <div style="position:relative">
+                <span class="err-num" aria-hidden="true">404</span>
+                <div class="illustration" role="img" aria-label="Lost leaf illustration">🍃</div>
+            </div>
+            <h1 style="margin-bottom:12px;font-size:clamp(1.8rem,4vw,2.8rem)">Oops! This Page Wandered Off</h1>
+            <p style="max-width:480px;margin-bottom:36px;font-size:1rem">We searched every herb garden and forest path,
+                but couldn't find this page. Perhaps it was carried away by the wind?</p>
+            <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+                <a href="../index.html" class="btn btn-primary btn-lg"><i class="fas fa-home"></i> Return to Home</a>
+                <a href="shop.html" class="btn btn-outline btn-lg">Browse Shop</a>
+            </div>
+            <div style="margin-top:48px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+                <span style="font-size:.85rem;color:var(--text-muted);margin-right:8px">Quick links:</span>
+                <a href="shop.html" class="tag">Shop</a>
+                <a href="blog.html" class="tag">Blog</a>
+                <a href="about.html" class="tag">About</a>
+                <a href="contact.html" class="tag">Contact</a>
+            </div>
+        </section>
+    </main>
+    <div id="toast-container"></div>
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

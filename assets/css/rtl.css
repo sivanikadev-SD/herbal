@@ -1,0 +1,167 @@
+/* ============================================================
+   RTL SUPPORT — applied via html[dir="rtl"]
+   ============================================================ */
+[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .nav-inner {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-links {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-actions {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-inner {
+    direction: rtl;
+}
+
+[dir="rtl"] .hero-float-1 {
+    bottom: -16px;
+    right: -24px;
+    left: auto;
+}
+
+[dir="rtl"] .hero-float-2 {
+    top: 24px;
+    left: -24px;
+    right: auto;
+}
+
+[dir="rtl"] .footer-grid {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer-bottom {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .breadcrumb {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dash-sidebar {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .dash-main {
+    margin-left: 0;
+    margin-right: 260px;
+}
+
+[dir="rtl"] .dash-nav-item {
+    border-left: none;
+    border-right: 3px solid transparent;
+    padding: 12px 20px;
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dash-nav-item.active,
+[dir="rtl"] .dash-nav-item:hover {
+    border-right-color: var(--primary);
+}
+
+[dir="rtl"] .cart-badge {
+    left: -4px;
+    right: auto;
+}
+
+[dir="rtl"] .product-badge {
+    left: auto;
+    right: 12px;
+}
+
+[dir="rtl"] .wishlist-btn {
+    right: auto;
+    left: 12px;
+}
+
+[dir="rtl"] .tab-nav {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .accordion-btn {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .form-check {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .summary-row {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .stat-card {
+    text-align: right;
+}
+
+[dir="rtl"] .toast {
+    border-left: none;
+    border-right: 4px solid var(--primary);
+}
+
+[dir="rtl"] .toast.success {
+    border-right-color: #22c55e;
+}
+
+[dir="rtl"] .toast.error {
+    border-right-color: #ef4444;
+}
+
+[dir="rtl"] #scroll-top {
+    right: auto;
+    left: 24px;
+}
+
+[dir="rtl"] #toast-container {
+    right: auto;
+    left: 24px;
+}
+
+[dir="rtl"] .sidebar-option {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .cert-badge {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .blog-meta {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .testimonial-author {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-ctas {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-stats {
+    flex-direction: row-reverse;
+}
+
+@media (max-width:1024px) {
+    [dir="rtl"] .dash-sidebar {
+        right: 0;
+        left: auto;
+        transform: translateX(100%);
+    }
+
+    [dir="rtl"] .dash-sidebar.open {
+        transform: translateX(0);
+    }
+
+    [dir="rtl"] .dash-main {
+        margin-right: 0;
+    }
+}

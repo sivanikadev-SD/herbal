@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Order Confirmed! – Herbal Apothecary</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .confirmation-hero {
+            padding: calc(var(--nav-h)+60px) 0 60px;
+            text-align: center
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #4ade80);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 24px;
+            animation: pop .4s ease
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0)
+            }
+
+            80% {
+                transform: scale(1.1)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        .order-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            max-width: 580px;
+            margin: 0 auto
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <div class="nav-actions"><button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button><button id="rtl-toggle"
+                    class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button></div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="confirmation-hero">
+            <div class="container">
+                <div class="success-icon">✅</div>
+                <h1 style="margin-bottom:10px">Order Confirmed!</h1>
+                <p style="font-size:1.1rem;color:var(--text-muted);margin-bottom:8px">Thank you for your purchase. Your
+                    plants are on their way! 🌿</p>
+                <p style="font-size:.9rem;color:var(--text-muted)">A confirmation email has been sent to your inbox.</p>
+
+                <div class="order-card" style="margin-top:36px;text-align:left">
+                    <div
+                        style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+                        <div>
+                            <div
+                                style="font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:4px">
+                                Order Number</div>
+                            <div style="font-weight:700;font-size:1.1rem;color:var(--primary)">#HA-2026-84312</div>
+                        </div>
+                        <span class="badge badge-green">Processing</span>
+                    </div>
+                    <div style="border-top:1px solid var(--border);padding-top:16px;margin-bottom:16px">
+                        <div class="summary-row"><span>Subtotal</span><span>$24.99</span></div>
+                        <div class="summary-row"><span>Shipping</span><span>$5.99</span></div>
+                        <div class="summary-row"><span>Tax</span><span>$2.00</span></div>
+                        <hr class="summary-divider">
+                        <div class="summary-row summary-total"><span>Total Charged</span><span>$32.98</span></div>
+                    </div>
+                    <div
+                        style="background:var(--surface-alt);border-radius:var(--radius);padding:16px;font-size:.85rem">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span
+                                style="color:var(--text-muted)">Estimated Delivery</span><strong>Mar 1–3, 2026</strong>
+                        </div>
+                        <div style="display:flex;justify-content:space-between"><span
+                                style="color:var(--text-muted)">Shipping Method</span><strong>Standard (USPS)</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:flex;gap:16px;justify-content:center;margin-top:32px;flex-wrap:wrap">
+                    <a href="user-dashboard.html" class="btn btn-primary">Track My Order <i
+                            class="fas fa-truck"></i></a>
+                    <a href="shop.html" class="btn btn-outline">Continue Shopping</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="toast-container" role="alert"></div>
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

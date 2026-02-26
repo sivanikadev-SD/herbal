@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Your Cart – Herbal Apothecary</title>
+    <meta name="description" content="Review your selected herbal wellness products and proceed to checkout.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <link rel="stylesheet" href="../assets/css/rtl.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 32px;
+            align-items: start
+        }
+
+        .promo-wrap {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px
+        }
+
+        @media(max-width:768px) {
+            .cart-layout {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">🌿</div>Herbal Apothecary
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <select name="home" id="home">
+                    <option value="../index.html">Home</option>
+                    <option value="../home2.html">Home 2</option>
+                </select>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle dark mode"><i
+                        class="fas fa-moon moon"></i><i class="fas fa-sun sun"></i></button>
+                <button id="rtl-toggle" class="nav-icon-btn" aria-label="Toggle RTL layout" title="Toggle RTL/LTR"><i
+                        class="fas fa-language"></i></button>
+                <a href="cart.html" class="nav-icon-btn active"
+                    style="position:relative;background:var(--primary);color:#fff"><i
+                        class="fas fa-shopping-bag"></i><span class="cart-badge cart-count">0</span></a>
+                <a href="user-dashboard.html" class="btn btn-outline btn-sm"><i class="fas fa-th-large"></i>
+                    Dashboard</a>
+                <a href="login.html" class="btn btn-primary btn-sm">Sign In</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu"
+                    aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top:var(--nav-h)">
+        <section class="section">
+            <div class="container">
+                <div class="breadcrumb" style="margin-bottom:24px"><a href="../index.html">Home</a><span
+                        class="breadcrumb-sep">/</span><span>Cart</span></div>
+                <h1 style="margin-bottom:32px">Your Cart</h1>
+                <div class="cart-layout">
+                    <div>
+                        <div id="cart-items" aria-live="polite" aria-label="Cart items"></div>
+                        <div style="margin-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+                            <a href="shop.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Continue
+                                Shopping</a>
+                            <button onclick="Cart.clear();renderCart()" class="btn btn-outline"
+                                style="border-color:#ef4444;color:#ef4444">Clear Cart</button>
+                        </div>
+                    </div>
+                    <aside>
+                        <!-- Promo -->
+                        <div style="margin-bottom:20px">
+                            <p style="font-size:.85rem;font-weight:600;margin-bottom:10px">Promo Code</p>
+                            <div class="promo-wrap">
+                                <input type="text" class="form-control" id="promo-code" placeholder="Enter code…"
+                                    aria-label="Promo code">
+                                <button class="btn btn-outline btn-sm" onclick="applyPromo()">Apply</button>
+                            </div>
+                            <p style="font-size:.78rem;color:var(--primary)">💡 Try: HERBAL30 for 30% off</p>
+                        </div>
+                        <!-- Summary -->
+                        <div class="order-summary" aria-label="Order summary">
+                            <h3 style="margin-bottom:18px;font-size:1.1rem">Order Summary</h3>
+                            <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">$0.00</span></div>
+                            <div class="summary-row"><span>Shipping</span><span id="summary-shipping">$5.99</span></div>
+                            <div class="summary-row" id="promo-row" style="display:none;color:var(--primary)">
+                                <span>Promo (HERBAL30)</span><span id="promo-amount">-$0.00</span>
+                            </div>
+                            <hr class="summary-divider">
+                            <div class="summary-row summary-total"><span>Total</span><span
+                                    id="summary-total">$0.00</span></div>
+                            <div style="margin-top:6px;font-size:.78rem;color:var(--text-muted)">Free shipping on orders
+                                over $50!</div>
+                            <a href="checkout.html" class="btn btn-primary btn-lg w-full"
+                                style="margin-top:20px;justify-content:center">Checkout <i class="fas fa-lock"></i></a>
+                            <div style="margin-top:14px;text-align:center;font-size:.78rem;color:var(--text-muted)">🔒
+                                Secure 256-bit SSL checkout</div>
+                            <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;opacity:.7">
+                                <i class="fab fa-cc-visa fa-2x"></i>
+                                <i class="fab fa-cc-mastercard fa-2x"></i>
+                                <i class="fab fa-cc-paypal fa-2x"></i>
+                                <i class="fab fa-cc-amex fa-2x"></i>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border:none;padding:24px 0"><span>© 2026 Herbal Apothecary &
+                    Wellness.</span><a href="shop.html" style="color:var(--accent)">Continue Shopping →</a></div>
+        </div>
+    </footer>
+    <button id="scroll-top" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function applyPromo() {
+            const code = document.getElementById('promo-code').value.trim().toUpperCase();
+            if (code === 'HERBAL30') {
+                const sub = Cart.total(); const disc = (sub * 0.3).toFixed(2);
+                document.getElementById('promo-row').style.display = 'flex';
+                document.getElementById('promo-amount').textContent = '-$' + disc;
+                const shipping = sub > 50 ? 0 : 5.99;
+                document.getElementById('summary-total').textContent = '$' + (sub - sub * 0.3 + shipping).toFixed(2);
+                showToast('Promo HERBAL30 applied — 30% off! 🎉');
+            } else { showToast('Invalid promo code', 'error'); }
+        }
+    </script>
+</body>
+
+</html>

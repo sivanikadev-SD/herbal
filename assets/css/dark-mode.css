@@ -1,0 +1,105 @@
+/* ============================================================
+   DARK MODE OVERRIDES — applied via body.dark
+   ============================================================ */
+body.dark {
+    --primary: #6BA07A;
+    --primary-light: #86B895;
+    --primary-dark: #4A7C59;
+    --secondary: #C4AA80;
+    --accent: #D98A50;
+    --dark: #E6D5B8;
+    --light: #111915;
+    --surface: #1A2420;
+    --surface-alt: #232E28;
+    --text: #D4C8B4;
+    --text-muted: #8A9E8B;
+    --border: #2E3D33;
+    --shadow: rgba(0, 0, 0, .35);
+    --shadow-md: rgba(0, 0, 0, .5);
+}
+
+body.dark .navbar {
+    background: rgba(17, 25, 21, .92);
+}
+
+body.dark .hero {
+    background: linear-gradient(135deg, #111915 0%, #1A2420 50%, #1E2413 100%);
+}
+
+body.dark .hero::before {
+    filter: invert(1) brightness(.3);
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6 {
+    color: var(--dark);
+}
+
+body.dark .footer {
+    background: #0D1210;
+}
+
+body.dark .order-summary {
+    background: var(--surface-alt);
+}
+
+body.dark .dash-sidebar {
+    background: #0D1210;
+}
+
+body.dark .bg-hero {
+    background: linear-gradient(135deg, #111915 0%, #1a2420 100%);
+}
+
+body.dark .goal-card:hover>* {
+    color: #fff !important;
+}
+
+body.dark .modal {
+    background: var(--surface);
+}
+
+body.dark .toast {
+    background: #0D1210;
+}
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+    background: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+body.dark .stat-card {
+    background: var(--surface);
+}
+
+body.dark .dash-table th {
+    color: var(--text-muted);
+}
+
+body.dark .page-hero {
+    background: linear-gradient(135deg, #111915 0%, #1a2420 100%);
+}
+
+/* Dark mode toggle icon flip */
+body.dark #theme-toggle .moon {
+    display: none;
+}
+
+body.dark #theme-toggle .sun {
+    display: inline;
+}
+
+body:not(.dark) #theme-toggle .sun {
+    display: none;
+}
+
+body:not(.dark) #theme-toggle .moon {
+    display: inline;
+}
