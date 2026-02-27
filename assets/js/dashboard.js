@@ -104,6 +104,16 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Password changed successfully ✅');
     });
 
+    /* ── SIGN OUT (LOGOUT TOAST) ──────────────────────────── */
+    const signOutBtn = document.getElementById('sign-out-btn');
+    signOutBtn?.addEventListener('click', e => {
+        e.preventDefault();
+        showToast('Signing out… See you soon! 🌿', 'success', 2000);
+        setTimeout(() => {
+            window.location.href = signOutBtn.getAttribute('href');
+        }, 1500);
+    });
+
     /* ── TABLE SEARCH ──────────────────────────────────────── */
     function initSearch(inputId, tableSelector) {
         const input = document.getElementById(inputId);
